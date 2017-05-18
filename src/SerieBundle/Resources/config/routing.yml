@@ -1,3 +1,11 @@
+serie_episode:
+    resource: "@SerieBundle/Resources/config/routing/episode.yml"
+    prefix:   /episode
+
+serie_serie:
+    resource: "@SerieBundle/Resources/config/routing/serie.yml"
+    prefix:   /serie
+
 serie_homepage:
     path:     /hello/{name}
     defaults: { _controller: SerieBundle:Default:index }

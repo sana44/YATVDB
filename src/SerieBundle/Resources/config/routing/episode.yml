@@ -1,0 +1,30 @@
+episode:
+    path:     /
+    defaults: { _controller: "SerieBundle:Episode:index" }
+
+episode_show:
+    path:     /{id}/show
+    defaults: { _controller: "SerieBundle:Episode:show" }
+
+episode_new:
+    path:     /new
+    defaults: { _controller: "SerieBundle:Episode:new" }
+
+episode_create:
+    path:     /create
+    defaults: { _controller: "SerieBundle:Episode:create" }
+    methods:  POST
+
+episode_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SerieBundle:Episode:edit" }
+
+episode_update:
+    path:     /{id}/update
+    defaults: { _controller: "SerieBundle:Episode:update" }
+    methods:  [POST, PUT]
+
+episode_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SerieBundle:Episode:delete" }
+    methods:  [POST, DELETE]
