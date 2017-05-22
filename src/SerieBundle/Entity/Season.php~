@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Season
 {
     /**
-     * @ORM\ManyToOne(targetEntity="\SerieBundle\Entity\Serie", inversedBy="Season")
+     * @ORM\ManyToOne(targetEntity="\SerieBundle\Entity\Serie", inversedBy="season")
      * @ORM\JoinColumn(nullable=false)
      */
     private $serie;

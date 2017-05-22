@@ -158,4 +158,27 @@ class SerieComment
     {
         return $this->score;
     }
+
+    /**
+     * Set serie
+     *
+     * @param \SerieBundle\Entity\Serie $serie
+     * @return SerieComment
+     */
+    public function setSerie(\SerieBundle\Entity\Serie $serie)
+    {
+        $this->serie = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Get serie
+     *
+     * @return \SerieBundle\Entity\Serie 
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
 }
