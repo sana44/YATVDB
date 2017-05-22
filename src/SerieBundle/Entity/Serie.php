@@ -25,7 +25,7 @@ class Serie
   private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="Serie")
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie")
      */
     private $seasons;
 
@@ -41,7 +41,7 @@ class Serie
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="\SerieBundle\Entity\SerieCategory")
+     * @ORM\ManyToOne(targetEntity="\SerieBundle\Entity\SerieCategory", inversedBy="serie")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;

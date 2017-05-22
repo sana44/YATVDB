@@ -23,10 +23,10 @@ class SerieController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SerieBundle:Serie')->findAll();
+        $categories = $em->getRepository('SerieBundle:SerieCategory')->findAll();
 
         return $this->render('SerieBundle:Serie:index.html.twig', array(
-            'entities' => $entities,
+            'categories' => $categories,
         ));
     }
     /**
@@ -94,18 +94,15 @@ class SerieController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SerieBundle:Serie')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Serie entity.');
+        //$serie = $em->getRepository('SerieBundle:Serie')->findBy(array('category'=>$id), array('id'=>'DESC'));
+        $category = $em->getRepository('SerieBundle:SerieCategory')->find($id); 
+        if (!$category) {
+            throw $this->createNotFoundException('Pas de série existante dans cette catégorie');
         }
-
-        $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('SerieBundle:Serie:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            //'serie'      => $serie,
+            'category'  => $category,
+            
         ));
     }
 
