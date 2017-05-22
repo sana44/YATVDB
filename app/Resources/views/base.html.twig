@@ -28,21 +28,23 @@
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 
-                <div class="col-lg-offset-2 col-lg-2">
+                <div class="col-lg-offset-2 col-lg-2 ">
+                    <button class="notifButton" type="button">
                     <span class="glyphicon glyphicon-bell"></span>
-                    <button class="btn btn-primary" type="button">
                       Notification <span class="badge">4</span>
                     </button>
                 </div>
                 
                 <div class="col-lg-2">
+                    <p class="text-right "><button type="button" class="deconnexion"> <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}  </button> </a>
+                     </p> <br>
                     <p class="text-right">{Nom}</p> 
-                    <p class="text-right">{Prenom}</p> <br>
-                    <p class="text-right"> <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a> </p>
+                    <p class="text-right">{Prenom}</p> 
+                    
                 </div>
 
                 <div class="col-lg-2">
-                    <img src="/YATVDB/web/img/jp.jpg" style="width: 70%" class="pull-right">
+                    <a href="{{ path ('fos_user_profile_show') }}"><img src="/YATVDB/web/img/jp.jpg" style="width: 70%" class="pull-right"></a>
                    
                 </div>
                 
@@ -75,7 +77,7 @@
                     <li> <a href="#" class="accueil">ACCUEIL</a> </li>
                     <li><a href="#" class="series">SERIES </a></li>
                     <li><a href="#" class="forum">FORUM</a></li>
-                    <li><a href="#" class="profil">PROFIL</a></li>
+                    <li><a href="{{ path ('fos_user_profile_show') }}" class="profil">PROFIL</a></li>
                     <li><a href="#" class="admin">ESPACE ADMIN</a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
