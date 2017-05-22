@@ -2,6 +2,7 @@
 
 namespace SerieBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,7 +25,7 @@ class Serie
   private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="Serie")
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie")
      */
     private $seasons;
 
@@ -40,7 +41,7 @@ class Serie
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="\SerieBundle\Entity\SerieCategory")
+     * @ORM\ManyToOne(targetEntity="\SerieBundle\Entity\SerieCategory", inversedBy="serie")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -229,5 +230,38 @@ class Serie
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \SerieBundle\Entity\SerieComment $comments
+     * @return Serie
+     */
+    public function addComment(\SerieBundle\Entity\SerieComment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \SerieBundle\Entity\SerieComment $comments
+     */
+    public function removeComment(\SerieBundle\Entity\SerieComment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
