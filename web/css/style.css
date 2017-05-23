@@ -120,6 +120,7 @@ button a{
 	text-transform: uppercase;
 	text-align: center;
 	letter-spacing: 3px;
+	cursor: pointer;
 
 }
 
@@ -133,7 +134,28 @@ button a{
 	width: 360px;
 }
 
-.category h1{
+.invitSerie{
+	background-color: #fdb515;
+	height: 520px;
+	margin-top: 95px;
+	text-align: center;
+	margin-left:15px;
+	margin-right: 15px;
+	width: 360px;
+	padding: 20px;
+}
+
+.invitSerie h1 {
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	font-family: 'Anton', sans-serif;
+	line-height:200px;
+	font-size: 60px;
+}
+
+.category h1 {
 	color: #fdb515;
 	text-transform: uppercase;
 	text-align: center;
@@ -141,12 +163,14 @@ button a{
 	font-family: 'Anton', sans-serif;
 }
 
-.category span{
+.category span, .invitSerie span{
 	text-align: justify;
 	font-family: 'Anton', sans-serif;
 	font-size:18px;
 	color: #686868;
+
 }
+
 
 .category .keyWord {
 	font-family: 'Anton', sans-serif;
@@ -155,14 +179,32 @@ button a{
 	text-transform: uppercase;
 }
 
+
+
+.invitSerie .keyWord {
+	font-family: 'Anton', sans-serif;
+	font-size:25px;
+	color: #ee3124;
+	text-transform: uppercase;
+}
+
 .Dramatique{background-color: #59bd73;}
 .Action{background-color: #48b9c7;}
 .Aventure{background-color: #fdb515;}
-.Science-fiction{background-color: #686868;}
-.Historique{background-color: #59bd73;}
-.Comédie{background-color: silver;}
-.Famille{background-color: #ee3124;}
-.Thriller{background-color: #48b9c7;}
+.Science-fiction{background-color: #ee3124;}
+.Historique{background-color: #ee3124;}
+.Comédie{background-color: #686868;}
+.Famille{background-color: #59bd73;}
+.Thriller{background-color: #686868;}
+
+.Dramatique:hover{background-color: silver;}
+.Action:hover{background-color: silver;}
+.Aventure:hover{background-color: silver;}
+.Science-fiction:hover{background-color: silver;}
+.Historique:hover{background-color: silver;}
+.Comédie:hover{background-color: silver;}
+.Famille:hover{background-color: silver;}
+.Thriller:hover{background-color: silver;}
 
 .Comédie a:hover, .Dramatique a:hover, .Action a:hover, .Aventure a:hover, .Science-fiction a:hover, .Historique a:hover, .Animation a:hover, .Famille a:hover, .Thriller a:hover
 {
@@ -172,4 +214,23 @@ button a{
 {
 	color: white;
 	line-height:200px;
+}
+
+.serieList h2{
+	font-family: 'Anton', sans-serif;
+	font-size:40px;
+	color: #fdb515;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.favoris {background-color: #ee3124;}
+.delete {background-color: #59bd73;}
+
+.favoris, .delete {
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 12px;
+
 }
