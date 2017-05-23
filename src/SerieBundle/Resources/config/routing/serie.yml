@@ -28,3 +28,7 @@ serie_delete:
     path:     /{id}/delete
     defaults: { _controller: "SerieBundle:Serie:delete" }
     methods:  [POST, DELETE]
+
+oc_platform_translation:
+    path:     /{_locale}/traduction/{name}
+    defaults: { _controller: SerieBundle:Advert:translation }
