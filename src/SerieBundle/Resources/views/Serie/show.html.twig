@@ -2,26 +2,34 @@
 
 {% block body %}
 
-    <h1>{{ category.name }}</h1>
+<div class="container">
+ 
+            <div class="row">
 
-    <table class="record_properties">
-        <tbody>
+                <div class="col-lg-4 invitSerie thumbnail">
+                    <h1> {{ category.name }} </h1>
+                    <span> Vous adorez </span> <span class="keyWord"> rire </span> <span> et vous détendre <br> devant des séries <br> </span> <span class="keyWord"> légères et humoristiques ? </span> <br> <span> Voici une sélection de séries <br> faite pour vous! </span>
+                </div>
+
                 {%for serie in category.series%}
-                <tr>
-                    <td><h2>{{ serie.name }}</h2></td>
-                </tr>
-                <tr>
-                    <td><img src="{{asset('/YATVDB/web/img/'~serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" style="width:30%"/></td>
-                </tr>
-                <tr>
-                    <td><button>S'abonner</button></td>
-                </tr>
-                <tr>
-                    <td><button>Supprimer</button></td>
-                </tr>
+                <div class="col-lg-4 serieList">
+                    <h2>{{ serie.name }}</h2> <br>
+                    <img src="{{asset('/YATVDB/web/img/'~serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" class="thumbnail"/> <br>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <button class="btn pull-right favoris">
+                             <span class="glyphicon glyphicon-heart" aria-hidden="true"> </span>  Ajouter à mes favoris </button>
+                        </div>
+                        <div class="col-lg-5 ">
+                            <button class="btn pull-left delete"> <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>   Supprimer</button>
+                        </div>
+                    </div>
+                    
+                </div>
                 {%endfor%}
-        </tbody>
-    </table>
+
+            </div>
+       
 
         <ul class="record_actions">
     <li>
@@ -30,4 +38,6 @@
         </a>
     </li>
 </ul>
+
+</div>
 {% endblock %}
