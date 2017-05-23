@@ -33,6 +33,19 @@
 	text-transform: uppercase;
 }
 
+.deconnexion{
+	width:145px;
+	height: 36px;
+	background-color: #ee3124;
+	border: none;
+
+}
+.deconnexion a{
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
 
 .connexion a:hover{text-decoration: none;}
 
@@ -44,26 +57,26 @@ button a{
 	font-family: 'Open Sans', sans-serif;
 }
 
-.login{
+.login, .inscription, .mesInfos, .changeInfos, .changePassword{
 	background-color: white;
 	margin-left:20px;
 	margin-right:20px;
 	border-left: solid 2px #48b9c7; 
 }
 
-.login .btn{
+.login .btn, .inscription .btn, .mesInfos .btn, .changeInfos .btn, .changePassword .btn{
 	background-color: #48b9c7;
 	border:none;
 }
 
-.login h2{
+.login h2, .inscription h2, .mesInfos h2, .changeInfos h2, .changePassword h2{
 	color: #48b9c7 ;
 	font-weight: bold;
 	border-bottom: solid 1px #CDD1D0;
 
 }
 
-.login h4{
+.login h4, .inscription h4, .mesInfos h4, .changeInfos h4, .changePassword h4{
 	color: #686868;
 	font-weight: bold;
 }
@@ -71,3 +84,30 @@ button a{
 #forgotPassword{
 	color: #fdb515;
 }
+
+.menuInfos{
+	background-image: url('/YATVDB/web/img/backgroundMenu.jpg');
+	padding-top:40px;
+	padding-bottom:40px;
+}
+
+.menuInfos a{
+	color:white;
+	font-size: 17px
+}
+
+.notifButton{
+	background-color: #fdb515;
+	width:160px;
+	height: 36px;
+	border: none;
+	color:white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.notifButton .badge{
+	color: #fdb515;
+	background-color: white;
+}
+

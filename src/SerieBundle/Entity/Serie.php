@@ -212,10 +212,10 @@ class Serie
     /**
      * Set category
      *
-     * @param \SerieBundle\Entity\serie_category $category
+     * @param \SerieBundle\Entity\SerieCategory $category
      * @return Serie
      */
-    public function setCategory(\SerieBundle\Entity\serie_category $category)
+    public function setCategory(\SerieBundle\Entity\SerieCategory $category)
     {
         $this->category = $category;
 
@@ -225,7 +225,7 @@ class Serie
     /**
      * Get category
      *
-     * @return \SerieBundle\Entity\serie_category 
+     * @return \SerieBundle\Entity\SerieCategory 
      */
     public function getCategory()
     {
