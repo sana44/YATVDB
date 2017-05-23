@@ -86,7 +86,7 @@ button a{
 }
 
 .menuInfos{
-	background-image: url('/YATVDB/web/img/backgroundMenu.jpg');
+	background-image: url('../img/backgroundMenu.jpg');
 	padding-top:40px;
 	padding-bottom:40px;
 }

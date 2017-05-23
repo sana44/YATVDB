@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %} Fishblock, le réseau social incontournable qui parle de nos Séries TV préférées!! {%endblock%} </title>
-        {% block stylesheets %}    
+        {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}"/>
         <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css"/>
         <style type="text/css">
@@ -15,7 +15,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-    
+
 
     </head>
     <body>
@@ -24,31 +24,30 @@
             <div class="row">
 
                 <div class="col-lg-4">
-                    <img src="/YATVDB/web/img/logoFishblock.jpg" style="width:100%"  />
+                    <img src="{{ asset('img/logoFishblock.jpg')}}" style="width:100%"  />
                 </div>
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                
+
                 <div class="col-lg-offset-2 col-lg-2 ">
                     <button class="notifButton" type="button">
                     <span class="glyphicon glyphicon-bell"></span>
                       Notification <span class="badge">4</span>
                     </button>
                 </div>
-                
+
                 <div class="col-lg-2">
                     <p class="text-right "><button type="button" class="deconnexion"> <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}  </button> </a>
                      </p> <br>
-                    <p class="text-right">{Nom}</p> 
-                    <p class="text-right">{Prenom}</p> 
-                    
+                    <p class="text-right">{{app.user.firstname}} {{ app.user.lastname }}</p> 
+
                 </div>
 
                 <div class="col-lg-2">
-                    <a href="{{ path ('fos_user_profile_show') }}"><img src="/YATVDB/web/img/jp.jpg" style="width: 70%" class="pull-right"></a>
-                   
+                    <a href="{{ path ('fos_user_profile_show') }}"><img src="{{ asset('img/jp.jpg')}}" style="width: 70%" class="pull-right"></a>
+
                 </div>
-                
+
                 {% else %}
                     <div class="col-lg-offset-6 col-lg-2">
                         <button class="connexion pull-right glyphicon glyphicon-user" style="color: white;"> <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a> </button>
@@ -70,21 +69,19 @@
                 </div>
             </div>
 
-
             <nav class="navbar navbar-default" id="menu">
               <div class="container-fluid">
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
                     <li> <a href="#" class="accueil">ACCUEIL</a> </li>
                     <li><a href="{{ path ('serie')}}" class="series">SERIES </a></li>
-                    <li><a href="#" class="forum">FORUM</a></li>
+                    <li><a href="https://node-chat-fil-rouge.herokuapp.com/" class="forum">CHAT</a></li>
                     <li><a href="{{ path ('fos_user_profile_show') }}" class="profil">PROFIL</a></li>
                     <li><a href="#" class="admin">ESPACE ADMIN</a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
             </nav>
-                        
         </div>
     </header>
 
