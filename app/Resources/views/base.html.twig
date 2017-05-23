@@ -14,6 +14,7 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     
 
     </head>
@@ -75,7 +76,7 @@
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
                     <li> <a href="#" class="accueil">ACCUEIL</a> </li>
-                    <li><a href="#" class="series">SERIES </a></li>
+                    <li><a href="{{ path ('serie')}}" class="series">SERIES </a></li>
                     <li><a href="#" class="forum">FORUM</a></li>
                     <li><a href="{{ path ('fos_user_profile_show') }}" class="profil">PROFIL</a></li>
                     <li><a href="#" class="admin">ESPACE ADMIN</a></li>

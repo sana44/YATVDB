@@ -6,7 +6,7 @@
 
 #menu{
 	background-color: #686868;
-	height: 52px;
+	height: 52px;	
 }
 
 #menu a{
@@ -111,3 +111,65 @@ button a{
 	background-color: white;
 }
 
+.Comédie, .Dramatique, .Action, .Aventure, .Science-fiction, .Historique, .Famille, .Thriller
+{
+	font-size: 50px;
+	height: 200px;
+	margin-top: 20px;
+	font-family: 'Anton', sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+
+}
+
+.category{
+	background-image: url('/YATVDB/web/img/textureBlanc.jpg');
+	height: 200px;
+	margin-top: 20px;
+	text-align: center;
+	margin-left:15px;
+	margin-right: 15px;
+	width: 360px;
+}
+
+.category h1{
+	color: #fdb515;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	font-family: 'Anton', sans-serif;
+}
+
+.category span{
+	text-align: justify;
+	font-family: 'Anton', sans-serif;
+	font-size:18px;
+	color: #686868;
+}
+
+.category .keyWord {
+	font-family: 'Anton', sans-serif;
+	font-size:25px;
+	color: #48b9c7;
+	text-transform: uppercase;
+}
+
+.Dramatique{background-color: #59bd73;}
+.Action{background-color: #48b9c7;}
+.Aventure{background-color: #fdb515;}
+.Science-fiction{background-color: #686868;}
+.Historique{background-color: #59bd73;}
+.Comédie{background-color: silver;}
+.Famille{background-color: #ee3124;}
+.Thriller{background-color: #48b9c7;}
+
+.Comédie a:hover, .Dramatique a:hover, .Action a:hover, .Aventure a:hover, .Science-fiction a:hover, .Historique a:hover, .Animation a:hover, .Famille a:hover, .Thriller a:hover
+{
+	text-decoration: none;
+}
+.Comédie a, .Dramatique a, .Action a, .Aventure a, .Science-fiction a, .Historique a, .Animation a, .Famille a, .Thriller a
+{
+	color: white;
+	line-height:200px;
+}

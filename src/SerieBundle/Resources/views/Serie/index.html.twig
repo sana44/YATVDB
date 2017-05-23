@@ -1,21 +1,27 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>TOUS LES GENRES</h1>
-        {% for category in categories %}
-            
-            <a href="{{ path('serie_show', { 'id': category.id }) }}">{{ category.name }}</a>
-                       
+    <div class="container">
         
-        {% endfor %}
-        </tbody>
-    </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('serie_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+            <div class="row">
+                <div class="col-lg-4 category">
+                    <h1>LES GENRES</h1>
+                    <span> Vous êtes </span> <span class="keyWord"> fan </span> <span> de Séries? Vous vous intéressez à un genre en particulier? </span> <span class="keyWord"> Cliquez </span> <span> dessus pour découvir toutes les séries liées à ce genre! </span>
+                </div>
+
+            {% for category in categories %}
+                <div class="col-lg-4">
+                    <div class="{{category.name}}"><a href="{{ path('serie_show', { 'id': category.id }) }}">{{ category.name }}</a> </div>
+                </div>
+            {% endfor %}
+
+            </div> 
+
+           
+                <a href="{{ path('serie_new') }}">
+                    Create a new entry
+                </a>
+           
+    </div>
+        {% endblock %}
