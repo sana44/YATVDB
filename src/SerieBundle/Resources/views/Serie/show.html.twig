@@ -14,7 +14,7 @@
                 {%for serie in category.series%}
                 <div class="col-lg-4 serieList">
                     <h2>{{ serie.name }}</h2> <br>
-                    <img src="{{asset('/YATVDB/web/img/'~serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" class="thumbnail"/> <br>
+                    <img src="{{asset(serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" class="thumbnail"/> <br>
                     <div class="row">
                         <div class="col-lg-7">
                             <button class="btn pull-right favoris">

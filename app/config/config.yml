@@ -93,9 +93,17 @@ bazinga_faker:
                 url: { method:imageUrl, parameters:[640, 480] }
         SerieBundle\Entity\SerieCategory:
             number: 5
+            custom_formatters:
+                name: { method:word }
         SerieBundle\Entity\Serie:
             number: 20
+            custom_formatters:
+                name: { method:word }
         SerieBundle\Entity\Season:
             number: 50
+            custom_formatters:
+                name: { method:word }
         SerieBundle\Entity\Episode:
             number: 200
+            custom_formatters:
+                name: { method:sentence, parameters:[6, true] }
