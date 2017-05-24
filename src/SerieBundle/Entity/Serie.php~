@@ -15,7 +15,7 @@ class Serie
 {
 
   /**
-   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="Serie")
+   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie")
    */
   private $comments;
 
