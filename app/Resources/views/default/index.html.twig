@@ -1,7 +1,46 @@
-{% extends 'base.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block body %}
+
+<div class="container accueil">
+
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	<h2> Les dernières séries ajoutées </h2>
+		<div class="row">
+	    {% for s in lastSeries %}
+	    	<div class="col-lg-2 lastSerie">
+		        <img src="{{asset('/YATVDB/web/img/'~s.image.url|default(''))}}" alt="{{s.image.alt|default('')}}" > <br>
+		        <span class="lastSerieTitle"> {{ s.name }} </span>
+	         </div>
+	    {% endfor %}
+	    </div>
+
+	{% else %}
+
+	<h2> Fishblock, le Réseau Social n°1 autour des Séries TVs! </h2>
+	
+	<div class="row">
+		<div class="col-lg-6">
+		<p>  Vous êtes <span class="keyWord">fan de séries </span> ? Vous souhaitez <span class="keyWord"> partager </span> vos séries préférées et <span class="keyWord"> échanger </span> avec d'autres fans ? <span class="keyWord"> Inscrivez vous </span> vite afin de partager vos dernières découvertes et <span class="keyWord"> discuter </span> en live avec d'autres utilisateurs par le biais de notre chat !</p>
+		</div>
+
+		<div class="col-lg-6 invitInscription">
+		<a href={{path('fos_user_registration_register')}}> <button> JE M'INSCRIS  <span class="glyphicon glyphicon-chevron-right"> </span> </button> </a>
+		</div>
+
+	</div>
+
+	<h2> Les dernières séries ajoutées </h2>
+	<div class="row">
     {% for s in lastSeries %}
-        {{ s.name }}
+    	<div class="col-lg-2 lastSerie">
+	        <img src="{{asset('/YATVDB/web/img/'~s.image.url|default(''))}}" alt="{{s.image.alt|default('')}}" > <br>
+	        <span class="lastSerieTitle"> {{ s.name }} </span>
+         </div>
     {% endfor %}
+    </div>
+
+    {% endif %}
+
+</div>
 {% endblock %}
