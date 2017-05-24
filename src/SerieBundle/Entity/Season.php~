@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Season
 {
     /**
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Episode", mappedBy="season")
+     */
+    private $episodes;
+
+    /**
      * @ORM\ManyToOne(targetEntity="\SerieBundle\Entity\Serie", inversedBy="season")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -179,5 +184,45 @@ class Season
     public function getSerie()
     {
         return $this->serie;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->episodes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add episodes
+     *
+     * @param \SerieBundle\Entity\Episode $episodes
+     * @return Season
+     */
+    public function addEpisode(\SerieBundle\Entity\Episode $episodes)
+    {
+        $this->episodes[] = $episodes;
+
+        return $this;
+    }
+
+    /**
+     * Remove episodes
+     *
+     * @param \SerieBundle\Entity\Episode $episodes
+     */
+    public function removeEpisode(\SerieBundle\Entity\Episode $episodes)
+    {
+        $this->episodes->removeElement($episodes);
+    }
+
+    /**
+     * Get episodes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEpisodes()
+    {
+        return $this->episodes;
     }
 }

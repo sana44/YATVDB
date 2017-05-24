@@ -35,3 +35,5 @@ assetic:
 
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']
+
+bazinga_faker: ~
