@@ -14,7 +14,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
       $em = $this->getDoctrine()->getManager();
-      $lastSeries = $em->getRepository('SerieBundle:Serie')->findBy([], ['releaseDate'=>'DESC']);
+      $lastSeries = $em->getRepository('SerieBundle:Serie')->findBy([], ['releaseDate'=>'DESC'], $limit = 6);
 
       // replace this example code with whatever you need
       return $this->render('default/index.html.twig', array(
