@@ -16,18 +16,17 @@
                 <tr>
                     <td><button>S'abonner</button></td>
                 </tr>
-                <tr>
-                    <td><button>Supprimer</button></td>
-                </tr>
+                
                 {%endfor%}
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('serie') }}">
+        <a href="{{ path('serie_show', {'id': category.id}) }}">
             Back to the list
         </a>
     </li>
 </ul>
 {% endblock %}
+

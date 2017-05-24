@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
 class SerieType extends AbstractType
 {
     /**
@@ -16,10 +17,20 @@ class SerieType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('resume')
-            ->add('releaseDate')
-            ->add('image')
-            ->add('category')
+            ->add('image', 'entity', array(
+                'class'=>"SerieBundle:Image",
+                'property'=>"Url",
+                'multiple'=>false,
+                'required'=>false,
+                'empty_value'=>"Choisir Url"
+                ))
+            ->add('category','entity', array(
+                'class'=>"SerieBundle:serieCategory",
+                'property'=>"name",
+                'multiple'=>false,
+                'required'=>true,
+                'expanded'=>true
+                ))
         ;
     }
     

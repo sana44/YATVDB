@@ -1,15 +1,21 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Serie creation</h1>
 
-    {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('serie') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+<form method="POST">
+	<legend>Ajout Série</legend>
+	<div>
+		{{form_widget(form)}}
+		{{form_rest(form)}}
+	</div>
+	
+	 <div>
+		 <div>
+		 <a href="{{ path('serie_showCategory') }}" class="btn btn-lg btn-danger pull-right">Annuler</a>
+		 <input type="submit" value="Ajouter" class="btn btn-lg btn-primary"/>
+		 </div>
+	 </div>
+ </form>
+
 {% endblock %}

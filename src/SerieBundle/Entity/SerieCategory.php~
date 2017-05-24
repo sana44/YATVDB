@@ -30,6 +30,7 @@ class SerieCategory
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $name;
 
