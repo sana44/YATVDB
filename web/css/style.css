@@ -168,7 +168,7 @@ button a{
 
 .invitSerie{
 	background-color: #fdb515;
-	height: 520px;
+	height: 480px;
 	margin-top: 95px;
 	text-align: center;
 	margin-left:15px;
@@ -222,11 +222,89 @@ button a{
 
 .favoris {background-color: #ee3124;}
 .delete {background-color: #59bd73;}
+.retour{background-color: #48b9c7;}
 
-.favoris, .delete {
+.favoris, .delete, .retour {
 	color: white;
 	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 12px;
+}
 
+.retour:hover{color:#686868;}
+.retour a:hover{color:#686868;}
+
+.retour a{
+	color:white;
+	text-decoration: none;
+}
+
+span.lastSerieTitle {
+	color: #686868;
+	font-family: 'Anton', sans-serif;
+}
+
+.lastSerie {
+	text-align: center;
+	background-color: white;
+	height: 290px;
+	padding-top:15px;
+	
+}
+
+.lastSerie img {
+	height: 250px;
+}
+
+.serieList {
+	text-align: center;
+	background-color: white;
+	height: 670px;
+}
+
+.serieList img{
+	height: 480px;
+}
+
+.accueil h2{
+	color: #fdb515;
+	font-family: 'Anton', sans-serif;
+	margin-bottom: 20px;
+}
+ .accueil p{
+ 	font-family: 'Open Sans', sans-serif;
+ 	font-size: 15px;
+ 	text-align: justify;
+ 	color: #686868;
+}
+
+.accueil .keyWord{
+	font-family: 'Open Sans', sans-serif;
+ 	font-size: 20px;
+ 	color: #48b9c7;
+ 	font-weight: bold;
+ 	text-transform: uppercase;
+}
+
+.invitInscription button{
+	background-color: #48b9c7;
+	color: white;
+	border: none;
+	width: 50%;
+	height:80px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.invitInscription{
+	text-align: center;
+}
+
+.genre p{
+	font-family: 'Open Sans', sans-serif;
+ 	font-size: 15px;
+ 	text-align: justify;
+ 	color: #686868;
+}
 }
