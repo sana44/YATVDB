@@ -108,7 +108,6 @@ class SerieController extends Controller
     public function serieListAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        //$serie = $em->getRepository('SerieBundle:Serie')->findBy(array('category'=>$id), array('id'=>'DESC'));
         $category = $em->getRepository('SerieBundle:SerieCategory')->find($id); 
         if (!$category) {
             throw $this->createNotFoundException('Pas de série existante dans cette catégorie');

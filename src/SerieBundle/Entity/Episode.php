@@ -18,7 +18,7 @@ class Episode
   private $image;
 
   /**
-   * @ORM\ManyToOne(targetEntity = "\SerieBundle\Entity\Season")
+   * @ORM\ManyToOne(targetEntity = "\SerieBundle\Entity\Season", inversedBy="episodes")
    * @ORM\JoinColumn(nullable = false)
    */
   private $season;
@@ -189,10 +189,10 @@ class Episode
     /**
      * Set season
      *
-     * @param \SerieBundle\Entity\Seasons $season
+     * @param \SerieBundle\Entity\Season $season
      * @return Episode
      */
-    public function setSeason(\SerieBundle\Entity\Seasons $season)
+    public function setSeason(\SerieBundle\Entity\Season $season)
     {
         $this->season = $season;
 
@@ -202,7 +202,7 @@ class Episode
     /**
      * Get season
      *
-     * @return \SerieBundle\Entity\Seasons 
+     * @return \SerieBundle\Entity\Season
      */
     public function getSeason()
     {

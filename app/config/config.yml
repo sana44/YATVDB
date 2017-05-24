@@ -83,3 +83,27 @@ fos_user:
     db_driver:     orm                       # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
     firewall_name: main                      # Le nom du firewall derrière lequel on utilisera ces utilisateurs
     user_class:    UserBundle\Entity\User # La classe de l'entité User que nous utilisons
+
+bazinga_faker:
+    orm: doctrine
+    entities:
+        SerieBundle\Entity\Image:
+            number: 200
+            custom_formatters:
+                url: { method:imageUrl, parameters:[640, 480] }
+        SerieBundle\Entity\SerieCategory:
+            number: 5
+            custom_formatters:
+                name: { method:word }
+        SerieBundle\Entity\Serie:
+            number: 20
+            custom_formatters:
+                name: { method:word }
+        SerieBundle\Entity\Season:
+            number: 50
+            custom_formatters:
+                name: { method:word }
+        SerieBundle\Entity\Episode:
+            number: 200
+            custom_formatters:
+                name: { method:sentence, parameters:[6, true] }

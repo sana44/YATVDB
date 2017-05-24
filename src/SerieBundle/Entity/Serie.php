@@ -19,9 +19,10 @@ class Serie
    */
   private $comments;
 
-  /**
-   * @ORM\OneToOne(targetEntity="\SerieBundle\Entity\Image", cascade={"persist"})
-   */
+    /**
+     * @ORM\OneToOne(targetEntity="\SerieBundle\Entity\Image", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
   private $image;
 
     /**

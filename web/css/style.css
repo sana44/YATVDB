@@ -1,3 +1,4 @@
+/* Mise en page du menu horizontal */
 #menu .accueil:hover{ background-color: #48b9c7;}
 #menu .series:hover{ background-color: #fdb515;}
 #menu .forum:hover{ background-color: #ee3124;}
@@ -6,7 +7,7 @@
 
 #menu{
 	background-color: #686868;
-	height: 52px;
+	height: 52px;	
 }
 
 #menu a{
@@ -19,12 +20,12 @@
 	width:215px;
 }
 
+/* Bouton connexion, visible uniquement par un utilisateur non authentifié */
 .connexion{
 	width:145px;
 	height: 36px;
 	background-color: #ee3124;
 	border: none;
-
 }
 
 .connexion a{
@@ -33,6 +34,10 @@
 	text-transform: uppercase;
 }
 
+.connexion a:hover{text-decoration: none;}
+
+
+/* Bouton déconnexion, visible uniquement lorsque l'utilisateur est connecté */
 .deconnexion{
 	width:145px;
 	height: 36px;
@@ -47,7 +52,7 @@
 }
 
 
-.connexion a:hover{text-decoration: none;}
+
 
 html{
 	font-family: 'Open Sans', sans-serif;
@@ -57,6 +62,7 @@ button a{
 	font-family: 'Open Sans', sans-serif;
 }
 
+/* Mise en forme des formulaires d'authentification */
 .login, .inscription, .mesInfos, .changeInfos, .changePassword{
 	background-color: white;
 	margin-left:20px;
@@ -86,7 +92,7 @@ button a{
 }
 
 .menuInfos{
-	background-image: url('/YATVDB/web/img/backgroundMenu.jpg');
+	background-image: url('../img/backgroundMenu.jpg');
 	padding-top:40px;
 	padding-bottom:40px;
 }
@@ -96,6 +102,7 @@ button a{
 	font-size: 17px
 }
 
+/* Bouton notification, visible uniquement lorque l'utilisateur est authentifié */
 .notifButton{
 	background-color: #fdb515;
 	width:160px;
@@ -111,3 +118,193 @@ button a{
 	background-color: white;
 }
 
+/* Blocs genres visibles dans la page d'accueil des séries */
+.Comédie, .Dramatique, .Action, .Aventure, .Science-fiction, .Historique, .Famille, .Thriller
+{
+	font-size: 50px;
+	height: 200px;
+	margin-top: 20px;
+	font-family: 'Anton', sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	cursor: pointer;
+}
+
+/* Bloc genre qui présente la page d'accueil des séries avec tous les genres */
+.category{
+	background-image: url('/YATVDB/web/img/textureBlanc.jpg');
+	height: 200px;
+	margin-top: 20px;
+	text-align: center;
+	margin-left:15px;
+	margin-right: 15px;
+	width: 360px;
+}
+
+.category h1 {
+	color: #fdb515;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	font-family: 'Anton', sans-serif;
+}
+
+.category span{
+	text-align: justify;
+	font-family: 'Anton', sans-serif;
+	font-size:18px;
+	color: #686868;
+
+}
+
+.category .keyWord {
+	font-family: 'Anton', sans-serif;
+	font-size:25px;
+	color: #48b9c7;
+	text-transform: uppercase;
+}
+
+
+.invitSerie{
+	background-color: #fdb515;
+	height: 480px;
+	margin-top: 95px;
+	text-align: center;
+	margin-left:15px;
+	margin-right: 15px;
+	width: 360px;
+	padding: 20px;
+}
+
+
+
+.invitSerie h1 {
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	font-family: 'Anton', sans-serif;
+	line-height:200px;
+	font-size: 60px;
+}
+
+
+
+.Dramatique{background-color: #59bd73;}
+.Action{background-color: #48b9c7;}
+.Aventure{background-color: #fdb515;}
+.Science-fiction{background-color: #ee3124;}
+.Historique{background-color: #ee3124;}
+.Comédie{background-color: #686868;}
+.Famille{background-color: #59bd73;}
+.Thriller{background-color: #686868;}
+
+.Dramatique:hover, .Action:hover, .Aventure:hover, .Science-fiction:hover, .Historique:hover, .Comédie:hover, .Famille:hover, .Thriller:hover{background-color: silver;}
+
+.Comédie a:hover, .Dramatique a:hover, .Action a:hover, .Aventure a:hover, .Science-fiction a:hover, .Historique a:hover, .Animation a:hover, .Famille a:hover, .Thriller a:hover
+{
+	text-decoration: none;
+}
+.Comédie a, .Dramatique a, .Action a, .Aventure a, .Science-fiction a, .Historique a, .Animation a, .Famille a, .Thriller a
+{
+	color: white;
+	line-height:200px;
+}
+
+.serieList h2{
+	font-family: 'Anton', sans-serif;
+	font-size:40px;
+	color: #fdb515;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.favoris {background-color: #ee3124;}
+.delete {background-color: #59bd73;}
+.retour{background-color: #48b9c7;}
+
+.favoris, .delete, .retour {
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.retour:hover{color:#686868;}
+.retour a:hover{color:#686868;}
+
+.retour a{
+	color:white;
+	text-decoration: none;
+}
+
+span.lastSerieTitle {
+	color: #686868;
+	font-family: 'Anton', sans-serif;
+}
+
+.lastSerie {
+	text-align: center;
+	background-color: white;
+	height: 290px;
+	padding-top:15px;
+	
+}
+
+.lastSerie img {
+	height: 250px;
+}
+
+.serieList {
+	text-align: center;
+	background-color: white;
+	height: 670px;
+}
+
+.serieList img{
+	height: 480px;
+}
+
+.accueil h2{
+	color: #fdb515;
+	font-family: 'Anton', sans-serif;
+	margin-bottom: 20px;
+}
+ .accueil p{
+ 	font-family: 'Open Sans', sans-serif;
+ 	font-size: 15px;
+ 	text-align: justify;
+ 	color: #686868;
+}
+
+.accueil .keyWord{
+	font-family: 'Open Sans', sans-serif;
+ 	font-size: 20px;
+ 	color: #48b9c7;
+ 	font-weight: bold;
+ 	text-transform: uppercase;
+}
+
+.invitInscription button{
+	background-color: #48b9c7;
+	color: white;
+	border: none;
+	width: 50%;
+	height:80px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.invitInscription{
+	text-align: center;
+}
+
+.genre p{
+	font-family: 'Open Sans', sans-serif;
+ 	font-size: 15px;
+ 	text-align: justify;
+ 	color: #686868;
+}
+}
