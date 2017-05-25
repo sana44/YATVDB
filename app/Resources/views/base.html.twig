@@ -6,11 +6,6 @@
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}"/>
         <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css"/>
-        <style type="text/css">
-            [class*="col"] { margin-bottom: 10px; }
-            img { width: 100%; }
-            body { margin-top: 10px; background-image:linear-gradient(white,white, silver); background-repeat: no-repeat;}
-        </style>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -51,7 +46,7 @@
 
                 {% else %}
                     <div class="col-lg-offset-6 col-lg-2">
-                        <button class="connexion pull-right glyphicon glyphicon-user" style="color: white;"> <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a> </button>
+                        <a class="login-Btn btn btn-primary pull-right glyphicon glyphicon-user" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                     </div>
                 {% endif %}
 
@@ -70,47 +65,42 @@
                 </div>
             </div>
 
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <nav class="navbar navbar-default" id="menu">
               <div class="container-fluid">
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                    <li> <a href="{{path('homepage')}}" class="accueil">ACCUEIL</a> </li>
-                    <li><a href="{{ path ('serie_showCategory')}}" class="series">SERIES </a></li>
-                    <li><a href="https://node-chat-fil-rouge.herokuapp.com/" class="forum">CHAT</a></li>
-                    <li><a href="{{ path ('fos_user_profile_show') }}" class="profil"> MON ACTIVITÉ </a></li>
-                    <li><a href="#" class="admin">ESPACE ADMIN</a></li>
+                      <li> <a href="{{path('homepage')}}" class="accueil">Accueil</a> </li>
+                      <li><a href="{{ path ('serie_showCategories')}}" class="series">Séries par genres </a></li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="https://node-chat-fil-rouge.herokuapp.com/" class="forum">Chat</a></li>
+                        <li><a href="{{ path ('fos_user_profile_show') }}" class="profil"> Mon activité </a></li>
+                        <li><a href="#" class="admin">ESPACE ADMIN</a></li>
+                    {%endif%}
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
             </nav>
-            {%else%}
-             <nav class="navbar navbar-default" id="menu">
-              <div class="container-fluid">
-                <div class="collapse navbar-collapse">
-                  <ul class="nav navbar-nav">
-                    <li> <a href="{{path('homepage')}}" class="accueil">ACCUEIL</a> </li>
-                    <li><a href="{{ path ('serie_showCategory')}}" class="series">SERIES </a></li>
-                  </ul>
-                </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
-            </nav>
-            {%endif%}
         </div>
     </header>
 
-
+    <div class="wrap">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    </div>
+    {% block javascripts %}{% endblock %}
 
 
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <a href="#">Mentions légales</a>
-                    <a href="#">Contact</a>
-                    
+                    <ul>
+                        <li>
+                            <a href="#">Mentions légales</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

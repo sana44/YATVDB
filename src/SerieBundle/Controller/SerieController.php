@@ -19,19 +19,22 @@ class SerieController extends Controller
      * Lists all Serie entities.
      *
      */
-    public function categoryListAction()
+    public function showSerieDetailAction($name)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('SerieBundle:SerieCategory')->findAll();
+        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name' => $name]);
 
-        return $this->render('SerieBundle:Serie:index.html.twig', array(
-            'categories' => $categories,
+        if (!$serie) {
+            throw $this->createNotFoundException('Cette série n\'existe pas');
+        }
+        return $this->render('SerieBundle:Serie:detailSerie.html.twig', array(
+            'serie' => $serie,
         ));
     }
     /**
      * Creates a new Serie entity.
-     *
+     *cet 
      */
     public function createAction(Request $request)
     {
@@ -101,25 +104,6 @@ class SerieController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Serie entity.
-     *
-     */
-    public function serieListAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $category = $em->getRepository('SerieBundle:SerieCategory')->find($id); 
-        if (!$category) {
-            throw $this->createNotFoundException('Pas de série existante dans cette catégorie');
-        }
-        //$deleteForm = $this->createDeleteForm($id);
-        return $this->render('SerieBundle:Serie:show.html.twig', array(
-            //'serie'      => $serie,
-            'category'  => $category,
-            //'delete_form' => $deleteForm->createView(),
-            
-        ));
-    }
 
     /**
      * Displays a form to edit an existing Serie entity.

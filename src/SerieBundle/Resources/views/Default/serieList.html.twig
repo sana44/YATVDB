@@ -15,7 +15,9 @@
 
                 <div class="col-lg-4 serieList">
                     <h2>{{ serie.name }}</h2> <br>
-                    <img src="{{asset(serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" class="thumbnail"/> <br>
+                    <a href="{{ path('serie_detail', {'name':serie.name}) }}">
+                        <img src="{{asset(serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" class="thumbnail"/> <br>
+                    </a>
                     <div class="row">
                         <div class="col-lg-7">
                             <button class="btn pull-right favoris">
@@ -25,14 +27,13 @@
                             <button class="btn pull-left delete"> <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>   Supprimer</button>
                         </div>
                     </div>
-                    
                 </div>
 
                 {%endfor%}
 
         <ul class="record_actions">
     <li>
-        <a class="btn pull-left retour" href="{{ path('serie_showCategory')}}">
+        <a class="btn pull-left retour" href="{{ path('serie_showCategories')}}">
         <span class="glyphicon glyphicon-chevron-left"></span>
             Back to the list
         </a>

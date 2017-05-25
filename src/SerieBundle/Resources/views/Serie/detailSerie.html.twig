@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <style>
+     .serie .thumbnail{
+         width:150px;
+         object-fit: cover;
+     }
+
+    </style>
+    <div class="container serie">
+        <h1>{{ serie.name }}</h1>
+        <p>
+            Série publiée le
+            {{ serie.releaseDate | date('d/m/Y') }}
+        </p>
+        <img class="thumbnail" alt="{{ serie.image.alt }}" src="{{ serie.image.url }}"/>
+            <div class="row">
+                {% for season in serie.seasons %}
+                    <h2>
+                       Détail de la saison {{ season.name }}
+                    </h2>
+                    <br/>
+                    {% for episode in season.episodes %}
+                        <p>
+                            {{ episode.name }}
+                        </p><br/>
+                    {% endfor %}
+                {% endfor %}
+            </div> 
+    </div>
+{% endblock %}
