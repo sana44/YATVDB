@@ -4,9 +4,13 @@
         <meta charset="UTF-8" />
         <title>{% block title %} Fishblock, le réseau social incontournable qui parle de nos Séries TV préférées!! {%endblock%} </title>
         {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}"/>
-        <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css"/>
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}"/>
+            <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css"/>
+            <link rel="stylesheet" href="{{ asset('css/jquery-ui-1.10.0.custom.css')}}" type="text/css"/>
+
         {% endblock %}
+        <script type="text/javascript" src="{{ asset('JQuery/jQuery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('JQuery/jquery-ui-1.9.2.custom.min.js') }}"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
@@ -86,7 +90,16 @@
     <div class="wrap">
         {% block body %}{% endblock %}
     </div>
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        <script>
+         $(document).ready(function() {
+             $('.js-datepicker').datepicker({
+                 dateFormat: 'yy-mm-dd'
+             });
+         });
+        </script>
+
+    {% endblock %}
 
 
     <footer>

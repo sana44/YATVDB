@@ -47,7 +47,7 @@ class SerieController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('serie_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('serie_detail', array('name' => $entity->getName())));
         }
 
         return $this->render('SerieBundle:Serie:new.html.twig', array(
@@ -94,8 +94,8 @@ class SerieController extends Controller
             if($form->isValid()){
                 $em->persist($serie);
                 $em->flush();
+                return $this->redirect($this->generateUrl('serie_detail', ['name' => $serie->getName()]));
             }
-            return $this->redirect($this->generateUrl('serie_show'));
         }
 
         return $this->render("SerieBundle:Serie:new.html.twig", array(
