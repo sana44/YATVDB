@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <h2>Genres ({{ seriesCategories|length }})</h2>
+            {%for sc in seriesCategories %}
+                <div class="col-md-2">
+                    <p>{{ sc.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <h2>Series ({{ series|length }})</h2>
+            {%for s in series %}
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img alt="{{ s.image.alt }}"
+                                 class="media-object"
+                                 style="width: 64px; height: 64px;"
+                                 src="{{ s.image.url }}">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{ s.name }}</h4>
+                        <p>{{ s.resume }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <h2>Saisons ({{ seasons|length }})</h2>
+            {%for se in seasons %}
+                <p>{{ se.name }}
+                    trouvé dans la série {{ se.serie.name }}
+                </p>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <h2>Episodes ({{ episodes|length }})</h2>
+            {%for e in episodes %}
+                <p>{{ e.name }}
+                    Trouvé dans la saison {{ e.season.name }}
+                    de la série {{ e.season.serie.name }}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
