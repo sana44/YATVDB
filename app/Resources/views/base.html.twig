@@ -90,15 +90,10 @@
     <div class="wrap">
         {% block body %}{% endblock %}
     </div>
-    {% block javascripts %}
-        <script>
-         $(document).ready(function() {
-             $('.js-datepicker').datepicker({
-                 dateFormat: 'yy-mm-dd'
-             });
-         });
-        </script>
 
+
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     {% endblock %}
 
 

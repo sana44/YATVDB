@@ -4,46 +4,86 @@
 
     <div class="container">
         <div class="row">
-            <h2>Genres ({{ seriesCategories|length }})</h2>
+            <h2>Genres <span class="badge">{{ seriesCategories|length }} </span></h2>
             {%for sc in seriesCategories %}
-                <div class="col-md-2">
-                    <p>{{ sc.name }}</p>
-                </div>
+                <a href="{{ path('serie_showCategory', {'name':sc.name}) }}">
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                {{ sc.name }}
+                                <span class="badge pull-right">{{ sc.series|length }} Series</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             {% endfor %}
         </div>
+
         <div class="row">
-            <h2>Series ({{ series|length }})</h2>
+            <h2>Series <span class="badge">{{ series|length }}</span></h2>
             {%for s in series %}
-                <div class="media">
-                    <div class="media-left">
-                        <a href="#">
-                            <img alt="{{ s.image.alt }}"
-                                 class="media-object"
-                                 style="width: 64px; height: 64px;"
-                                 src="{{ s.image.url }}">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">{{ s.name }}</h4>
-                        <p>{{ s.resume }}</p>
+                <div class="col-md-6">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="{{ path('serie_detail', {'name':s.name}) }}#serie-{{ s.id }}">
+                                <img alt="{{ s.image.alt }}"
+                                     class="media-object"
+                                     style="width: 64px; height: 64px;"
+                                     src="{{ s.image.url }}">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ s.name }}</h4>
+                            <p>{{ s.resume|slice(0, 150) }}...</p>
+                            <span class="badge pull-right"
+                                  style="margin-left:5px;">
+                                {{ s.episodesCount }} Episodes
+                            </span>
+                            &nbsp;
+                            <span class="badge pull-right">
+                                {{ s.seasons|length }} Saisons
+                            </span>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
+
         <div class="row">
-            <h2>Saisons ({{ seasons|length }})</h2>
+            <h2>Saisons <span class="badge">{{ seasons|length }}</span></h2>
             {%for se in seasons %}
-                <p>{{ se.name }}
-                    trouvé dans la série {{ se.serie.name }}
-                </p>
+                <div class="col-md-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <a href="{{ path('serie_detail', {'name':se.serie.name}) }}
+                                         #season-{{ se.id }} ">
+                                    "{{ se.name }}"
+                                    trouvé dans la série
+                                    "{{ se.serie.name }}"
+                                </a>
+                            </h4>
+                            <p>
+                                {{ se.resume|slice(0,150) }}
+                            </p>
+                            <span class="badge pull-right">
+                                {{ se.episodes|length }} Episodes
+                            </span>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
         </div>
+
         <div class="row">
-            <h2>Episodes ({{ episodes|length }})</h2>
+            <h2>Episodes <span class="badge">{{ episodes|length }}</span></h2>
             {%for e in episodes %}
                 <p>{{ e.name }}
                     Trouvé dans la saison {{ e.season.name }}
-                    de la série {{ e.season.serie.name }}
+                    de la série
+                    <a href="{{ path('serie_detail', {'name':e.season.serie.name}) }}#episode-{{ e.id }}">
+                        {{ e.season.serie.name }}
+                    </a>
                 </p>
             {% endfor %}
         </div>

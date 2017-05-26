@@ -14,18 +14,25 @@
             Série publiée le
             {{ serie.releaseDate | date('d/m/Y') }}
         </p>
-        <img class="thumbnail" alt="{{ serie.image.alt }}" src="{{ serie.image.url }}"/>
+        <img class="thumbnail"
+             alt="{{ serie.image.alt }}"
+             src="{{ serie.image.url }}"/>
             <div class="row">
                 {% for season in serie.seasons %}
-                    <h2>
-                       Détail de la saison {{ season.name }}
-                    </h2>
-                    <br/>
-                    {% for episode in season.episodes %}
-                        <p>
-                            {{ episode.name }}
-                        </p><br/>
-                    {% endfor %}
+                    <div class="col-md-12"
+                         id="season-{{ season.id }}">
+                        <h2>
+                            Détail de la saison {{ season.name }}
+                        </h2>
+                        {% for episode in season.episodes %}
+                            <div class="col-md-12"
+                                 id="episode-{{ episode.id }}">
+                                <p>
+                                    {{ episode.name }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
                 {% endfor %}
             </div> 
     </div>

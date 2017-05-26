@@ -94,11 +94,11 @@ bazinga_faker:
         SerieBundle\Entity\SerieCategory:
             number: 5
             custom_formatters:
-                name: { method:word }
+                name: { method:words, parameters:[2, true], unique:true}
         SerieBundle\Entity\Serie:
             number: 20
             custom_formatters:
-                name: { method:word }
+                name: { method:word, unique:true}
         SerieBundle\Entity\Season:
             number: 50
             custom_formatters:
@@ -107,3 +107,5 @@ bazinga_faker:
             number: 200
             custom_formatters:
                 name: { method:sentence, parameters:[6, true] }
+        SerieBundle\Entity\SerieComment:
+            number: 200
