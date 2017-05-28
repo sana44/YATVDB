@@ -90,7 +90,7 @@ bazinga_faker:
         SerieBundle\Entity\Image:
             number: 200
             custom_formatters:
-                url: { method:imageUrl, parameters:[640, 480] }
+                url: { method:imageUrl, parameters:[640, 480]}
         SerieBundle\Entity\SerieCategory:
             number: 5
             custom_formatters:
@@ -98,11 +98,12 @@ bazinga_faker:
         SerieBundle\Entity\Serie:
             number: 20
             custom_formatters:
-                name: { method:word, unique:true}
+                name: { method:words, parameters:[3, true], unique:true}
         SerieBundle\Entity\Season:
             number: 50
             custom_formatters:
-                name: { method:word }
+                name: {method:words, parameters:[3, true]}
+                seasonNumber: {method:numberBetween, parameters:[1,20]}
         SerieBundle\Entity\Episode:
             number: 200
             custom_formatters:

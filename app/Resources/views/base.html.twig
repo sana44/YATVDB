@@ -62,7 +62,11 @@
                    <form class="navbar-form navbar-right inline-form" role="search" action="{{ path('series_search') }}">
                         <div class="form-group">
                             <span class="glyphicon glyphicon-search"></span>
-                            <input type="text" class="form-control" name="q" placeholder="Recherche">
+                            <input type="text"
+                                   class="form-control"
+                                   name="q"
+                                   placeholder="Recherche"
+                                   value="{{ app.request.get('q') }}">
                         </div>
                         <button type="submit" class="btn btn-default">Go</button>
                     </form>

@@ -7,3 +7,5 @@ $(document).ready(function() {
 $(document).ready(function(){
     $(window.location.hash).addClass('highlight');
 });
+
+$( "#accordion" ).accordion();

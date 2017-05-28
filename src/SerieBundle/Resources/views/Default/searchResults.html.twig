@@ -33,7 +33,9 @@
                             </a>
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading">{{ s.name }}</h4>
+                            <a href="{{ path('serie_detail', {'name':s.name}) }}#serie-{{ s.id }}">
+                                <h4 class="media-heading">{{ s.name }}</h4>
+                            </a>
                             <p>{{ s.resume|slice(0, 150) }}...</p>
                             <span class="badge pull-right"
                                   style="margin-left:5px;">
@@ -64,9 +66,9 @@
                                 </a>
                             </h4>
                             <p>
-                                {{ se.resume|slice(0,150) }}
+                                {{ se.resume|slice(0,150) }}...
                             </p>
-                            <span class="badge pull-right">
+                            <span class="badge pull-left">
                                 {{ se.episodes|length }} Episodes
                             </span>
                         </div>
@@ -78,13 +80,22 @@
         <div class="row">
             <h2>Episodes <span class="badge">{{ episodes|length }}</span></h2>
             {%for e in episodes %}
-                <p>{{ e.name }}
-                    Trouvé dans la saison {{ e.season.name }}
-                    de la série
-                    <a href="{{ path('serie_detail', {'name':e.season.serie.name}) }}#episode-{{ e.id }}">
-                        {{ e.season.serie.name }}
-                    </a>
-                </p>
+                <div class="col-md-3">
+                    <div class="media">
+                        <a href="{{ path('serie_detail', {'name':e.season.serie.name}) }}
+                                 #episode-{{ e.id }}">
+                            <h4 class="media-heading">
+                                {{ e.name }}
+                            </h4>
+                        </a>
+                        <span class="badge pull-left">
+                            {{ e.season.serie.name }}
+                        </span>
+                        <span class="badge pull-left">
+                            saison {{ e.season.seasonNumber }}
+                        </span>
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </div>
