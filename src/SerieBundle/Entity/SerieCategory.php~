@@ -53,7 +53,8 @@ class SerieCategory
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $names = explode(' ', trim($name));
+        $this->name = implode('-', $names);
 
         return $this;
     }

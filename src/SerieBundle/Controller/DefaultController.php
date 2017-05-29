@@ -46,7 +46,7 @@ class DefaultController extends Controller
 
         ));
     }
-
+    
     /**
      * Find Anything through the header Search bar
      */
