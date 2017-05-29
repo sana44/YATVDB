@@ -26,7 +26,7 @@ class Serie
   private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie")
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie", cascade={"remove"})
      */
     private $seasons;
 
