@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    Bonjour {{ name }}!
+    <br>
+    {{ 'Bonjour'|trans }} {{ name }}!
+    <div>
+	  <button>{{ 'quitter' }}</button>
+	  <button>{{ 'valider' }}</button>
+	  <br>
+	  <button>{{ 'quitter'|trans }}</button>
+	  <button>{{ 'valider'|trans }}</button>
+	</div>
+	<br>
+	<p>
+		monsieur tasse boit du café
+		<br>
+		{{ 'monsieur tasse boit du café'|trans }}
+		<br>
+	  	{% trans %}monsieur tasse boit du café{% endtrans %}
+	  	<br>
+	  	{{ 'mr.tasse'|trans }}
+	</p>
+	
+{% endblock %}
