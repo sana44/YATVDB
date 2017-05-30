@@ -11,6 +11,7 @@
             <button class="addSerie"> <span class="glyphicon glyphicon-plus-sign"> </span> <br> Ajouter une série  </button>
         </div>
 
+<<<<<<< HEAD
         {%for serie in category.series%}
 
         <div class="col-lg-4 serieList">
@@ -23,6 +24,26 @@
                 <div class="col-lg-7">
                     <button class="btn pull-right favoris">
                     <span class="glyphicon glyphicon-heart" aria-hidden="true"> </span>  Ajouter à mes favoris </button>
+=======
+                {%for serie in category.series%}
+
+                <div class="col-lg-4 serieList">
+                    <h2>{{ serie.name }}</h2> <br>
+                    <a href="{{ path('serie_detail', {'name':serie.name}) }}">
+                        <img src="{{asset(serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" class="thumbnail"/> <br>
+                    </a>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <button class="btn pull-right favoris">
+                             <span class="glyphicon glyphicon-heart" aria-hidden="true"> </span>  Ajouter à mes favoris </button>
+                        </div>
+                        <div class="col-lg-5 ">
+                        <form method="POST" action="{{ path('serie_delete', {'id':serie.id}) }}" >
+                            <button class="btn pull-left delete"> <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span> Supprimer</button>
+                        </form>
+                        </div>
+                    </div>
+>>>>>>> 6a02ce2ff1c3b8f556e52299b1de9e109106550c
                 </div>
                 <div class="col-lg-5 ">
                     <button class="btn pull-left delete"> <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>   Supprimer</button>

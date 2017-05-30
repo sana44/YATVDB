@@ -26,7 +26,7 @@ class Serie
   private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie")
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie", cascade={"remove"})
      */
     private $seasons;
 
@@ -50,7 +50,7 @@ class Serie
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
 
@@ -87,7 +87,7 @@ class Serie
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = trim($name);
 
         return $this;
     }
@@ -264,5 +264,17 @@ class Serie
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /*
+     * Get episodes count
+     */
+    public function getEpisodesCount()
+    {
+        $total = 0;
+        foreach($this->getSeasons() as $s){
+            $total += count($s->getEpisodes());
+        }
+        return $total;
     }
 }

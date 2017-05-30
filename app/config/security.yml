@@ -30,10 +30,17 @@ security:
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
                 always_use_default_target_path: true
+<<<<<<< HEAD
                 default_target_path: /genres
             logout:
                 path:       fos_user_security_logout
                 target:     /genres
+=======
+                default_target_path: /
+            logout:
+                path:       fos_user_security_logout
+                target:     /
+>>>>>>> 6a02ce2ff1c3b8f556e52299b1de9e109106550c
             remember_me:
                 key:        %secret% 
 

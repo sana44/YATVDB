@@ -59,10 +59,14 @@
 
             <div class="row">
                 <div class="col-lg-offset-8 col-lg-4">
-                   <form class="navbar-form navbar-right inline-form" role="search">
+                   <form class="navbar-form navbar-right inline-form" role="search" action="{{ path('series_search') }}">
                         <div class="form-group">
                             <span class="glyphicon glyphicon-search"></span>
-                            <input type="text" class="form-control" placeholder="Recherche">
+                            <input type="text"
+                                   class="form-control"
+                                   name="q"
+                                   placeholder="Recherche"
+                                   value="{{ app.request.get('q') }}">
                         </div>
                         <button type="submit" class="btn btn-default">Go</button>
                     </form>
@@ -90,15 +94,10 @@
     <div class="wrap">
         {% block body %}{% endblock %}
     </div>
-    {% block javascripts %}
-        <script>
-         $(document).ready(function() {
-             $('.js-datepicker').datepicker({
-                 dateFormat: 'yy-mm-dd'
-             });
-         });
-        </script>
 
+
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     {% endblock %}
 
 

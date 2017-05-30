@@ -10,6 +10,7 @@
 
     <div class="container serie">
         <h1>{{ serie.name }}</h1>
+<<<<<<< HEAD
     
 
         <div class="row">
@@ -66,6 +67,33 @@
             
         {%endfor%}
         
+=======
+        <p>
+            Série publiée le
+            {{ serie.releaseDate | date('d/m/Y') }}
+        </p>
+        <img class="thumbnail"
+             alt="{{ serie.image.alt }}"
+             src="{{ serie.image.url }}"/>
+            <div class="row">
+                {% for season in serie.seasons %}
+                    <div class="col-md-12"
+                         id="season-{{ season.id }}">
+                        <h2>
+                            Détail de la saison {{ season.name }}
+                        </h2>
+                        {% for episode in season.episodes %}
+                            <div class="col-md-12"
+                                 id="episode-{{ episode.id }}">
+                                <p>
+                                    {{ episode.name }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div> 
+>>>>>>> 6a02ce2ff1c3b8f556e52299b1de9e109106550c
     </div>
         
 {% endblock %}
