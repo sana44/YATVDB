@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class EpisodeRepository extends EntityRepository
 {
+    /**
+     * Find Episodes through the header Search bar
+     */
+    public function search($param)
+    {
+        $query = $this->createQueryBuilder('s')
+               ->where('s.name LIKE :param')
+               ->orWhere('s.resume LIKE :param')
+               ->setParameter('param',"%$param%")
+               ->getQuery();
+
+        return $query->getResult();
+    }
 }

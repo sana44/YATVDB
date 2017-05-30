@@ -4,17 +4,17 @@
         <meta charset="UTF-8" />
         <title>{% block title %} Fishblock, le réseau social incontournable qui parle de nos Séries TV préférées!! {%endblock%} </title>
         {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}"/>
-        <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css"/>
-        <style type="text/css">
-            [class*="col"] { margin-bottom: 10px; }
-            img { width: 100%; }
-            body { margin-top: 10px; background-image:linear-gradient(white,white, silver); background-repeat: no-repeat;}
-        </style>
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}"/>
+            <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css"/>
+            <link rel="stylesheet" href="{{ asset('css/jquery-ui-1.10.0.custom.css')}}" type="text/css"/>
+
         {% endblock %}
+        <script type="text/javascript" src="{{ asset('JQuery/jQuery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('JQuery/jquery-ui-1.9.2.custom.min.js') }}"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
 
 
     </head>
@@ -39,18 +39,18 @@
                 <div class="col-lg-2">
                     <p class="text-right "><button type="button" class="deconnexion"> <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}  </button> </a>
                      </p> <br>
-                    <p class="text-right">{{app.user.firstname}} {{ app.user.lastname }}</p> 
+                    <p class="text-right username">{{app.user.firstname}} {{ app.user.lastname }}</p> 
 
                 </div>
 
                 <div class="col-lg-2">
-                    <a href="{{ path ('fos_user_profile_show') }}"><img src="{{ asset('img/jp.jpg')}}" style="width: 70%" class="pull-right"></a>
+                    <a href="{{ path ('fos_user_profile_show') }}"><img class="thumbnail pull-right" src="{{asset(app.user.profilePicture.url|default('img/avatar.jpg'))}}" style="width:70%"></a>
 
                 </div>
 
                 {% else %}
                     <div class="col-lg-offset-6 col-lg-2">
-                        <button class="connexion pull-right glyphicon glyphicon-user" style="color: white;"> <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a> </button>
+                        <a class="login-btn pull-right" href="{{ path('fos_user_security_login') }}"> <span class="glyphicon glyphicon-user"> </span> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                     </div>
                 {% endif %}
 
@@ -59,10 +59,14 @@
 
             <div class="row">
                 <div class="col-lg-offset-8 col-lg-4">
-                   <form class="navbar-form navbar-right inline-form" role="search">
+                   <form class="navbar-form navbar-right inline-form" role="search" action="{{ path('series_search') }}">
                         <div class="form-group">
                             <span class="glyphicon glyphicon-search"></span>
-                            <input type="text" class="form-control" placeholder="Recherche">
+                            <input type="text"
+                                   class="form-control"
+                                   name="q"
+                                   placeholder="Recherche"
+                                   value="{{ app.request.get('q') }}">
                         </div>
                         <button type="submit" class="btn btn-default">Go</button>
                     </form>
@@ -73,11 +77,13 @@
               <div class="container-fluid">
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                    <li> <a href="{{path('homepage')}}" class="accueil">ACCUEIL</a> </li>
-                    <li><a href="{{ path ('serie')}}" class="series">SERIES </a></li>
-                    <li><a href="https://node-chat-fil-rouge.herokuapp.com/" class="forum">CHAT</a></li>
-                    <li><a href="{{ path ('fos_user_profile_show') }}" class="profil">PROFIL</a></li>
-                    <li><a href="#" class="admin">ESPACE ADMIN</a></li>
+                      <li> <a href="{{path('homepage')}}" class="accueil">Accueil</a> </li>
+                      <li><a href="{{ path ('serie_showCategories')}}" class="series">Séries par genres </a></li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="https://node-chat-fil-rouge.herokuapp.com/" class="forum">Chat</a></li>
+                        <li><a href="{{ path ('fos_user_profile_show') }}" class="profil"> Mon activité </a></li>
+                        <li><a href="#" class="admin">ESPACE ADMIN</a></li>
+                    {%endif%}
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
@@ -85,15 +91,21 @@
         </div>
     </header>
 
-
+    <div class="wrap">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
 
+    </div>
+
+
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    {% endblock %}
 
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+
                     <a href="{{path('serie_legalNotice')}}">Mentions légales</a>
                     <a href="#">Contact</a>
                     

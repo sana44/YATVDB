@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class SerieCategoryRepository extends EntityRepository
 {
+    /**
+     * Find SerieCategories through the header Search bar
+     */
+    public function search($param)
+    {
+        $query = $this->createQueryBuilder('s')
+               ->where('s.name LIKE :param')
+               ->setParameter('param',"%$param%")
+               ->getQuery();
+
+        return $query->getResult();
+    }
 }

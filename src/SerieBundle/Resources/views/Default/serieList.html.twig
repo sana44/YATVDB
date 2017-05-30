@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<div class="container serieListe">
+ 
+    <div class="row">
+
+        <div class="col-lg-4 invitSerie thumbnail">
+            <h1> {{ category.name }} </h1>
+            <button class="addSerie"> <span class="glyphicon glyphicon-plus-sign"> </span> <br> Ajouter une série  </button>
+        </div>
+
+
+                {%for serie in category.series%}
+
+                <div class="col-lg-4 serieList">
+                    <h2>{{ serie.name }}</h2> <br>
+                    <a href="{{ path('serie_detail', {'name':serie.name}) }}">
+                        <img src="{{asset(serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" class="thumbnail"/> <br>
+                    </a>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <button class="btn pull-right favoris">
+                             <span class="glyphicon glyphicon-heart" aria-hidden="true"> </span>  Ajouter à mes favoris </button>
+                        </div>
+                        <div class="col-lg-5 ">
+                        <form method="POST" action="{{ path('serie_delete', {'id':serie.id}) }}" >
+                            <button class="btn pull-left delete"> <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span> Supprimer</button>
+                        </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-5 ">
+                    <button class="btn pull-left delete"> <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>   Supprimer</button>
+                </div>
+            </div>
+        </div>
+
+                {%endfor%}
+    </div>    
+
+    <div class="row">
+        
+        <a class="btn retour" href="{{ path('serie_showCategories')}}">
+            <span class="glyphicon glyphicon-chevron-left"></span>Back to the list
+        </a> 
+
+    </div>
+
+</div>
+
+{% endblock %}
+

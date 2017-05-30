@@ -1,0 +1,8 @@
+serie_addComment:
+    pattern:  /comment/{serie_id}
+    defaults: { _controller: SerieBundle:SerieComment:addComment }
+    requirements:
+        _method:  POST
+
+
+

@@ -8,9 +8,13 @@
 
                 <div class="col-lg-4 invitSerie thumbnail">
                     <h1> {{ category.name }} </h1>
+
+                    <button> Ajouter une série </button>
+
                 </div>
 
                 {%for serie in category.series%}
+
                 <div class="col-lg-4 serieList">
                     <h2>{{ serie.name }}</h2> <br>
                     <img src="{{asset(serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" class="thumbnail"/> <br>
@@ -25,14 +29,20 @@
                     </div>
                     
                 </div>
+
                 {%endfor%}
 
+        <ul class="record_actions">
+    <li>
+        <a class="btn pull-left retour" href="{{ path('serie_showCategory')}}">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+            Back to the list
+        </a>
+    </li>
+</ul>
+
             </div>
-       
-
-        <button class="btn pull-left retour"><span class="glyphicon glyphicon-chevron-left"></span> 
-        <a href="{{ path('serie') }}">Retour à la liste des séries</a> </button>
-   
-
 </div>
+
 {% endblock %}
+

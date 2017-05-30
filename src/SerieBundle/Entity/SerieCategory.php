@@ -29,7 +29,8 @@ class SerieCategory
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $name;
 
@@ -52,7 +53,8 @@ class SerieCategory
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $names = explode(' ', trim($name));
+        $this->name = implode('-', $names);
 
         return $this;
     }

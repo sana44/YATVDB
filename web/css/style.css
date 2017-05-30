@@ -1,3 +1,9 @@
+body { margin-top: 10px; background-image:linear-gradient(white,white, silver); background-repeat: no-repeat;}
+[class*="col"] { margin-bottom: 10px; }
+.wrap{
+    min-height: 70.5vh;
+}
+
 /* Mise en page du menu horizontal */
 #menu .accueil:hover{ background-color: #48b9c7;}
 #menu .series:hover{ background-color: #fdb515;}
@@ -14,27 +20,32 @@
 	color:white;
 	font-weight: bold;
 	font-size: 15px;
+	text-transform: uppercase;
+
+
 }
 
 #menu li{
 	width:215px;
+  	text-align: center;
+  	text-transform: uppercase;
 }
 
 /* Bouton connexion, visible uniquement par un utilisateur non authentifié */
-.connexion{
+a.login-btn{
 	width:145px;
 	height: 36px;
 	background-color: #ee3124;
 	border: none;
+  	color: white;
+  	text-align: center;
+  	line-height:35px;
+  	font-family: 'Open Sans', sans-serif;
+  	font-weight: bold;
+  	text-transform: uppercase;
 }
 
-.connexion a{
-	color: white;
-	font-weight: bold;
-	text-transform: uppercase;
-}
-
-.connexion a:hover{text-decoration: none;}
+a.login-btn:hover, .deconnexion a:hover{text-decoration: none;}
 
 
 /* Bouton déconnexion, visible uniquement lorsque l'utilisateur est connecté */
@@ -63,26 +74,26 @@ button a{
 }
 
 /* Mise en forme des formulaires d'authentification */
-.login, .inscription, .mesInfos, .changeInfos, .changePassword{
+.login, .inscription, .changeInfos, .changePassword{
 	background-color: white;
 	margin-left:20px;
 	margin-right:20px;
 	border-left: solid 2px #48b9c7; 
 }
 
-.login .btn, .inscription .btn, .mesInfos .btn, .changeInfos .btn, .changePassword .btn{
+.login .btn, .inscription .btn, .changeInfos .btn, .changePassword .btn{
 	background-color: #48b9c7;
 	border:none;
 }
 
-.login h2, .inscription h2, .mesInfos h2, .changeInfos h2, .changePassword h2{
+.login h2, .inscription h2, .changeInfos h2, .changePassword h2{
 	color: #48b9c7 ;
 	font-weight: bold;
 	border-bottom: solid 1px #CDD1D0;
 
 }
 
-.login h4, .inscription h4, .mesInfos h4, .changeInfos h4, .changePassword h4{
+.login h4, .inscription h4, .changeInfos h4, .changePassword h4{
 	color: #686868;
 	font-weight: bold;
 }
@@ -135,11 +146,11 @@ button a{
 .category{
 	background-image: url('/YATVDB/web/img/textureBlanc.jpg');
 	height: 200px;
-	margin-top: 20px;
 	text-align: center;
 	margin-left:15px;
 	margin-right: 15px;
 	width: 360px;
+  	padding-top:20px;
 }
 
 .category h1 {
@@ -189,28 +200,38 @@ button a{
 	font-size: 60px;
 }
 
-
-
-.Dramatique{background-color: #59bd73;}
-.Action{background-color: #48b9c7;}
-.Aventure{background-color: #fdb515;}
-.Science-fiction{background-color: #ee3124;}
-.Historique{background-color: #ee3124;}
-.Comédie{background-color: #686868;}
-.Famille{background-color: #59bd73;}
-.Thriller{background-color: #686868;}
-
-.Dramatique:hover, .Action:hover, .Aventure:hover, .Science-fiction:hover, .Historique:hover, .Comédie:hover, .Famille:hover, .Thriller:hover{background-color: silver;}
-
-.Comédie a:hover, .Dramatique a:hover, .Action a:hover, .Aventure a:hover, .Science-fiction a:hover, .Historique a:hover, .Animation a:hover, .Famille a:hover, .Thriller a:hover
-{
-	text-decoration: none;
+.category-thumb{
+    text-align: center;
+    cursor: pointer;
 }
-.Comédie a, .Dramatique a, .Action a, .Aventure a, .Science-fiction a, .Historique a, .Animation a, .Famille a, .Thriller a
-{
-	color: white;
-	line-height:200px;
+a .category-thumb {
+	  color: white;
+	  line-height:200px;
+    font-size: 20px;
+    word-break:break-all;
 }
+.genre a:hover{
+    text-decoration: none;
+}
+.genre .a, .genre .b, .genre .c{ background-color: #59bd73; }
+.genre .d, .genre .e, .genre .f{ background-color: #48b9c7; }
+.genre .g, .genre .h, .genre .i{ background-color: #fdb515; }
+.genre .j, .genre .k, .genre .l{ background-color: #ee3124; }
+.genre .m, .genre .n, .genre .o{ background-color: #ee3124; }
+.genre .p, .genre .q, .genre .r{ background-color: #686868; }
+.genre .s, .genre .t, .genre .u{ background-color: #59bd73; }
+.genre .v, .genre .w, .genre .x, .genre .y, .genre .z{ background-color: #686868; }
+
+.genre .a:hover, .genre .b:hover, .genre .c:hover,
+.genre .d:hover, .genre .e:hover, .genre .f:hover,
+.genre .g:hover, .genre .h:hover, .genre .i:hover,
+.genre .j:hover, .genre .k:hover, .genre .l:hover,
+.genre .m:hover, .genre .n:hover, .genre .o:hover,
+.genre .p:hover, .genre .q:hover, .genre .r:hover,
+.genre .s:hover, .genre .t:hover, .genre .u:hover,
+.genre .v:hover, .genre .w:hover, .genre .x:hover,
+.genre .y:hover, .genre .z:hover
+{ background-color: silver; text-decoration:none;}
 
 .serieList h2{
 	font-family: 'Anton', sans-serif;
@@ -254,6 +275,7 @@ span.lastSerieTitle {
 
 .lastSerie img {
 	height: 250px;
+	object-fit: cover;
 }
 
 .serieList {
@@ -264,6 +286,7 @@ span.lastSerieTitle {
 
 .serieList img{
 	height: 480px;
+	object-fit: cover;
 }
 
 .accueil h2{
@@ -308,7 +331,137 @@ span.lastSerieTitle {
  	color: #686868;
 }
 
+
 .titrementionslegales{
 	font-size: 15px;
 	font-weight: bold;
+}
+
+.genre, .container.accueil, .container.serieListe{
+	background-color: white;
+	padding:15px;
+}
+
+.profilContent{
+	background-color: white;
+}
+
+.profilContent h2{
+	color:#48b9c7;
+	font-family: 'Anton', sans-serif;
+	border-bottom: 1px solid #48b9c7;
+}
+
+.profilContent button{
+	background-color: #fdb515;
+	color: white;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	height:60px;
+}
+
+.profilContent span, .username{
+	font-family: 'Bad Script', cursive;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+footer .container{
+    background-color: #686868;
+    min-height: 3em;
+    border-radius: 3px;
+}
+footer ul{
+    margin: 10px auto;
+    width: fit-content;
+}
+
+footer ul li{
+    display: inline-block;
+    margin: 0 3px;
+}
+
+footer ul li a{
+    color: #fff;
+    font-size: .8em;
+}
+footer ul li a:hover{
+    text-decoration: none;
+    color: #DBDBDB;
+}
+
+div.container.serie{
+	background-color: white;
+}
+
+.serie h1, .serie h3{
+	color:#48b9c7;
+	font-family: 'Anton', sans-serif;
+	border-bottom: 1px solid #48b9c7;
+	text-transform: uppercase;
+}
+
+.serie h4{
+	color:#fdb515;
+	font-family: 'Anton', sans-serif;
+	font-size: 25px;
+	border-bottom: 1px solid #fdb515;
+}
+
+.serie h1{ font-size: 50px; }
+.serie h3{ font-size: 30px; }
+
+.serie span, .serie p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	color: #686868;
+}
+
+.serie .libelle{
+	color: #fdb515;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+span.detailSaison, p.detailSaison{
+	color: #686868;
+	font-size: 14px;
+}
+
+.serie label{
+	color:#fdb515;
+}
+
+
+
+button.addSerie{
+	width:150px;
+    height:150px;
+  	background-color: #686868;
+  	color: white;
+  	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	text-transform: uppercase;
+	border: none;
+}
+
+/*
+serie_detail content highlight
+*/
+.highlight{
+    animation-name: insetBorder;
+    animation-duration: 1.5s;
+}
+
+@keyframes insetBorder {
+    from{
+        box-shadow: inset 0 0 10px #08f;
+    }
+    to{
+        box-shadow: inset 0 0 0 #08f;
+    }
 }
