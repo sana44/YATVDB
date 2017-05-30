@@ -1,6 +1,6 @@
 serie_new:
     path:     /new/{id}
-    defaults: { _controller: "SerieBundle:Serie:new", id:0 }
+    defaults: { _controller: "SerieBundle:Serie:newSerie", id:0 }
 
 serie_create:
     path:     /create
@@ -8,17 +8,17 @@ serie_create:
     methods:  POST
 
 serie_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "SerieBundle:Serie:edit" }
+    path:     /edit/{id}
+    defaults: { _controller: "SerieBundle:Serie:editSerie", id:0 }
 
 serie_update:
-    path:     /{id}/update
-    defaults: { _controller: "SerieBundle:Serie:update" }
+    path:     /update/{id}
+    defaults: { _controller: "SerieBundle:Serie:update", id:0 }
     methods:  [POST, PUT]
 
 serie_delete:
     path:     /delete/{id}
-    defaults: { _controller: "SerieBundle:Serie:deleteSerie", id:0}
+    defaults: { _controller: "SerieBundle:Serie:deleteSerie", id:0 }
 
 serie_detail:
     path:     /{name}

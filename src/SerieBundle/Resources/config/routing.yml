@@ -24,3 +24,7 @@ serie_showCategories:
 serie_showCategory:
     path:     /genres/{name}
     defaults: { _controller: "SerieBundle:Default:serieList" }
+
+series_search:
+    path:     /search
+    defaults: { _controller: "SerieBundle:Default:globalSearch" }

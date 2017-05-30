@@ -22,7 +22,7 @@ class SerieType extends AbstractType
             ->add('release_date', 'date', [
                 'widget' => 'single_text',
                 'html5' => false,
-                'format' => 'yyyy-MM-dd',
+                'format' => 'dd-MM-yyyy',
                 'attr' => ["class" => 'js-datepicker',
                            "placeholder" => 'Pick a date']
             ])

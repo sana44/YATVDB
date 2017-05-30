@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Season
 {
     /**
-     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Episode", mappedBy="season")
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Episode", mappedBy="season", cascade={"remove"})
      */
     private $episodes;
 
