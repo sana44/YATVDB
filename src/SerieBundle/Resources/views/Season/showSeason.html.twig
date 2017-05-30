@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+ 	<h1> Saison n°{{ season.seasonNumber }} </h1>
+    <div class="row">
+        {%for episode in season.episodes%}
+	        <div>
+	        	<img class="thumbnail"
+	             alt="{{ episode.image.alt }}"
+	             src="{{ episode.image.url }}"/>
+	        </div>
+	        <p>Date de diffusion : {{ episode.diffusionDate | date('d/m/Y') }}</p>
+	        <p>Nom de l'épisode : {{episode.name}}</p>
+	        <p>Episode n°{{episode.episodeNumber}}</p>
+	        <p>Résumé : {{episode.resume}}</p>       
+        {%endfor%}
+    </div>
+
+</div>
+{% endblock %}

@@ -23,4 +23,3 @@ serie_delete:
 serie_detail:
     path:     /{name}
     defaults:  { _controller: "SerieBundle:Serie:showSerieDetail"}
-
