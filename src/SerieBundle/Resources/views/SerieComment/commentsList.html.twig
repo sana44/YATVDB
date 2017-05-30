@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>SerieComment list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Score</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commentaire in commentaires %}
+            <tr>
+                <td><a href="{{ path('seriecomment_show', { 'id': commentaire.id }) }}">{{ commentaire.id }}</a></td>
+                <td>{{ commentaire.content }}</td>
+                <td>{% if commentaire.createdAt %}{{ commentaire.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if commentaire.updatedAt %}{{ commentaire.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ commentaire.score }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('seriecomment_show', { 'id': commentaire.id }) }}">show</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

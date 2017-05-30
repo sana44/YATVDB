@@ -2,14 +2,14 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container serieListe">
  
-            <div class="row">
+    <div class="row">
 
-                <div class="col-lg-4 invitSerie thumbnail">
-                    <h1> {{ category.name }} </h1>
-                    <button> Ajouter une série </button>
-                </div>
+        <div class="col-lg-4 invitSerie thumbnail">
+            <h1> {{ category.name }} </h1>
+            <button class="addSerie"> <span class="glyphicon glyphicon-plus-sign"> </span> <br> Ajouter une série  </button>
+        </div>
 
                 {%for serie in category.series%}
 
@@ -30,19 +30,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-5 ">
+                    <button class="btn pull-left delete"> <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>   Supprimer</button>
+                </div>
+            </div>
+        </div>
 
                 {%endfor%}
+    </div>    
 
-        <ul class="record_actions">
-    <li>
-        <a class="btn pull-left retour" href="{{ path('serie_showCategories')}}">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <div class="row">
+        
+        <a class="btn retour" href="{{ path('serie_showCategories')}}">
+            <span class="glyphicon glyphicon-chevron-left"></span>Back to the list
+        </a> 
 
-            </div>
+    </div>
+
 </div>
 
 {% endblock %}

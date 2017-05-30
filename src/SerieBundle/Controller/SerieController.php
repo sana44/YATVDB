@@ -28,8 +28,11 @@ class SerieController extends Controller
         if (!$serie) {
             throw $this->createNotFoundException('Cette série n\'existe pas');
         }
+
+    
         return $this->render('SerieBundle:Serie:detailSerie.html.twig', array(
             'serie' => $serie,
+
         ));
     }
     /**
@@ -222,5 +225,5 @@ class SerieController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    
+
 }
