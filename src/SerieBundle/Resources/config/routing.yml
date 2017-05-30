@@ -1,3 +1,7 @@
+serie_season:
+    resource: "@SerieBundle/Resources/config/routing/season.yml"
+    prefix:   /season
+
 serie_episode:
     resource: "@SerieBundle/Resources/config/routing/episode.yml"
     prefix:   /episode
@@ -17,3 +21,7 @@ serie_showCategory:
 series_search:
     path:     /search
     defaults: { _controller: "SerieBundle:Default:globalSearch" }
+
+serie_showSeason:
+    path:     /serie/{name}/season/{id}
+    defaults: { _controller: "SerieBundle:Season:showSeason" }
