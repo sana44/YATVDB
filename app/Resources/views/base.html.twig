@@ -2,83 +2,113 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %} Fishblock, le réseau social incontournable qui parle de nos Séries TV préférées!! {%endblock%} </title>
         {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}"/>
-        <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css"/>
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}"/>
+            <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css"/>
+            <link rel="stylesheet" href="{{ asset('css/jquery-ui-1.10.0.custom.css')}}" type="text/css"/>
+
         {% endblock %}
+        <script type="text/javascript" src="{{ asset('JQuery/jQuery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('JQuery/jquery-ui-1.9.2.custom.min.js') }}"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+
+
     </head>
     <body>
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <img src="YATVDB/web/img/img/Logo_Test.png">
-                    <p id="bidtitle">Fishblock</p>
-                </div>
-                <div class="col-lg-4">
-                    
-                    <form class="navbar-form navbar-left" role="search">
-                      <div class="form-group">
-                        <span class="glyphicon glyphicon-search"></span>
-                        <input type="text" class="form-control" placeholder="Recherche">
-                      </div>
-                      <button type="submit" class="btn btn-default">Go</button>
-                    </form>
 
-
+                <div class="col-lg-4">
+                    <a href="{{path('homepage')}}"> <img src="{{ asset('img/logoFishblock.jpg')}}" style="width:100%"  /></a>
                 </div>
-                <div class="col-lg-2">
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                <div class="col-lg-offset-2 col-lg-2 ">
+                    <button class="notifButton" type="button">
                     <span class="glyphicon glyphicon-bell"></span>
-                    <button class="btn btn-primary" type="button">
                       Notification <span class="badge">4</span>
                     </button>
                 </div>
+
                 <div class="col-lg-2">
-                    <img src="YATVDB/web/img/img/jp.jpg">
-                    <p>{Nom}</p>
-                    <p>{Prenom}</p>
+                    <p class="text-right "><button type="button" class="deconnexion"> <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}  </button> </a>
+                     </p> <br>
+                    <p class="text-right username">{{app.user.firstname}} {{ app.user.lastname }}</p> 
+
                 </div>
+
+                <div class="col-lg-2">
+                    <a href="{{ path ('fos_user_profile_show') }}"><img class="thumbnail pull-right" src="{{asset(app.user.profilePicture.url|default('img/avatar.jpg'))}}" style="width:70%"></a>
+
+                </div>
+
+                {% else %}
+                    <div class="col-lg-offset-6 col-lg-2">
+                        <a class="login-btn pull-right" href="{{ path('fos_user_security_login') }}"> <span class="glyphicon glyphicon-user"> </span> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    </div>
+                {% endif %}
+
             </div>
+
+
             <div class="row">
-                <div class="col-lg-offset-10 col-lg-2">
-                    <p>FR EN</p>
+                <div class="col-lg-offset-8 col-lg-4">
+                   <form class="navbar-form navbar-right inline-form" role="search" action="{{ path('series_search') }}">
+                        <div class="form-group">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <input type="text"
+                                   class="form-control"
+                                   name="q"
+                                   placeholder="Recherche"
+                                   value="{{ app.request.get('q') }}">
+                        </div>
+                        <button type="submit" class="btn btn-default">Go</button>
+                    </form>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-default">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">ACCUEIL</a></li>
-                            <li><a href="#">SERIES</a></li>
-                            <li><a href="#">FORUM</a></li>
-                            <li><a href="#">PROFIL</a></li>
-                            <li><a href="#">ACCES MODERATEUR</a></li>
-                        </ul>
-                    </nav>
-                    
-                </div>
-            </div>
+
+            <nav class="navbar navbar-default" id="menu">
+              <div class="container-fluid">
+                <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                      <li> <a href="{{path('homepage')}}" class="accueil">Accueil</a> </li>
+                      <li><a href="{{ path ('serie_showCategories')}}" class="series">Séries par genres </a></li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="https://node-chat-fil-rouge.herokuapp.com/" class="forum">Chat</a></li>
+                        <li><a href="{{ path ('fos_user_profile_show') }}" class="profil"> Mon activité </a></li>
+                        <li><a href="#" class="admin">ESPACE ADMIN</a></li>
+                    {%endif%}
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
         </div>
     </header>
 
-
+    <div class="wrap">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+    </div>
 
 
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    {% endblock %}
 
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <span>Des fois que je veux m'amuser, la symfony, c'est tellement si bien. Lis ça :</span>
-                    <a href="#">Mentions légales</a>
+
                 </div>
             </div>
         </div>
     </footer>
-
     </body>
 </html>

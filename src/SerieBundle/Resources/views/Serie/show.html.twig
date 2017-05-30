@@ -1,40 +1,48 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>Serie</h1>
+{% block body %}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Resume</th>
-                <td>{{ entity.resume }}</td>
-            </tr>
-            <tr>
-                <th>Releasedate</th>
-                <td>{{ entity.releaseDate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+ 
+            <div class="row">
+
+                <div class="col-lg-4 invitSerie thumbnail">
+                    <h1> {{ category.name }} </h1>
+
+                    <button> Ajouter une série </button>
+
+                </div>
+
+                {%for serie in category.series%}
+
+                <div class="col-lg-4 serieList">
+                    <h2>{{ serie.name }}</h2> <br>
+                    <img src="{{asset(serie.image.url|default(''))}}" alt="{{serie.image.alt|default('')}}" class="thumbnail"/> <br>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <button class="btn pull-right favoris">
+                             <span class="glyphicon glyphicon-heart" aria-hidden="true"> </span>  Ajouter à mes favoris </button>
+                        </div>
+                        <div class="col-lg-5 ">
+                            <button class="btn pull-left delete"> <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>   Supprimer</button>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                {%endfor%}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('serie') }}">
+        <a class="btn pull-left retour" href="{{ path('serie_showCategory')}}">
+        <span class="glyphicon glyphicon-chevron-left"></span>
             Back to the list
         </a>
     </li>
-    <li>
-        <a href="{{ path('serie_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
 </ul>
+
+            </div>
+</div>
+
 {% endblock %}
+

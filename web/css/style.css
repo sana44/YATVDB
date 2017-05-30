@@ -1,4 +1,466 @@
-#bidtitle{
-	font-family: Equal Sans Demo Regular Capital;
-	font-size: 2em;
+body { margin-top: 10px; background-image:linear-gradient(white,white, silver); background-repeat: no-repeat;}
+[class*="col"] { margin-bottom: 10px; }
+.wrap{
+    min-height: 70.5vh;
 }
+
+/* Mise en page du menu horizontal */
+#menu .accueil:hover{ background-color: #48b9c7;}
+#menu .series:hover{ background-color: #fdb515;}
+#menu .forum:hover{ background-color: #ee3124;}
+#menu .profil:hover{ background-color: #59bd73;}
+#menu .admin:hover{ background-color: #48b9c7;}
+
+#menu{
+	background-color: #686868;
+	height: 52px;	
+}
+
+#menu a{
+	color:white;
+	font-weight: bold;
+	font-size: 15px;
+	text-transform: uppercase;
+
+
+}
+
+#menu li{
+	width:215px;
+  	text-align: center;
+  	text-transform: uppercase;
+}
+
+/* Bouton connexion, visible uniquement par un utilisateur non authentifié */
+a.login-btn{
+	width:145px;
+	height: 36px;
+	background-color: #ee3124;
+	border: none;
+  	color: white;
+  	text-align: center;
+  	line-height:35px;
+  	font-family: 'Open Sans', sans-serif;
+  	font-weight: bold;
+  	text-transform: uppercase;
+}
+
+a.login-btn:hover, .deconnexion a:hover{text-decoration: none;}
+
+
+/* Bouton déconnexion, visible uniquement lorsque l'utilisateur est connecté */
+.deconnexion{
+	width:145px;
+	height: 36px;
+	background-color: #ee3124;
+	border: none;
+
+}
+.deconnexion a{
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
+
+
+html{
+	font-family: 'Open Sans', sans-serif;
+}
+
+button a{
+	font-family: 'Open Sans', sans-serif;
+}
+
+/* Mise en forme des formulaires d'authentification */
+.login, .inscription, .changeInfos, .changePassword{
+	background-color: white;
+	margin-left:20px;
+	margin-right:20px;
+	border-left: solid 2px #48b9c7; 
+}
+
+.login .btn, .inscription .btn, .changeInfos .btn, .changePassword .btn{
+	background-color: #48b9c7;
+	border:none;
+}
+
+.login h2, .inscription h2, .changeInfos h2, .changePassword h2{
+	color: #48b9c7 ;
+	font-weight: bold;
+	border-bottom: solid 1px #CDD1D0;
+
+}
+
+.login h4, .inscription h4, .changeInfos h4, .changePassword h4{
+	color: #686868;
+	font-weight: bold;
+}
+
+#forgotPassword{
+	color: #fdb515;
+}
+
+.menuInfos{
+	background-image: url('../img/backgroundMenu.jpg');
+	padding-top:40px;
+	padding-bottom:40px;
+}
+
+.menuInfos a{
+	color:white;
+	font-size: 17px
+}
+
+/* Bouton notification, visible uniquement lorque l'utilisateur est authentifié */
+.notifButton{
+	background-color: #fdb515;
+	width:160px;
+	height: 36px;
+	border: none;
+	color:white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.notifButton .badge{
+	color: #fdb515;
+	background-color: white;
+}
+
+/* Blocs genres visibles dans la page d'accueil des séries */
+.Comédie, .Dramatique, .Action, .Aventure, .Science-fiction, .Historique, .Famille, .Thriller
+{
+	font-size: 50px;
+	height: 200px;
+	margin-top: 20px;
+	font-family: 'Anton', sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	cursor: pointer;
+}
+
+/* Bloc genre qui présente la page d'accueil des séries avec tous les genres */
+.category{
+	background-image: url('/YATVDB/web/img/textureBlanc.jpg');
+	height: 200px;
+	text-align: center;
+	margin-left:15px;
+	margin-right: 15px;
+	width: 360px;
+  	padding-top:20px;
+}
+
+.category h1 {
+	color: #fdb515;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	font-family: 'Anton', sans-serif;
+}
+
+.category span{
+	text-align: justify;
+	font-family: 'Anton', sans-serif;
+	font-size:18px;
+	color: #686868;
+
+}
+
+.category .keyWord {
+	font-family: 'Anton', sans-serif;
+	font-size:25px;
+	color: #48b9c7;
+	text-transform: uppercase;
+}
+
+
+.invitSerie{
+	background-color: #fdb515;
+	height: 480px;
+	margin-top: 95px;
+	text-align: center;
+	margin-left:15px;
+	margin-right: 15px;
+	width: 360px;
+	padding: 20px;
+}
+
+
+
+.invitSerie h1 {
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	font-family: 'Anton', sans-serif;
+	line-height:200px;
+	font-size: 60px;
+}
+
+.category-thumb{
+    text-align: center;
+    cursor: pointer;
+}
+a .category-thumb {
+	  color: white;
+	  line-height:200px;
+    font-size: 20px;
+    word-break:break-all;
+}
+.genre a:hover{
+    text-decoration: none;
+}
+.genre .a, .genre .b, .genre .c{ background-color: #59bd73; }
+.genre .d, .genre .e, .genre .f{ background-color: #48b9c7; }
+.genre .g, .genre .h, .genre .i{ background-color: #fdb515; }
+.genre .j, .genre .k, .genre .l{ background-color: #ee3124; }
+.genre .m, .genre .n, .genre .o{ background-color: #ee3124; }
+.genre .p, .genre .q, .genre .r{ background-color: #686868; }
+.genre .s, .genre .t, .genre .u{ background-color: #59bd73; }
+.genre .v, .genre .w, .genre .x, .genre .y, .genre .z{ background-color: #686868; }
+
+.genre .a:hover, .genre .b:hover, .genre .c:hover,
+.genre .d:hover, .genre .e:hover, .genre .f:hover,
+.genre .g:hover, .genre .h:hover, .genre .i:hover,
+.genre .j:hover, .genre .k:hover, .genre .l:hover,
+.genre .m:hover, .genre .n:hover, .genre .o:hover,
+.genre .p:hover, .genre .q:hover, .genre .r:hover,
+.genre .s:hover, .genre .t:hover, .genre .u:hover,
+.genre .v:hover, .genre .w:hover, .genre .x:hover,
+.genre .y:hover, .genre .z:hover
+{ background-color: silver; text-decoration:none;}
+
+.serieList h2{
+	font-family: 'Anton', sans-serif;
+	font-size:40px;
+	color: #fdb515;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.favoris {background-color: #ee3124;}
+.delete {background-color: #59bd73;}
+.retour{background-color: #48b9c7;}
+
+.favoris, .delete, .retour {
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.retour:hover{color:#686868;}
+.retour a:hover{color:#686868;}
+
+.retour a{
+	color:white;
+	text-decoration: none;
+}
+
+span.lastSerieTitle {
+	color: #686868;
+	font-family: 'Anton', sans-serif;
+}
+
+.lastSerie {
+	text-align: center;
+	background-color: white;
+	height: 290px;
+	padding-top:15px;
+	
+}
+
+.lastSerie img {
+	height: 250px;
+	object-fit: cover;
+}
+
+.serieList {
+	text-align: center;
+	background-color: white;
+	height: 670px;
+}
+
+.serieList img{
+	height: 480px;
+	object-fit: cover;
+}
+
+.accueil h2{
+	color: #fdb515;
+	font-family: 'Anton', sans-serif;
+	margin-bottom: 20px;
+}
+ .accueil p{
+ 	font-family: 'Open Sans', sans-serif;
+ 	font-size: 15px;
+ 	text-align: justify;
+ 	color: #686868;
+}
+
+.accueil .keyWord{
+	font-family: 'Open Sans', sans-serif;
+ 	font-size: 20px;
+ 	color: #48b9c7;
+ 	font-weight: bold;
+ 	text-transform: uppercase;
+}
+
+.invitInscription button{
+	background-color: #48b9c7;
+	color: white;
+	border: none;
+	width: 50%;
+	height:80px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.invitInscription{
+	text-align: center;
+}
+
+.genre p{
+	font-family: 'Open Sans', sans-serif;
+ 	font-size: 15px;
+ 	text-align: justify;
+ 	color: #686868;
+}
+
+.genre, .container.accueil, .container.serieListe{
+	background-color: white;
+	padding:15px;
+}
+
+.profilContent{
+	background-color: white;
+}
+
+.profilContent h2{
+	color:#48b9c7;
+	font-family: 'Anton', sans-serif;
+	border-bottom: 1px solid #48b9c7;
+}
+
+.profilContent button{
+	background-color: #fdb515;
+	color: white;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	height:60px;
+}
+
+.profilContent span, .username{
+	font-family: 'Bad Script', cursive;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+footer .container{
+    background-color: #686868;
+    min-height: 3em;
+    border-radius: 3px;
+}
+footer ul{
+    margin: 10px auto;
+    width: fit-content;
+}
+
+footer ul li{
+    display: inline-block;
+    margin: 0 3px;
+}
+
+footer ul li a{
+    color: #fff;
+    font-size: .8em;
+}
+footer ul li a:hover{
+    text-decoration: none;
+    color: #DBDBDB;
+}
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5fa4d5fab7de1965f23f0b7e7d29513f4bdcab23
+div.container.serie{
+	background-color: white;
+}
+
+.serie h1, .serie h3{
+	color:#48b9c7;
+	font-family: 'Anton', sans-serif;
+	border-bottom: 1px solid #48b9c7;
+	text-transform: uppercase;
+}
+
+.serie h4{
+	color:#fdb515;
+	font-family: 'Anton', sans-serif;
+	font-size: 25px;
+	border-bottom: 1px solid #fdb515;
+}
+
+.serie h1{ font-size: 50px; }
+.serie h3{ font-size: 30px; }
+
+.serie span, .serie p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	color: #686868;
+}
+
+.serie .libelle{
+	color: #fdb515;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+span.detailSaison, p.detailSaison{
+	color: #686868;
+	font-size: 14px;
+}
+
+.serie label{
+	color:#fdb515;
+}
+
+
+
+button.addSerie{
+	width:150px;
+    height:150px;
+  	background-color: #686868;
+  	color: white;
+  	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	text-transform: uppercase;
+	border: none;
+}
+
+/*
+serie_detail content highlight
+*/
+.highlight{
+    animation-name: insetBorder;
+    animation-duration: 1.5s;
+}
+
+@keyframes insetBorder {
+    from{
+        box-shadow: inset 0 0 10px #08f;
+    }
+    to{
+        box-shadow: inset 0 0 0 #08f;
+    }
+}
+

@@ -1,3 +1,14 @@
+serie_seriecomment:
+    resource: "@SerieBundle/Resources/config/routing/seriecomment.yml"
+    prefix:   /seriecomment
+
+serie_addComment:
+    pattern:  /comment/{serie_id}
+    defaults: { _controller: SerieBundle:SerieComment:addComment }
+    requirements:
+        _method:  POST
+        
+
 serie_episode:
     resource: "@SerieBundle/Resources/config/routing/episode.yml"
     prefix:   /episode
@@ -6,6 +17,14 @@ serie_serie:
     resource: "@SerieBundle/Resources/config/routing/serie.yml"
     prefix:   /serie
 
-serie_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: SerieBundle:Default:index }
+serie_showCategories:
+    path:     /genres
+    defaults: { _controller: "SerieBundle:Default:categoryList" }
+
+serie_showCategory:
+    path:     /genres/{name}
+    defaults: { _controller: "SerieBundle:Default:serieList" }
+
+series_search:
+    path:     /search
+    defaults: { _controller: "SerieBundle:Default:globalSearch" }

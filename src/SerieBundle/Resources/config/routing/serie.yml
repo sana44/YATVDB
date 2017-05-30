@@ -1,14 +1,6 @@
-serie:
-    path:     /
-    defaults: { _controller: "SerieBundle:Serie:index" }
-
-serie_show:
-    path:     /{id}/show
-    defaults: { _controller: "SerieBundle:Serie:show" }
-
 serie_new:
-    path:     /new
-    defaults: { _controller: "SerieBundle:Serie:new" }
+    path:     /new/{id}
+    defaults: { _controller: "SerieBundle:Serie:newSerie", id:0 }
 
 serie_create:
     path:     /create
@@ -16,19 +8,19 @@ serie_create:
     methods:  POST
 
 serie_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "SerieBundle:Serie:edit" }
+    path:     /edit/{id}
+    defaults: { _controller: "SerieBundle:Serie:editSerie", id:0 }
 
 serie_update:
-    path:     /{id}/update
-    defaults: { _controller: "SerieBundle:Serie:update" }
+    path:     /update/{id}
+    defaults: { _controller: "SerieBundle:Serie:update", id:0 }
     methods:  [POST, PUT]
 
 serie_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "SerieBundle:Serie:delete" }
-    methods:  [POST, DELETE]
+    path:     /delete/{id}
+    defaults: { _controller: "SerieBundle:Serie:deleteSerie", id:0 }
 
-oc_platform_translation:
-    path:     /{_locale}/traduction/{name}
-    defaults: { _controller: SerieBundle:Advert:translation }
+serie_detail:
+    path:     /{name}
+    defaults:  { _controller: "SerieBundle:Serie:showSerieDetail"}
+

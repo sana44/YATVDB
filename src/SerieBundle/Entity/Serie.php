@@ -15,17 +15,18 @@ class Serie
 {
 
   /**
-   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="Serie")
+   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie")
    */
   private $comments;
 
-  /**
-   * @ORM\OneToOne(targetEntity="\SerieBundle\Entity\Image", cascade={"persist"})
-   */
+    /**
+     * @ORM\OneToOne(targetEntity="\SerieBundle\Entity\Image", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
   private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="Serie")
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie", cascade={"remove"})
      */
     private $seasons;
 
@@ -41,7 +42,7 @@ class Serie
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="\SerieBundle\Entity\SerieCategory")
+     * @ORM\ManyToOne(targetEntity="\SerieBundle\Entity\SerieCategory", inversedBy="serie")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -49,7 +50,7 @@ class Serie
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
 
@@ -86,7 +87,7 @@ class Serie
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = trim($name);
 
         return $this;
     }
@@ -212,10 +213,10 @@ class Serie
     /**
      * Set category
      *
-     * @param \SerieBundle\Entity\serie_category $category
+     * @param \SerieBundle\Entity\SerieCategory $category
      * @return Serie
      */
-    public function setCategory(\SerieBundle\Entity\serie_category $category)
+    public function setCategory(\SerieBundle\Entity\SerieCategory $category)
     {
         $this->category = $category;
 
@@ -225,7 +226,7 @@ class Serie
     /**
      * Get category
      *
-     * @return \SerieBundle\Entity\serie_category 
+     * @return \SerieBundle\Entity\SerieCategory 
      */
     public function getCategory()
     {
@@ -263,5 +264,17 @@ class Serie
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /*
+     * Get episodes count
+     */
+    public function getEpisodesCount()
+    {
+        $total = 0;
+        foreach($this->getSeasons() as $s){
+            $total += count($s->getEpisodes());
+        }
+        return $total;
     }
 }

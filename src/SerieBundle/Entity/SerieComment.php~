@@ -56,6 +56,17 @@ class SerieComment
      */
     private $score;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="\UserBundle\Entity\User", inversedBy="commentaires")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this-> setCreatedAt(new \DateTime());
+        $this-> setUpdatedAt(new \DateTime());
+    }
 
     /**
      * Get id
@@ -157,5 +168,51 @@ class SerieComment
     public function getScore()
     {
         return $this->score;
+    }
+
+    /**
+     * Set serie
+     *
+     * @param \SerieBundle\Entity\Serie $serie
+     * @return SerieComment
+     */
+    public function setSerie(\SerieBundle\Entity\Serie $serie)
+    {
+        $this->serie = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Get serie
+     *
+     * @return \SerieBundle\Entity\Serie 
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     * @return SerieComment
+     */
+    public function setUser(\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

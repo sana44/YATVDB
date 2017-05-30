@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>SerieComment</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commentaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ commentaire.content }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{{ commentaire.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{{ commentaire.updatedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Score</th>
+                <td>{{ commentaire.score }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('seriecomment') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

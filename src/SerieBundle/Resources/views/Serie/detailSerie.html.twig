@@ -1,0 +1,70 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <style>
+     .serie .thumbnail{
+         width:100%;
+         object-fit: cover;
+     }
+    </style>
+
+    <div class="container serie">
+        <h1>{{ serie.name }}</h1>
+
+          <div class="row">
+            <div class="col-lg-4">
+                <img class="thumbnail" alt="{{ serie.image.alt }}" src="{{ serie.image.url }}"/>      
+            </div>
+            <div class="col-lg-8">
+                <span class="libelle"> Titre: </span> <span> {{serie.name}} </span> <br> <br>
+                <span class="libelle"> Date de sortie: </span> <span> {{ serie.releaseDate | date('d/m/Y') }} </span> <br> <br>
+                <span class="libelle"> Nombre de saisons: </span> <span> {{ serie.seasons|length }} </span> <br> <br>
+                <p class="libelle"> Résumé: </p> <p>  {{serie.resume}} </p>
+            </div>
+        </div>
+
+        
+        <form action="{{path('serie_addComment', {serie_id : serie.id})}}" method="POST">
+            <label for="content"> Ton avis nous intéresse ! </label> <br>
+            <textarea name="content" style="width:100%"> </textarea>
+            <input type="submit" class="btn commentSubmit"/>
+        </form>
+       
+
+        <h3> Derniers commentaires </h3>
+
+        {%for commentaire in serie.comments%}
+            {% if user.profilePicture is not null %}
+            <img src="{{user.profilePicture.file}}"/>
+            {%endif%}
+            <span> Par {{commentaire.user.firstName}} {{commentaire.user.lastName}}, le {{commentaire.createdAt| date('d/m/Y') }}</span>
+            <p> {{commentaire.content}} </p>
+        {% else%}
+            <p> Soyez le premier à commenter cette série! </p>
+        {%endfor%}
+
+    </div>
+
+    <div class="container serie">
+        {% for season in serie.seasons %}
+        <h4> Saison n°{{season.seasonNumber}} </h4>
+        <span class="detailSaison"> Date de sortie: {{season.diffusionDate | date('d/m/Y')}} </span> <br>
+        <span class="detailSaison"> Nombres d'épisodes: {{season.episodes|length}} </span>
+        <p class="detailSaison"> Résumé: <br> {{season.resume}} </p>
+
+        <div class="row">
+            
+            {% for episode in season.episodes %}
+                <div class="col-lg-2">
+                    <img src="{{asset(episode.image.url|default(''))}}" alt="{{episode.image.alt|default('')}}" class="thumbnail"/>
+                    <label> épisode n°{{episode.episodeNumber}} </label> <br>
+                    <label> {{episode.name}} </label>
+                </div>
+            {%endfor%}
+        </div>
+            
+        {%endfor%}
+        
+    </div>
+        
+{% endblock %}
