@@ -44,13 +44,13 @@
                 </div>
 
                 <div class="col-lg-2">
-                    <a href="{{ path ('fos_user_profile_show') }}"><img class="thumbnail" src="{{ asset('img/jp.jpg')}}" style="width: 70%" class="pull-right"></a>
+                    <a href="{{ path ('fos_user_profile_show') }}"><img class="thumbnail pull-right" src="{{asset(app.user.profilePicture.url|default('img/avatar.jpg'))}}" style="width:70%"></a>
 
                 </div>
 
                 {% else %}
                     <div class="col-lg-offset-6 col-lg-2">
-                        <a class="login-Btn btn btn-primary pull-right glyphicon glyphicon-user" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        <a class="login-btn pull-right" href="{{ path('fos_user_security_login') }}"> <span class="glyphicon glyphicon-user"> </span> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                     </div>
                 {% endif %}
 

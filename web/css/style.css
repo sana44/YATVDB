@@ -1,6 +1,6 @@
 /* reset */
-*{box-sizing: border-box; font-family: inherit;} /* pour maîtriser width et flex-basis */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+/**{box-sizing: border-box; font-family: inherit;} /* pour maîtriser width et flex-basis */
+/*html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
 aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
 article{display: inline-block;}
 ol,ul{list-style:none;margin:0;padding:0;}
@@ -9,8 +9,8 @@ blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
 table .list{border-collapse:collapse;border-spacing:0; border: 1px solid #636b6f;}
 .list td, .list tr, .list th { border : 1px solid #636b6f}
 th td { text-align:center}
-html{display: flex; flex-direction: column;z-index: -10; font-family: "Lato", sans-serif;}  /* correction bug IE de min-height non appliqué à body */
-html, body{min-height: 100%;}
+html{display: flex; flex-direction: column;z-index: -10;}  /* correction bug IE de min-height non appliqué à body */
+/*html, body{min-height: 100%;}*/
 img { width: 100%; }
 /* end reset */
 
@@ -36,24 +36,33 @@ body { margin-top: 10px; background-image:linear-gradient(white,white, silver); 
 	color:white;
 	font-weight: bold;
 	font-size: 15px;
+	text-transform: uppercase;
+
+
 }
 
 #menu li{
 	width:215px;
-  text-align: center;
-  text-transform: uppercase;
+  	text-align: center;
+  	text-transform: uppercase;
 }
 
 /* Bouton connexion, visible uniquement par un utilisateur non authentifié */
-.login-Btn{
+a.login-btn{
 	width:145px;
 	height: 36px;
 	background-color: #ee3124;
 	border: none;
-  color:#fff;
+  	color: white;
+  	text-align: center;
+  	line-height:35px;
+  	font-family: 'Open Sans', sans-serif;
+  	font-weight: bold;
+  	text-transform: uppercase;
 }
 
-.login-Btn a:hover{text-decoration: none;}
+a.login-btn:hover, .deconnexion a:hover{text-decoration: none;}
+
 
 /* Bouton déconnexion, visible uniquement lorsque l'utilisateur est connecté */
 .deconnexion{
@@ -157,7 +166,7 @@ button a{
 	margin-left:15px;
 	margin-right: 15px;
 	width: 360px;
-  padding-top:20px;
+  	padding-top:20px;
 }
 
 .category h1 {
@@ -338,6 +347,11 @@ span.lastSerieTitle {
  	color: #686868;
 }
 
+.genre, .container.accueil, .container.serieListe{
+	background-color: white;
+	padding:15px;
+}
+
 .profilContent{
 	background-color: white;
 }
@@ -387,3 +401,61 @@ footer ul li a:hover{
     text-decoration: none;
     color: #DBDBDB;
 }
+
+div.container.serie{
+	background-color: white;
+}
+
+.serie h1, .serie h3{
+	color:#48b9c7;
+	font-family: 'Anton', sans-serif;
+	border-bottom: 1px solid #48b9c7;
+	text-transform: uppercase;
+}
+
+.serie h4{
+	color:#fdb515;
+	font-family: 'Anton', sans-serif;
+	font-size: 25px;
+	border-bottom: 1px solid #fdb515;
+}
+
+.serie h1{ font-size: 50px; }
+.serie h3{ font-size: 30px; }
+
+.serie span, .serie p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	color: #686868;
+}
+
+.serie .libelle{
+	color: #fdb515;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+span.detailSaison, p.detailSaison{
+	color: #686868;
+	font-size: 14px;
+}
+
+.serie label{
+	color:#fdb515;
+}
+
+
+
+button.addSerie{
+	width:150px;
+    height:150px;
+  	background-color: #686868;
+  	color: white;
+  	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	text-transform: uppercase;
+	border: none;
+}
+
