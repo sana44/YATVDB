@@ -2,6 +2,16 @@ serie_season:
     resource: "@SerieBundle/Resources/config/routing/season.yml"
     prefix:   /season
 
+serie_seriecomment:
+    resource: "@SerieBundle/Resources/config/routing/seriecomment.yml"
+    prefix:   /seriecomment
+
+serie_addComment:
+    pattern:  /comment/{serie_id}
+    defaults: { _controller: SerieBundle:SerieComment:addComment }
+    requirements:
+        _method:  POST
+        
 serie_episode:
     resource: "@SerieBundle/Resources/config/routing/episode.yml"
     prefix:   /episode
