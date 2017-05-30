@@ -19,7 +19,11 @@ serie_episode:
 serie_serie:
     resource: "@SerieBundle/Resources/config/routing/serie.yml"
     prefix:   /serie
-
+    
+serie_legalNotice:
+    path:     /mentions-legales
+    defaults: { _controller: SerieBundle:Default:legalNotice }
+=======
 serie_showCategories:
     path:     /genres
     defaults: { _controller: "SerieBundle:Default:categoryList" }

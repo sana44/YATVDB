@@ -331,6 +331,12 @@ span.lastSerieTitle {
  	color: #686868;
 }
 
+
+.titrementionslegales{
+	font-size: 15px;
+	font-weight: bold;
+}
+
 .genre, .container.accueil, .container.serieListe{
 	background-color: white;
 	padding:15px;
@@ -386,10 +392,6 @@ footer ul li a:hover{
     color: #DBDBDB;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5fa4d5fab7de1965f23f0b7e7d29513f4bdcab23
 div.container.serie{
 	background-color: white;
 }
@@ -463,4 +465,3 @@ serie_detail content highlight
         box-shadow: inset 0 0 0 #08f;
     }
 }
-
