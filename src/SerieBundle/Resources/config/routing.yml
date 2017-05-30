@@ -9,3 +9,7 @@ serie_serie:
 serie_homepage:
     path:     /hello/{name}
     defaults: { _controller: SerieBundle:Default:index }
+ 
+serie_legalNotice:
+    path:     /mentions-legales
+    defaults: { _controller: SerieBundle:Default:legalNotice }

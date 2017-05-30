@@ -307,4 +307,8 @@ span.lastSerieTitle {
  	text-align: justify;
  	color: #686868;
 }
+
+.titrementionslegales{
+	font-size: 15px;
+	font-weight: bold;
 }

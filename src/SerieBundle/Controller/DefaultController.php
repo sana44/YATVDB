@@ -10,4 +10,8 @@ class DefaultController extends Controller
     {
         return $this->render('SerieBundle:Default:index.html.twig', array('name' => $name));
     }
+    public function legalNoticeAction()
+    {
+    	return $this->render('SerieBundle:Default:LegalNotice.html.twig');
+    }
 }
