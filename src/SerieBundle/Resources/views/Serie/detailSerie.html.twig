@@ -22,20 +22,15 @@
                 <p class="libelle"> Résumé: </p> <p>  {{serie.resume}} </p>
             </div>
         </div>
-
-        
-        <form action="{{path('serie_addComment', {serie_id : serie.id})}}" method="POST">
-            <label for="content"> Ton avis nous intéresse ! </label> <br>
-            <textarea name="content" style="width:100%"> </textarea>
-            <input type="submit" class="btn commentSubmit"/>
-        </form>
-       
+        {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
+            {{ form(serieCommentForm) }}
+        {% endif %}
 
         <h3> Derniers commentaires </h3>
 
         {%for commentaire in serie.comments%}
-            {% if user.profilePicture is not null %}
-            <img src="{{user.profilePicture.file}}"/>
+            {% if commentaire.user.profilePicture is not null %}
+            <img src="{{commentaire.user.profilePicture.file}}"/>
             {%endif%}
             <span> Par {{commentaire.user.firstName}} {{commentaire.user.lastName}}, le {{commentaire.createdAt| date('d/m/Y') }}</span>
             <p> {{commentaire.content}} </p>
@@ -53,7 +48,7 @@
         <p class="detailSaison"> Résumé: <br> {{season.resume}} </p>
 
         <div class="row">
-            
+
             {% for episode in season.episodes %}
                 <div class="col-lg-2">
                     <img src="{{asset(episode.image.url|default(''))}}" alt="{{episode.image.alt|default('')}}" class="thumbnail"/>
@@ -62,9 +57,6 @@
                 </div>
             {%endfor%}
         </div>
-            
         {%endfor%}
-        
     </div>
-        
 {% endblock %}
