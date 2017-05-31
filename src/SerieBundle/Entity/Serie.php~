@@ -15,7 +15,7 @@ class Serie
 {
 
   /**
-   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie")
+   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie", cascade={"remove"})
    */
   private $comments;
 
@@ -24,6 +24,11 @@ class Serie
      * @ORM\JoinColumn(nullable=false)
      */
   private $image;
+
+  /**
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Episode", mappedBy="serie", cascade={"remove"})
+     */
+    private $episodes;
 
     /**
      * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie", cascade={"remove"})

@@ -17,11 +17,17 @@ class EpisodeType extends AbstractType
     {
         $builder
             ->add('episodeNumber')
-            ->add('name', 'text')
-            ->add('resume', 'textarea')
-            ->add('diffusionDate', 'date')
+
+            ->add('name')
+            ->add('resume')
+            ->add('diffusionDate', 'date', [
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'dd-MM-yyyy',
+                'attr' => ["class" => 'js-datepicker',
+                           "placeholder" => 'Pick a date']
+            ])
             ->add('image', new ImageType())
-            ->add('season')
         ;
     }
     

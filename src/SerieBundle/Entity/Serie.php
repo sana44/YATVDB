@@ -15,7 +15,7 @@ class Serie
 {
 
   /**
-   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie")
+   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie", cascade={"remove"})
    */
   private $comments;
 
@@ -24,6 +24,11 @@ class Serie
      * @ORM\JoinColumn(nullable=false)
      */
   private $image;
+
+  /**
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Episode", mappedBy="serie", cascade={"remove"})
+     */
+    private $episodes;
 
     /**
      * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie", cascade={"remove"})
@@ -276,5 +281,38 @@ class Serie
             $total += count($s->getEpisodes());
         }
         return $total;
+    }
+
+    /**
+     * Add episodes
+     *
+     * @param \SerieBundle\Entity\Episode $episodes
+     * @return Serie
+     */
+    public function addEpisode(\SerieBundle\Entity\Episode $episodes)
+    {
+        $this->episodes[] = $episodes;
+
+        return $this;
+    }
+
+    /**
+     * Remove episodes
+     *
+     * @param \SerieBundle\Entity\Episode $episodes
+     */
+    public function removeEpisode(\SerieBundle\Entity\Episode $episodes)
+    {
+        $this->episodes->removeElement($episodes);
+    }
+
+    /**
+     * Get episodes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEpisodes()
+    {
+        return $this->episodes;
     }
 }

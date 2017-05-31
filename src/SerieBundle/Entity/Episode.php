@@ -17,6 +17,12 @@ class Episode
    */
   private $image;
 
+/**
+   * @ORM\ManyToOne(targetEntity = "\SerieBundle\Entity\Serie", inversedBy="episodes")
+   * @ORM\JoinColumn(nullable = false)
+   */
+  private $serie;
+
   /**
    * @ORM\ManyToOne(targetEntity = "\SerieBundle\Entity\Season", inversedBy="episodes")
    * @ORM\JoinColumn(nullable = false)
@@ -207,5 +213,28 @@ class Episode
     public function getSeason()
     {
         return $this->season;
+    }
+
+    /**
+     * Set serie
+     *
+     * @param \SerieBundle\Entity\Serie $serie
+     * @return Episode
+     */
+    public function setSerie(\SerieBundle\Entity\Serie $serie)
+    {
+        $this->serie = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Get serie
+     *
+     * @return \SerieBundle\Entity\Serie 
+     */
+    public function getSerie()
+    {
+        return $this->serie;
     }
 }
