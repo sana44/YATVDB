@@ -15,10 +15,10 @@ class SeasonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('seasonNumber')
-            ->add('name')
-            ->add('resume')
-            ->add('diffusionDate')
+            ->add('seasonNumber', 'int')
+            ->add('name', 'text')
+            ->add('resume', 'textarea')
+            ->add('diffusionDate', 'date')
             ->add('serie')
         ;
     }

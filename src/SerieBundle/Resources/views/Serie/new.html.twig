@@ -2,20 +2,62 @@
 
 {% block body -%}
 
+<div class="container addSerieForm">
 
-<form method="POST">
-	<legend>Ajout Série</legend>
-	<div>
-		{{form_widget(form)}}
-		{{form_rest(form)}}
-	</div>
+	<form method="post" {{ form_enctype (form) }} >
+
+		{{ form_errors(form) }}
+   		<h2>Formulaire d'ajout Série</h2>
+   		<p> Complète ce formulaire et notre équipe se chargera de valider la publication de la série! </p>
+
+   		<div class="form-group">
+            {{ form_label(form.name, "Titre de la série: ") }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name, {'attr':{'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.resume, "Synopsis et détails: ") }}
+            {{ form_errors(form.resume) }}
+            {{ form_widget(form.resume, {'attr':{'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.release_date, "Date de réalisation: ") }}
+            {{ form_errors(form.release_date) }}
+            {{ form_widget(form.release_date, {'attr':{'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.image.file, "Affiche de la série: ") }}
+            {{ form_widget(form.image.file, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.image.file) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.category, "Genre: ") }}
+                <ul>
+                {% for c in form.category %}
+                    <li style="list-style-type: none">
+                        {{ form_widget(c) }}
+                         {{ form_label(c) }}
+                    </li>
+                {% endfor %}
+                </ul>
+        </div>
+
+
+	{{form_rest(form)}}
 	
-	 <div>
-		 <div>
-		 <a href="{{ path('serie_showCategories') }}" class="btn btn-lg btn-danger pull-right">Annuler</a>
-		 <input type="submit" value="Ajouter" class="btn btn-lg btn-primary"/>
-		 </div>
-	 </div>
+	
+	 <div class="row">
+	    <div class="col-lg-offset-9 col-lg-1">
+		 	<a href="{{ path('serie_showCategories') }}" class="btn btn-lg btn-danger pull-right">Annuler</a>
+		</div>
+		<div class="col-lg-2 text-left">
+		 	<input type="submit" value="Ajouter" class="btn btn-lg btn-primary"/>
+		</div>
+	</div>
  </form>
-
+</div>
 {% endblock %}
