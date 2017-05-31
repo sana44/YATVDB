@@ -12,30 +12,38 @@
         <h1>{{ serie.name }}</h1>
 
           <div class="row">
-            <div class="col-lg-4">
-                <img class="thumbnail" alt="{{ serie.image.alt }}" src="{{ serie.image.url }}"/>      
+            <div class="col-lg-3">
+                <img class="thumbnail" alt="{{ serie.image.alt }}" src="/YATVDB/web/{{ serie.image.url }}" style="height:300px"/>      
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-5">
                 <span class="libelle"> Titre: </span> <span> {{serie.name}} </span> <br> <br>
                 <span class="libelle"> Date de sortie: </span> <span> {{ serie.releaseDate | date('d/m/Y') }} </span> <br> <br>
                 <span class="libelle"> Nombre de saisons: </span> <span> {{ serie.seasons|length }} </span> <br> <br>
+                <span class="libelle"> Genre: </span><span> {{serie.category.name}} </span> <br> <br>
                 <p class="libelle"> Résumé: </p> <p>  {{serie.resume}} </p>
             </div>
-        </div>
+            <div class="col-lg-4">
+                <a class="btn-updateSerie btn pull-right" href="{{path('serie_edit', {id : serie.id})}}">
+                    <i class="glyphicon glyphicon-scissors"></i> Je souhaite modifier cette série
+                </a> <br>
+                <a class="btn-deleteSerie btn pull-right" href="{{path('serie_delete', {id : serie.id})}}">
+                    <i class="glyphicon glyphicon-trash"></i> Je souhaite supprimer cette série
+                </a> <br>
+                <a class="btn-addEpisode btn pull-right" href="{{path('episode_new')}}">
+                    <i class="glyphicon glyphicon-plus-sign"></i> Je souhaite ajouter un épisode à cette série
+                </a> <br>
 
-        
-        <form action="{{path('serie_addComment', {serie_id : serie.id})}}" method="POST">
-            <label for="content"> Ton avis nous intéresse ! </label> <br>
-            <textarea name="content" style="width:100%"> </textarea>
-            <input type="submit" class="btn commentSubmit"/>
-        </form>
-       
+            </div>
+        </div>
+        {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
+            {{ form(serieCommentForm) }}
+        {% endif %}
 
         <h3> Derniers commentaires </h3>
 
         {%for commentaire in serie.comments%}
-            {% if user.profilePicture is not null %}
-            <img src="{{user.profilePicture.file}}"/>
+            {% if commentaire.user.profilePicture is not null %}
+            <img src="{{commentaire.user.profilePicture.file}}"/>
             {%endif%}
             <span> Par {{commentaire.user.firstName}} {{commentaire.user.lastName}}, le {{commentaire.createdAt| date('d/m/Y') }}</span>
             <p> {{commentaire.content}} </p>
@@ -51,20 +59,88 @@
         <span class="detailSaison"> Date de sortie: {{season.diffusionDate | date('d/m/Y')}} </span> <br>
         <span class="detailSaison"> Nombres d'épisodes: {{season.episodes|length}} </span>
         <p class="detailSaison"> Résumé: <br> {{season.resume}} </p>
+ 
+         <div class="carousel slide row" id="episodesCarousel" data-ride="carousel" data-type="multi" data-interval="2000" id="episodesCarousel">
 
-        <div class="row">
-            
-            {% for episode in season.episodes %}
-                <div class="col-lg-2">
-                    <img src="{{asset(episode.image.url|default(''))}}" alt="{{episode.image.alt|default('')}}" class="thumbnail"/>
-                    <label> épisode n°{{episode.episodeNumber}} </label> <br>
-                    <label> {{episode.name}} </label>
+
+         
+            <div class="carousel slide multi-item-carousel" >
+                   
+
+                <div class="carousel-inner">
+                    <div class="item active">
+
+                    {% for episode in season.episodes%}
+                        {% if loop.index is null %}
+                        <div class="col-lg-2">
+                            <a href="#"> <img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}" alt="{{episode.image.alt|default('')}}" class="img-responsive"></a>
+                                <span>épisode n°{{episode.episodeNumber}}</span>
+                        </div>
+                        
+
+                        {% elseif loop.index < 6 %}
+
+                        <div class="item">
+                            <div class="col-lg-2">
+                                <a href="#"> <img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}" alt="{{episode.image.alt|default('')}}" class="img-responsive"></a>
+                                <span>épisode n°{{episode.episodeNumber}}</span>
+                            </div>
+                        </div>
+
+                        {%else%}
+
+                        <div class="item hidden">
+                            <div class="col-lg-2">
+                                <a href="#"> <img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}" alt="{{episode.image.alt|default('')}}" class="img-responsive"></a>
+                                    <span>épisode n°{{episode.episodeNumber}}</span>
+                            </div>
+                        </div>
+                    
+                        {%endif%}
+
+                    {%endfor%}  
+
+                    </div> 
                 </div>
-            {%endfor%}
+                    
+            </div>
+                <a class="left carousel-control" href="#episodesCarousel" data-slide="prev">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </a>
+
+                <a class="right carousel-control" href="#episodesCarousel" data-slide="next">
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </a>   
         </div>
-            
-        {%endfor%}
-        
+    {%endfor%}
+
+    <div class="row">
+        <a class="btn retour" href="{{ path('serie_showCategories')}}">
+            <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des genres
+        </a>
     </div>
-        
+
+   </div>
+
+   <!--
+    <script>
+
+    $('.multi-item-carousel').episodesCarousel({interval: 2000});
+
+    $('.multi-item-carousel .item').each(function(){
+      var next = $(this).next();
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+      next.children(':first-child').clone().appendTo($(this));
+      
+      if (next.next().length>0) {
+        next.next().children(':first-child').clone().appendTo($(this));
+      } else {
+        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+      }
+    });
+
+    </script> -->
+       
 {% endblock %}

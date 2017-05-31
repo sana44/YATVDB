@@ -27,29 +27,38 @@
                     <a href="{{path('homepage')}}"> <img src="{{ asset('img/logoFishblock.jpg')}}" style="width:100%"  /></a>
                 </div>
 
+                
+                <div class="col-lg-3 search text-right">
+                   <form class="navbar-form navbar-right inline-form" role="search" action="{{ path('series_search') }}">
+                        <div class="form-group">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <input type="text" class="form-control " name="q" placeholder="Recherche" value="{{ app.request.get('q') }}">
+                        </div>
+                        <button type="submit" class="btn btn-default">Go</button>
+                    </form>
+                </div>
+           
+
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                <div class="col-lg-offset-2 col-lg-2 ">
-                    <button class="notifButton" type="button">
+                <div class="col-lg-3">
+                    <p class="text-right username">{{app.user.firstname}} {{ app.user.lastname }}</p>
+                     <button class="notifButton pull-right" type="button">
                     <span class="glyphicon glyphicon-bell"></span>
                       Notification <span class="badge">4</span>
-                    </button>
+                    </button> <br> <br>
+                    <a class="logout-btn pull-right" href="{{ path('fos_user_security_logout') }}"> <span class="glyphicon glyphicon-user"> </span> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}  </a>
                 </div>
 
-                <div class="col-lg-2">
-                    <p class="text-right "><button type="button" class="deconnexion"> <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}  </button> </a>
-                     </p> <br>
-                    <p class="text-right username">{{app.user.firstname}} {{ app.user.lastname }}</p> 
-
-                </div>
 
                 <div class="col-lg-2">
                     <a href="{{ path ('fos_user_profile_show') }}"><img class="thumbnail pull-right" src="{{asset(app.user.profilePicture.url|default('img/avatar.jpg'))}}" style="width:70%"></a>
-
                 </div>
 
+               
+
                 {% else %}
-                    <div class="col-lg-offset-6 col-lg-2">
+                    <div class="col-lg-offset-3 col-lg-2">
                         <a class="login-btn pull-right" href="{{ path('fos_user_security_login') }}"> <span class="glyphicon glyphicon-user"> </span> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                     </div>
                 {% endif %}
@@ -57,21 +66,7 @@
             </div>
 
 
-            <div class="row">
-                <div class="col-lg-offset-8 col-lg-4">
-                   <form class="navbar-form navbar-right inline-form" role="search" action="{{ path('series_search') }}">
-                        <div class="form-group">
-                            <span class="glyphicon glyphicon-search"></span>
-                            <input type="text"
-                                   class="form-control"
-                                   name="q"
-                                   placeholder="Recherche"
-                                   value="{{ app.request.get('q') }}">
-                        </div>
-                        <button type="submit" class="btn btn-default">Go</button>
-                    </form>
-                </div>
-            </div>
+            
 
             <nav class="navbar navbar-default" id="menu">
               <div class="container-fluid">
@@ -106,6 +101,9 @@
             <div class="row">
                 <div class="col-lg-12">
 
+                    <a href="{{path('serie_legalNotice')}}">Mentions légales</a>
+                    <a href="#">Contact</a>
+                    
                 </div>
             </div>
         </div>

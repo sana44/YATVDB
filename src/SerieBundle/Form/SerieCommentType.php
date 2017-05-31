@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SeasonType extends AbstractType
+class SerieCommentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,27 +15,21 @@ class SeasonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-            ->add('seasonNumber')
-            ->add('name')
-            ->add('resume')
-            ->add('diffusionDate', 'date', [
-                'widget' => 'single_text',
-                'html5' => false,
-                'format' => 'dd-MM-yyyy',
-                'attr' => ["class" => 'js-datepicker',
-                           "placeholder" => 'Pick a date']
-            ])
-
+            ->add('content')
+            ->add('score', 'integer',
+                  ['attr' => ['min' => 0,
+                              'max' => 5],
+                  ])
         ;
     }
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SerieBundle\Entity\Season'
+            'data_class' => 'SerieBundle\Entity\SerieComment'
         ));
     }
 
@@ -44,6 +38,6 @@ class SeasonType extends AbstractType
      */
     public function getName()
     {
-        return 'seriebundle_season';
+        return 'seriebundle_seriecomment';
     }
 }

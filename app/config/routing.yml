@@ -8,4 +8,4 @@ serie:
 
 app:
     resource: '@AppBundle/Controller/'
-    type: annotation
+    type:     annotation

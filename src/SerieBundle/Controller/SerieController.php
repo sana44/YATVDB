@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use SerieBundle\Entity\Serie;
+use SerieBundle\Entity\SerieComment;
 use SerieBundle\Form\SerieType;
 
 /**
@@ -21,6 +22,7 @@ class SerieController extends Controller
      */
     public function showSerieDetailAction($name)
     {
+        $SerieCommentController = $this->get('SerieCommentController');
         $em = $this->getDoctrine()->getManager();
 
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name' => $name]);
@@ -28,11 +30,10 @@ class SerieController extends Controller
         if (!$serie) {
             throw $this->createNotFoundException('Cette série n\'existe pas');
         }
-
-    
+        $serieCommentForm = $SerieCommentController->createCreateForm(new SerieComment, $serie->getId());
         return $this->render('SerieBundle:Serie:detailSerie.html.twig', array(
             'serie' => $serie,
-
+            'serieCommentForm' => $serieCommentForm->createView()
         ));
     }
     /**
@@ -44,7 +45,6 @@ class SerieController extends Controller
         $entity = new Serie();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -114,6 +114,7 @@ class SerieController extends Controller
      */
     public function editSerieAction($id)
     {
+        
         $em = $this->getDoctrine()->getManager();
 
         $serie = $em->getRepository('SerieBundle:Serie')->find($id);
@@ -226,4 +227,18 @@ class SerieController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
+    public function addCommentAction(Request $request, $serie_id)
+    {
+      $SerieCommentController = $this->get('SerieCommentController');
+
+      $SerieCommentController->addCommentAction($request, $serie_id);
+
+      $em = $this->getDoctrine()->getManager();
+
+      $serie = $em->getRepository('SerieBundle:Serie')->find($serie_id);
+      return $this->redirectToRoute('serie_detail', ['name' => $serie->getName()]);
+    }
+
 }
