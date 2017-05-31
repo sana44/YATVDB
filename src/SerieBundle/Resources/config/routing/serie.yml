@@ -18,7 +18,7 @@ serie_update:
 
 serie_delete:
     path:     /delete/{id}
-    defaults: { _controller: "SerieBundle:Serie:deleteSerie", id:0 }
+    defaults: { _controller: "SerieBundle:Serie:deleteSerie" }
 
 serie_detail:
     path:     /{name}

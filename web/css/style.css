@@ -354,7 +354,7 @@ span.lastSerieTitle {
 	width: 1138px;
 	background-color: white;
 	overflow: hidden;
-
+}
 
 .titrementionslegales{
 	font-size: 15px;
@@ -363,8 +363,6 @@ span.lastSerieTitle {
 
 .genre, .container.accueil, .container.serieListe{
 	background-color: white;
-	
-	
 }
 
 .profilContent{
