@@ -119,12 +119,16 @@ class SerieController extends Controller
 
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$name]);
 
+        
         if (!$serie) {
             throw $this->createNotFoundException('La série n\'existe pas');
         }
 
         $editForm = $this->createEditForm($serie);
         $deleteForm = $this->createDeleteForm($name);
+
+        $serie -> getImage() -> setUrl('test.png');
+        $serie -> getImage() -> newDateTime();
 
         return $this->render('SerieBundle:Serie:edit.html.twig', array(
             'serie'      => $serie,

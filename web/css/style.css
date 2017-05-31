@@ -365,8 +365,9 @@ span.lastSerieTitle {
 	background-color: white;
 }
 
-.profilContent{
+.container.profilContent{
 	background-color: white;
+	width: 1138px;
 }
 
 .profilContent h2, .addSerieForm h2{
@@ -398,28 +399,24 @@ span.lastSerieTitle {
 }
 
 footer .container{
-    background-color: #686868;
+    background-color: #fdb515;
+    border-top: 1px solid #686868;
     min-height: 3em;
     border-radius: 3px;
     width: 1138px;
-}
-footer ul{
-    margin: 10px auto;
-    width: fit-content;
+    text-align: center;
 }
 
-footer ul li{
-    display: inline-block;
-    margin: 0 3px;
+footer a{
+	color: #686868;
+	line-height: 50px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
 }
 
-footer ul li a{
-    color: #fff;
-    font-size: .8em;
-}
-footer ul li a:hover{
-    text-decoration: none;
-    color: #DBDBDB;
+footer a:hover{
+	text-decoration: none;
+	color: white;
 }
 
 div.container.serie{
