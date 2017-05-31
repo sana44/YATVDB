@@ -33,3 +33,4 @@ series_search:
 serie_showSeason:
     path:     /serie/{name}/season/{id}
     defaults: { _controller: "SerieBundle:Season:showSeason" }
+
