@@ -18,9 +18,20 @@ class EpisodeType extends AbstractType
             ->add('episodeNumber')
             ->add('name')
             ->add('resume')
-            ->add('diffusionDate')
-            ->add('image')
-            ->add('season')
+            ->add('diffusionDate', 'date', [
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'dd-MM-yyyy',
+                'attr' => ["class" => 'js-datepicker',
+                           "placeholder" => 'Pick a date']
+            ])
+            ->add('image', 'entity', array(
+                'class'=>"SerieBundle:Image",
+                'property'=>"Url",
+                'multiple'=>false,
+                'required'=>true,
+                'empty_value'=>"Choisir Url"
+                ))
         ;
     }
     

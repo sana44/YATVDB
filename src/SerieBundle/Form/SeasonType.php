@@ -18,8 +18,13 @@ class SeasonType extends AbstractType
             ->add('seasonNumber')
             ->add('name')
             ->add('resume')
-            ->add('diffusionDate')
-            ->add('serie')
+            ->add('diffusionDate', 'date', [
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'dd-MM-yyyy',
+                'attr' => ["class" => 'js-datepicker',
+                           "placeholder" => 'Pick a date']
+            ])
         ;
     }
     

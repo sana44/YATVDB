@@ -50,7 +50,10 @@ class User extends BaseUser
      */
     private $episodes;
 
+    
+
     public function __construct(){
+        parent::__construct();
         $this -> episodes = new ArrayCollection;
     }
 

@@ -33,23 +33,34 @@ class EpisodeController extends Controller
      * Creates a new Episode entity.
      *
      */
-    public function createAction(Request $request)
+    public function addEpisodeAction($serieName, $seasonId)
     {
-        $entity = new Episode();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('episode_show', array('id' => $entity->getId())));
+        $em = $this->getDoctrine()->getManager();
+        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$serieName]);
+        $season = $em->getRepository('SerieBundle:Season')->find($seasonId);
+               
+        $episode = new Episode();
+        $episode->setSeason($season);
+        $episode->setSerie($serie);
+        
+        $form=$this->createForm(new EpisodeType(), $episode);
+        $request=$this->getRequest();
+        $method=$request->getMethod();
+        if($method=="POST"){
+            $form->bind($request);
+            if($form->isValid()){
+                $em->persist($episode);
+                $em->flush();
+                return $this->redirect($this->generateUrl('serie_showSeason', ['name' => $serie->getName(), 'id' => $season->getId()]));
+            }
+            
         }
 
-        return $this->render('SerieBundle:Episode:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+        return $this->render("SerieBundle:Episode:addEpisode.html.twig", array(
+            'form'=>$form->createView(),
+            'serie'=>$serie,
+            'season'=>$season,
+            'episode'=>$episode
         ));
     }
 

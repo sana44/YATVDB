@@ -82,13 +82,13 @@ class SerieController extends Controller
      * Displays a form to create a new Serie entity.
      *
      */
-    public function newSerieAction($id)
+    public function newSerieAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $serie = $em->getRepository('SerieBundle:Serie')->find($id);
-        if(!$serie){
-            $serie = new Serie();
-        }
+        $serie = $em->getRepository('SerieBundle:Serie')->findAll();
+        
+        $serie = new Serie();
+        
         $form=$this->createForm(new SerieType(), $serie);
         $request=$this->getRequest();
         $method=$request->getMethod();
@@ -98,8 +98,9 @@ class SerieController extends Controller
                 $em->persist($serie);
                 $em->flush();
                 return $this->redirect($this->generateUrl('serie_detail', ['name' => $serie->getName()]));
-            }
+            }  
         }
+        
 
         return $this->render("SerieBundle:Serie:new.html.twig", array(
             'form'=>$form->createView(),
@@ -111,18 +112,18 @@ class SerieController extends Controller
      * Displays a form to edit an existing Serie entity.
      *
      */
-    public function editSerieAction($id)
+    public function editSerieAction($name)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $serie = $em->getRepository('SerieBundle:Serie')->find($id);
+        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$name]);
 
         if (!$serie) {
-            throw $this->createNotFoundException('Unable to find Serie entity.');
+            throw $this->createNotFoundException('La série n\'existe pas');
         }
 
         $editForm = $this->createEditForm($serie);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($name);
 
         return $this->render('SerieBundle:Serie:edit.html.twig', array(
             'serie'      => $serie,
