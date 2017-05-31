@@ -5,6 +5,7 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -44,7 +45,17 @@ class User extends BaseUser
      */
     private $commentaires;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="\SerieBundle\Entity\Episode", cascade={"persist"})
+     */
+    private $episodes;
 
+    
+
+    public function __construct(){
+        parent::__construct();
+        $this -> episodes = new ArrayCollection;
+    }
 
     /**
      * Set firstname
@@ -169,5 +180,38 @@ class User extends BaseUser
     public function getCommentaires()
     {
         return $this->commentaires;
+    }
+
+    /**
+     * Add episodes
+     *
+     * @param \SerieBundle\Entity\Episode $episodes
+     * @return User
+     */
+    public function addEpisode(\SerieBundle\Entity\Episode $episodes)
+    {
+        $this->episodes[] = $episodes;
+
+        return $this;
+    }
+
+    /**
+     * Remove episodes
+     *
+     * @param \SerieBundle\Entity\Episode $episodes
+     */
+    public function removeEpisode(\SerieBundle\Entity\Episode $episodes)
+    {
+        $this->episodes->removeElement($episodes);
+    }
+
+    /**
+     * Get episodes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEpisodes()
+    {
+        return $this->episodes;
     }
 }
