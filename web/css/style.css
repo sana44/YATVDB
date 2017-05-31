@@ -354,6 +354,11 @@ span.lastSerieTitle {
 	width: 1138px;
 	background-color: white;
 	overflow: hidden;
+
+
+.titrementionslegales{
+	font-size: 15px;
+	font-weight: bold;
 }
 
 .genre, .container.accueil, .container.serieListe{
@@ -558,5 +563,3 @@ a.right.carousel-control, a.left.carousel-control{
 i.glyphicon-chevron-left, i.glyphicon-chevron-right{
 	color:white;
 }
-
-

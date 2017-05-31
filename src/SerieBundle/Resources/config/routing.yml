@@ -6,12 +6,6 @@ serie_seriecomment:
     resource: "@SerieBundle/Resources/config/routing/seriecomment.yml"
     prefix:   /seriecomment
 
-serie_addComment:
-    pattern:  /comment/{serie_id}
-    defaults: { _controller: SerieBundle:SerieComment:addComment }
-    requirements:
-        _method:  POST
-        
 serie_episode:
     resource: "@SerieBundle/Resources/config/routing/episode.yml"
     prefix:   /episode
@@ -19,6 +13,10 @@ serie_episode:
 serie_serie:
     resource: "@SerieBundle/Resources/config/routing/serie.yml"
     prefix:   /serie
+
+serie_legalNotice:
+    path:     /mentions-legales
+    defaults: { _controller: SerieBundle:Default:legalNotice }
 
 serie_showCategories:
     path:     /genres

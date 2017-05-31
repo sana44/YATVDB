@@ -178,7 +178,7 @@ class Image
 
     public function getUploadDir()
     {
-    return 'images';
+    return 'img';
     }
 
     public function getWebPath()

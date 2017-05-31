@@ -75,4 +75,8 @@ class DefaultController extends Controller
             'episodes' => $episodes
         ]);
     }
+    public function legalNoticeAction()
+    {
+    	return $this->render('SerieBundle:Default:LegalNotice.html.twig');
+    }
 }
