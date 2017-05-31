@@ -5,6 +5,7 @@ namespace SerieBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use SerieBundle\Form\ImageType;
 
 class EpisodeType extends AbstractType
 {
@@ -16,6 +17,7 @@ class EpisodeType extends AbstractType
     {
         $builder
             ->add('episodeNumber')
+
             ->add('name')
             ->add('resume')
             ->add('diffusionDate', 'date', [

@@ -1,6 +1,7 @@
 <?php
 
 namespace SerieBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,7 +31,7 @@ class SerieComment
 
     /**
      * @var string
-     *
+     * @Assert\Length(min=5)
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -52,6 +53,12 @@ class SerieComment
     /**
      * @var integer
      *
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 5,
+     *      minMessage = "The score must be at least {{ limit }}",
+     *      maxMessage = "The score must be {{ limit }} maximum"
+     * )
      * @ORM\Column(name="score", type="integer")
      */
     private $score;

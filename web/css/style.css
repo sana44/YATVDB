@@ -1,8 +1,5 @@
 body { margin-top: 10px; background-image:linear-gradient(white,white, silver); background-repeat: no-repeat;}
 [class*="col"] { margin-bottom: 10px; }
-.wrap{
-    min-height: 70.5vh;
-}
 
 /* Mise en page du menu horizontal */
 #menu .accueil:hover{ background-color: #48b9c7;}
@@ -33,7 +30,7 @@ body { margin-top: 10px; background-image:linear-gradient(white,white, silver); 
 
 /* Bouton connexion, visible uniquement par un utilisateur non authentifié */
 a.login-btn{
-	width:145px;
+	width:165px;
 	height: 36px;
 	background-color: #ee3124;
 	border: none;
@@ -45,23 +42,25 @@ a.login-btn{
   	text-transform: uppercase;
 }
 
-a.login-btn:hover, .deconnexion a:hover{text-decoration: none;}
+a.login-btn:hover, a.logout-btn:hover{text-decoration: none;}
 
 
 /* Bouton déconnexion, visible uniquement lorsque l'utilisateur est connecté */
-.deconnexion{
-	width:145px;
+a.logout-btn{
+	width:160px;
 	height: 36px;
 	background-color: #ee3124;
 	border: none;
-
-}
-.deconnexion a{
 	color: white;
-	font-weight: bold;
-	text-transform: uppercase;
+  	text-align: center;
+  	line-height:35px;
+  	font-family: 'Open Sans', sans-serif;
+  	font-weight: bold;
+  	text-transform: uppercase;
+  	margin-top: 10px;
 }
 
+.search{line-height:100px;}
 
 
 
@@ -147,13 +146,16 @@ button a{
 	background-image: url('/YATVDB/web/img/textureBlanc.jpg');
 	height: 200px;
 	text-align: center;
-	margin-left:15px;
-	margin-right: 15px;
-	width: 360px;
+	margin-left:20px;
+	margin-right: 18px;
+	margin-top: 25px;
+	width: 340px;
   	padding-top:20px;
+  	padding-right: 10px;
 }
 
 .category h1 {
+	line-height: 10px;
 	color: #fdb515;
 	text-transform: uppercase;
 	text-align: center;
@@ -179,13 +181,10 @@ button a{
 
 .invitSerie{
 	background-color: #fdb515;
-	height: 480px;
-	margin-top: 95px;
 	text-align: center;
-	margin-left:15px;
-	margin-right: 15px;
-	width: 360px;
-	padding: 20px;
+	height: 610px;
+	margin-left: 50px
+	width:340px;
 }
 
 
@@ -196,19 +195,29 @@ button a{
 	text-align: center;
 	letter-spacing: 3px;
 	font-family: 'Anton', sans-serif;
-	line-height:200px;
+	line-height:150px;
 	font-size: 60px;
 }
 
 .category-thumb{
     text-align: center;
     cursor: pointer;
+    height: 200px;
+	text-align: center;
+	margin-left:5px;
+	margin-right:5px;
+	margin-top: 25px;
+  	padding-top:20px;
 }
 a .category-thumb {
-	  color: white;
-	  line-height:200px;
-    font-size: 20px;
+	color: white;
+    font-size: 30px;
     word-break:break-all;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	font-family: 'Anton', sans-serif;
+	line-height: 150px;
 }
 .genre a:hover{
     text-decoration: none;
@@ -233,17 +242,12 @@ a .category-thumb {
 .genre .y:hover, .genre .z:hover
 { background-color: silver; text-decoration:none;}
 
-.serieList h2{
-	font-family: 'Anton', sans-serif;
-	font-size:40px;
-	color: #fdb515;
-	text-transform: uppercase;
-	text-align: center;
-}
+
+
 
 .favoris {background-color: #ee3124;}
 .delete {background-color: #59bd73;}
-.retour{background-color: #48b9c7;}
+.retour{background-color: #48b9c7; margin: 15px;}
 
 .favoris, .delete, .retour {
 	color: white;
@@ -278,15 +282,30 @@ span.lastSerieTitle {
 	object-fit: cover;
 }
 
+.seriePicture, .genrePicture{
+	overflow: hidden;}
+
+
 .serieList {
 	text-align: center;
 	background-color: white;
 	height: 670px;
+	margin-top:20px;
+	margin-bottom: 20px;
+	
 }
 
 .serieList img{
-	height: 480px;
 	object-fit: cover;
+}
+
+.serieList h2{
+	font-family: 'Anton', sans-serif;
+	font-size:30px;
+	color: #fdb515;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 0px;
 }
 
 .accueil h2{
@@ -331,16 +350,28 @@ span.lastSerieTitle {
  	color: #686868;
 }
 
+.container.serieListe, .container.accueil, .container.serie, .container.addSerieForm, .container.genre{
+	width: 1138px;
+	background-color: white;
+	overflow: hidden;
+
+
+.titrementionslegales{
+	font-size: 15px;
+	font-weight: bold;
+}
+
 .genre, .container.accueil, .container.serieListe{
 	background-color: white;
-	padding:15px;
+	
+	
 }
 
 .profilContent{
 	background-color: white;
 }
 
-.profilContent h2{
+.profilContent h2, .addSerieForm h2{
 	color:#48b9c7;
 	font-family: 'Anton', sans-serif;
 	border-bottom: 1px solid #48b9c7;
@@ -356,7 +387,13 @@ span.lastSerieTitle {
 	height:60px;
 }
 
-.profilContent span, .username{
+.username{
+	line-height:60px;
+	font-family: 'Anton', sans-serif;
+	font-size: 30px;
+
+}
+.profilContent span{
 	font-family: 'Bad Script', cursive;
 	font-size: 30px;
 	font-weight: bold;
@@ -366,6 +403,7 @@ footer .container{
     background-color: #686868;
     min-height: 3em;
     border-radius: 3px;
+    width: 1138px;
 }
 footer ul{
     margin: 10px auto;
@@ -386,13 +424,10 @@ footer ul li a:hover{
     color: #DBDBDB;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5fa4d5fab7de1965f23f0b7e7d29513f4bdcab23
 div.container.serie{
 	background-color: white;
 }
+
 
 .serie h1, .serie h3{
 	color:#48b9c7;
@@ -435,17 +470,39 @@ span.detailSaison, p.detailSaison{
 
 
 
-button.addSerie{
+a.addSerie{
 	width:150px;
     height:150px;
-  	background-color: #686868;
-  	color: white;
+  	background-color: white ;
+  	color: #686868;
   	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	font-size: 15px;
 	text-transform: uppercase;
 	border: none;
+	padding-top: 40px;
 }
+
+a.btn-updateSerie, a.btn-deleteSerie, a.btn-addEpisode{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 13px;
+	text-transform: uppercase;
+	border: none;
+	color: white;
+	margin-bottom: 20px;
+
+
+}
+
+a.btn-updateSerie{background-color: #59bd73; margin-top: 170px;}
+a.btn-deleteSerie{background-color: #ee3124;}
+a.btn-addEpisode{background-color: #fdb515;}
+
+a.btn-updateSerie i, a.btn-deleteSerie i, a.btn-addEpisode i{ margin-right: 10px; }
+
+
+
 
 /*
 serie_detail content highlight
@@ -464,3 +521,45 @@ serie_detail content highlight
     }
 }
 
+.multi-item-carousel{
+  .carousel-inner{
+    > .item{
+      transition: 500ms ease-in-out left;
+    }
+    .active{
+      &.left{
+        left:-33%;
+      }
+      &.right{
+        left:33%;
+      }
+    }
+    .next{
+      left: 33%;
+    }
+    .prev{
+      left: -33%;
+    }
+    @media all and (transform-3d), (-webkit-transform-3d) {
+      > .item{
+        // use your favourite prefixer here
+        transition: 500ms ease-in-out left;
+        transition: 500ms ease-in-out all;
+        backface-visibility: visible;
+        transform: none!important;
+      }
+    }
+  }
+  .carouse-control{
+    &.left, &.right{
+      background-image: none;
+    }
+  }
+}
+a.right.carousel-control, a.left.carousel-control{
+	background-image: none;
+}
+
+i.glyphicon-chevron-left, i.glyphicon-chevron-right{
+	color:white;
+}

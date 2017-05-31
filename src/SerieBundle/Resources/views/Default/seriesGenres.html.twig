@@ -10,8 +10,9 @@
                     <span class="keyWord"> Cliquez </span>
                     <span> dessus pour découvir toutes les séries liées à ce genre! </span>
                 </div>
+
                 {% for category in categories %}
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 genrePicture">
                         <a href="{{ path('serie_showCategory', { 'name': category.name }) }}">
                             <div class="category-thumb {{ category.name|slice(0,1) }}">
                                 {{ category.name }}
@@ -19,6 +20,7 @@
                         </a>
                     </div>
                 {% endfor %}
+                
             </div> 
         <p> Vous adorez une série, mais vous ne la trouvez pas sur FishBlock ? Vous pouvez dès maintenant l'ajouter à notre sélection ! </p>
     </div>
