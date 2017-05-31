@@ -112,18 +112,18 @@ class SerieController extends Controller
      * Displays a form to edit an existing Serie entity.
      *
      */
-    public function editSerieAction($name)
+    public function editSerieAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$name]);
+        $serie = $em->getRepository('SerieBundle:Serie')->find($id);
 
         if (!$serie) {
             throw $this->createNotFoundException('La série n\'existe pas');
         }
 
         $editForm = $this->createEditForm($serie);
-        $deleteForm = $this->createDeleteForm($name);
+        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SerieBundle:Serie:edit.html.twig', array(
             'serie'      => $serie,
@@ -217,7 +217,7 @@ class SerieController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('serie_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('serie_detail', array('name' => $entity->getName())));
         }
 
         return $this->render('SerieBundle:Serie:edit.html.twig', array(
