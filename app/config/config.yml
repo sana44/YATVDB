@@ -116,3 +116,5 @@ bazinga_faker:
           name: { method:sentence, parameters:[6, true] }
       SerieBundle\Entity\SerieComment:
         number: 200
+        custom_formatters:
+          score: {method:numberBetween, parameters:[0, 5]}
