@@ -94,7 +94,7 @@ bazinga_faker:
           firstname: {method: firstname}
           lastname: {method: lastname}
       SerieBundle\Entity\Image:
-        number: 200
+        number: 2000
         custom_formatters:
           url: { method:imageUrl, parameters:[640, 480]}
       SerieBundle\Entity\SerieCategory:

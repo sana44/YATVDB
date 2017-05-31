@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+
+<form method="POST">
+	<legend>Ajout Episode</legend>
+	<div>
+		{{form_widget(form)}}
+		{{form_rest(form)}}
+	</div>
+	
+	 <div>
+		 <div>
+		 <a href="{{ path('serie_showSeason', {'name':season.serie.name, 'id': season.id}) }}" class="btn btn-lg btn-danger pull-right">Annuler</a>
+		 <input type="submit" value="Ajouter" class="btn btn-lg btn-primary"/>
+		 </div>
+	 </div>
+ </form>
+
+{% endblock %}

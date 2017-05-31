@@ -33,23 +33,30 @@ class SeasonController extends Controller
      * Creates a new Season entity.
      *
      */
-    public function createAction(Request $request)
+    public function addSeasonAction($name)
     {
-        $entity = new Season();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('season_show', array('id' => $entity->getId())));
+        $em = $this->getDoctrine()->getManager();
+        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$name]);
+        
+        $season = new Season();
+        $season->setSerie($serie);
+        $form=$this->createForm(new SeasonType(), $season);
+        $request=$this->getRequest();
+        $method=$request->getMethod();
+        if($method=="POST"){
+            $form->bind($request);
+            if($form->isValid()){
+                $em->persist($season);
+                $em->flush();
+                return $this->redirect($this->generateUrl('serie_detail', ['name' => $serie->getName()]));
+            }
+            
         }
 
-        return $this->render('SerieBundle:Season:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+        return $this->render("SerieBundle:Season:addSeason.html.twig", array(
+            'form'=>$form->createView(),
+            'serie'=>$serie,
+            'season'=>$season
         ));
     }
 
