@@ -118,12 +118,16 @@ class SerieController extends Controller
 
         $serie = $em->getRepository('SerieBundle:Serie')->find($id);
 
+        
         if (!$serie) {
             throw $this->createNotFoundException('Unable to find Serie entity.');
         }
 
         $editForm = $this->createEditForm($serie);
         $deleteForm = $this->createDeleteForm($id);
+
+        $serie -> getImage() -> setUrl('test.png');
+        $serie -> getImage() -> newDateTime();
 
         return $this->render('SerieBundle:Serie:edit.html.twig', array(
             'serie'      => $serie,
