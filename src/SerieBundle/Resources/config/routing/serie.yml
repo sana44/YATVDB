@@ -8,7 +8,7 @@ serie_create:
     methods:  POST
 
 serie_edit:
-    path:     /edit/{name}
+    path:     /edit/{id}
     defaults: { _controller: "SerieBundle:Serie:editSerie" }
 
 serie_update:
