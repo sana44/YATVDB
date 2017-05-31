@@ -16,9 +16,9 @@ class EpisodeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('episodeNumber', 'int')
+            ->add('episodeNumber')
             ->add('name', 'text')
-            ->add('resume' 'textarea')
+            ->add('resume', 'textarea')
             ->add('diffusionDate', 'date')
             ->add('image', new ImageType())
             ->add('season')

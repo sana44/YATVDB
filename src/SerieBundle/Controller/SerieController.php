@@ -113,6 +113,7 @@ class SerieController extends Controller
      */
     public function editSerieAction($id)
     {
+        
         $em = $this->getDoctrine()->getManager();
 
         $serie = $em->getRepository('SerieBundle:Serie')->find($id);

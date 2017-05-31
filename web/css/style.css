@@ -478,6 +478,25 @@ a.addSerie{
 	padding-top: 40px;
 }
 
+a.btn-updateSerie, a.btn-deleteSerie, a.btn-addEpisode{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 13px;
+	text-transform: uppercase;
+	border: none;
+	color: white;
+	margin-bottom: 20px;
+
+
+}
+
+a.btn-updateSerie{background-color: #59bd73; margin-top: 170px;}
+a.btn-deleteSerie{background-color: #ee3124;}
+a.btn-addEpisode{background-color: #fdb515;}
+
+a.btn-updateSerie i, a.btn-deleteSerie i, a.btn-addEpisode i{ margin-right: 10px; }
+
+
 
 
 /*
