@@ -2,20 +2,40 @@
 
 {% block body %}
 
-<div class="container">
- 	<h1> Saison n°{{ season.seasonNumber }} </h1>
+<div class="container showSeason">
+	
+	<h2> {{serie.name}} - Saison n°{{ season.seasonNumber }} </h2>
+		
+{%for episode in season.episodes%}
     <div class="row">
-        {%for episode in season.episodes%}
-	        <div>
-	        	<img class="thumbnail"
-	             alt="{{ episode.image.alt }}"
-	             src="{{ episode.image.url }}"/>
+
+        
+
+	        <div class="col-lg-2">
+	        	<img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}" alt="{{episode.image.alt|default('')}}" class="thumbnail" style="width:100%""></a>
 	        </div>
-	        <p>Date de diffusion : {{ episode.diffusionDate | date('d/m/Y') }}</p>
-	        <p>Nom de l'épisode : {{episode.name}}</p>
-	        <p>Episode n°{{episode.episodeNumber}}</p>
-	        <p>Résumé : {{episode.resume}}</p>       
-        {%endfor%}
+
+	        <div class="col-lg-7">
+		        <span class="libelle">Nom de l'épisode : </span> <span> {{episode.name}} - Episode n°{{episode.episodeNumber}} </span> <br>
+		        <span class="libelle">Date de diffusion : </span> <span>{{ episode.diffusionDate | date('d/m/Y') }}</span> <br>
+		        <span class="libelle">Résumé : </span> <br> <span>{{episode.resume}}</span> 
+		    </div>
+
+		    <div class="col-lg-3 text-right">
+		        <a class="btn-updateEpisode btn" href="#">
+                   	<i class="glyphicon glyphicon-scissors"></i> modifier
+               	</a> <br>
+               	<form method="POST" action="#" >
+                    <a class="btn-deleteEpisode btn"> <i class="glyphicon glyphicon-trash"> </i> supprimer</a>
+                </form>
+            </div>
+    	
+        
+    </div>
+	       
+{%endfor%}
+	       
+
     </div>
 
 </div>

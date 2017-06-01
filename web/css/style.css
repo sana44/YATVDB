@@ -1,5 +1,10 @@
-body { margin-top: 10px; background-image:linear-gradient(white,white, silver); background-repeat: no-repeat;}
+body { 
+	margin-top: 10px; 
+	background-image:linear-gradient(white,white, silver); 
+	background-repeat: no-repeat;}
 [class*="col"] { margin-bottom: 10px; }
+
+
 
 /* Mise en page du menu horizontal */
 #menu .accueil:hover{ background-color: #48b9c7;}
@@ -350,7 +355,7 @@ span.lastSerieTitle {
  	color: #686868;
 }
 
-.container.serieListe, .container.accueil, .container.serie, .container.addSerieForm, .container.genre{
+.container.serieListe, .container.accueil, .container.serie, .container.addSerieForm, .container.genre, .container.showSeason{
 	width: 1138px;
 	background-color: white;
 	overflow: hidden;
@@ -441,13 +446,13 @@ div.container.serie{
 .serie h1{ font-size: 50px; }
 .serie h3{ font-size: 30px; }
 
-.serie span, .serie p {
+.serie span, .serie p, .showSeason span {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
 	color: #686868;
 }
 
-.serie .libelle{
+.serie .libelle, .showSeason .libelle{
 	color: #fdb515;
 	font-size: 16px;
 	font-weight: bold;
@@ -478,7 +483,7 @@ a.addSerie{
 	padding-top: 40px;
 }
 
-a.btn-updateSerie, a.btn-deleteSerie, a.btn-addEpisode{
+a.btn-updateSerie, a.btn-deleteSerie, a.btn-addEpisode, a.btn-updateEpisode, a.btn-deleteEpisode {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	font-size: 13px;
@@ -494,9 +499,18 @@ a.btn-updateSerie{background-color: #59bd73; margin-top: 170px;}
 a.btn-deleteSerie{background-color: #ee3124;}
 a.btn-addEpisode{background-color: #fdb515;}
 
+a.btn-updateEpisode{background-color: #59bd73; margin-bottom: 15px;}
+a.btn-deleteEpisode{background-color: #ee3124; }
+
 a.btn-updateSerie i, a.btn-deleteSerie i, a.btn-addEpisode i{ margin-right: 10px; }
 
-
+/* Template showSeason */
+.showSeason h2 {
+	color:#48b9c7;
+	font-family: 'Anton', sans-serif;
+	border-bottom: 1px solid #48b9c7;
+	text-transform: uppercase;
+}
 
 
 /*
