@@ -98,18 +98,18 @@ class SeasonController extends Controller
      * Finds and displays a Season entity.
      *
      */
-    public function showSeasonAction($name, $id)
+    public function showSeasonAction($name, $seasonNumber)
     {
         $em = $this->getDoctrine()->getManager();
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$name]);
-        $season = $em->getRepository('SerieBundle:Season')->find($id);
+        $season = $em->getRepository('SerieBundle:Season')->findOneBy(['seasonNumber'=>$seasonNumber]);
         //dump($season);
         //die();
         if (!$season) {
             throw $this->createNotFoundException('Unable to find Season entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($season->getId());
 
         return $this->render('SerieBundle:Season:showSeason.html.twig', array(
             'serie'=>$serie,
