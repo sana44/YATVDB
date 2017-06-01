@@ -35,3 +35,7 @@ serie_addSeason:
 serie_addEpisode:
     path:     /{serieName}/season/{seasonNumber}/addEpisode
     defaults: { _controller: "SerieBundle:Episode:addEpisode" }
+
+serie_editEpisode:
+    path:     /{serieName}/season/{seasonNumber}/episode/{episodeNumber}/editEpisode
+    defaults: { _controller: "SerieBundle:Episode:editEpisode"}
