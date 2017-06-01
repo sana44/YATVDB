@@ -34,7 +34,6 @@ class Season
 
     /**
      * @var integer
-     *
      * @ORM\Column(name="season_number", type="integer")
      */
     private $seasonNumber;

@@ -3,6 +3,7 @@
 namespace SerieBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use SerieBundle\Entity\Episode;
@@ -33,25 +34,36 @@ class EpisodeController extends Controller
      * Creates a new Episode entity.
      *
      */
-    public function addEpisodeAction($serieName, $seasonId)
+    public function addEpisodeAction($serieName, $seasonNumber)
     {
         $em = $this->getDoctrine()->getManager();
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$serieName]);
-        $season = $em->getRepository('SerieBundle:Season')->find($seasonId);
-               
+        $season = $em->getRepository('SerieBundle:Season')->findOneBy(['seasonNumber'=> $seasonNumber,
+            'serie'=> $serie]);
+        dump($serie->getId()); 
+       
+        if(!$season){
+            throw new NotFoundHttpException("Season not found");
+        }
+        if(!$serie){
+            throw new NotFoundHttpException("Serie not found");
+        }   
+
         $episode = new Episode();
         $episode->setSeason($season);
         $episode->setSerie($serie);
-        
+        //dump($episode);
         $form=$this->createForm(new EpisodeType(), $episode);
         $request=$this->getRequest();
         $method=$request->getMethod();
         if($method=="POST"){
             $form->bind($request);
             if($form->isValid()){
+                //dump($episode);
+                //die();
                 $em->persist($episode);
                 $em->flush();
-                return $this->redirect($this->generateUrl('serie_showSeason', ['name' => $serie->getName(), 'id' => $season->getId()]));
+                return $this->redirect($this->generateUrl('serie_showSeason', ['name' => $serie->getName(), 'seasonNumber' => $season->getSeasonNumber()]));
             }
             
         }

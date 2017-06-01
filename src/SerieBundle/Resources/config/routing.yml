@@ -30,7 +30,5 @@ series_search:
     path:     /search
     defaults: { _controller: "SerieBundle:Default:globalSearch" }
 
-serie_showSeason:
-    path:     /serie/{name}/season/{id}
-    defaults: { _controller: "SerieBundle:Season:showSeason" }
+
 
