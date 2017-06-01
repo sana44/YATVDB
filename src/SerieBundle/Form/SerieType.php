@@ -24,10 +24,10 @@ class SerieType extends AbstractType
                 'widget' => 'single_text',
                 'html5' => false,
                 'format' => 'dd-MM-yyyy',
-                'attr' => ["class" => 'js-datepicker',
+                'attr' => ["class" => 'js-datepicker form-control',
                            "placeholder" => 'Pick a date']
             ])
-            ->add('image', new ImageType())
+            ->add('image', new ImageType(), ['required' => false] )
             ->add('category','entity', array(
                 'class'=>"SerieBundle:serieCategory",
                 'property'=>"name",

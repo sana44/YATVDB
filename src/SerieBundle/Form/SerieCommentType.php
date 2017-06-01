@@ -15,11 +15,14 @@ class SerieCommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', 'textarea')
+            ->add('content', 'textarea', ['attr' => ['class' => 'addCommentTextarea']])
             ->add('score', 'integer',
                   ['attr' => ['min' => 0,
-                              'max' => 5],
+                              'max' => 5,
+                              'class' => 'addCommentScore'],
                   ])
+            ->add('save', 'submit', ['attr' => ['class' => 'addCommentSubmit'],
+                                     'label' => 'Envoyer'])
         ;
     }
 
