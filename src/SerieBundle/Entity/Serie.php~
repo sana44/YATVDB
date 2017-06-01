@@ -15,7 +15,7 @@ class Serie
 {
 
   /**
-   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie")
+   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie", cascade={"remove"})
    */
   private $comments;
 

@@ -4,7 +4,7 @@ namespace SerieBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use SerieBundle\Entity\Serie;
 use SerieBundle\Entity\SerieComment;
 use SerieBundle\Form\SerieType;
@@ -119,12 +119,16 @@ class SerieController extends Controller
 
         $serie = $em->getRepository('SerieBundle:Serie')->find($id);
 
+        
         if (!$serie) {
             throw $this->createNotFoundException('La série n\'existe pas');
         }
 
         $editForm = $this->createEditForm($serie);
         $deleteForm = $this->createDeleteForm($id);
+
+        $serie -> getImage() -> setUrl('test.png');
+        $serie -> getImage() -> newDateTime();
 
         return $this->render('SerieBundle:Serie:edit.html.twig', array(
             'serie'      => $serie,
@@ -160,24 +164,15 @@ class SerieController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         $serie=$em->getRepository("SerieBundle:Serie")->find($id);
-        $categoryName=$serie->getCategory()->getName();
-        if($serie){
-            $id=$serie->getId();
+
+        if(!$serie){
+            throw new NotFoundHttpException("Aucune série trouvée pour l'id $id");
         }
-        $request=$this->getRequest();
-        $method=$request->getMethod();
-        
-        if($method=='POST'){
-            if($id!=0){
-                $em->remove($serie);
-                $em->flush();
-            }
-            return $this->redirect($this->generateUrl('serie_showCategory', array('name' => $categoryName))
-            );  
-        }
-        return $this->render('SerieBundle:Default:serieList.html.twig', array(
-            'category'=>$serie->getCategory(),
-        ));
+
+        $em->remove($serie);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('serie_showCategory',['name' => $serie->getCategory()->getName()]));
     }
 
     /**

@@ -16,7 +16,7 @@ serie_serie:
 
 serie_legalNotice:
     path:     /mentions-legales
-    defaults: { _controller: SerieBundle:Default:legalNotice }
+    defaults: { _controller: "SerieBundle:Default:legalNotice" }
 
 serie_showCategories:
     path:     /genres
