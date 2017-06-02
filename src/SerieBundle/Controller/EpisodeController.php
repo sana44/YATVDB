@@ -24,16 +24,18 @@ class EpisodeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$serieName]);
-        $season = $em->getRepository('SerieBundle:Season')->findOneBy(['seasonNumber'=> $seasonNumber,
-            'serie'=> $serie]);
-        dump($serie->getId()); 
-       
+        $season = $em->getRepository('SerieBundle:Season')->findOneBy(
+            ['seasonNumber'=> $seasonNumber,
+             'serie'=> $serie]);
+
         if(!$season){
             throw new NotFoundHttpException("Season not found");
         }
         if(!$serie){
             throw new NotFoundHttpException("Serie not found");
-        }   
+        }
+
+
 
         $episode = new Episode();
         $episode->setSeason($season);
@@ -47,9 +49,11 @@ class EpisodeController extends Controller
             if($form->isValid()){
                 $em->persist($episode);
                 $em->flush();
-                return $this->redirect($this->generateUrl('serie_showSeason', ['name' => $serie->getName(), 'seasonNumber' => $season->getSeasonNumber()]));
+                return $this->redirect($this->generateUrl('serie_showSeason',
+                                                          ['name' => $serie->getName(),
+                                                           'seasonNumber' => $season->getSeasonNumber()]));
             }
-            
+
         }
 
         return $this->render("SerieBundle:Episode:addEpisode.html.twig", array(

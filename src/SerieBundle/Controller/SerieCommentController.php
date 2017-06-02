@@ -35,6 +35,9 @@ class SerieCommentController extends Controller
 
     $serie = $em->getRepository('SerieBundle:Serie')->find($serie_id);
     $user = $this->container->get('security.context')->getToken()->getUser();
+    if(!$user){
+      // throw new Unauthorised exception.
+    }
 
     $form = $this->createCreateForm($comment, $serie->getId());
 
@@ -70,8 +73,6 @@ class SerieCommentController extends Controller
                                                                      'action' => $this->generateUrl('serie_addComment', ['serie_id' => $serie_id]),
                                                                      'method' => 'POST',
                                                                      ));
-    $form->add('submit', 'submit', array('label' => 'Create'));
-
     return $form;
   }
 

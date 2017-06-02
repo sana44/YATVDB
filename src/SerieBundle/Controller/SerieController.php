@@ -136,7 +136,7 @@ class SerieController extends Controller
 
     /**
      * Deletes a Serie entity.
-     * 
+     *
      */
     public function deleteSerieAction(Request $request, $id)
     {
