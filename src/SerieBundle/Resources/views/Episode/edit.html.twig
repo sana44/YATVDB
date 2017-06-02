@@ -9,13 +9,11 @@ Proposition de modification de l'épisode n°{episode.episodeNumber}
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-   			 <li>
-		        <a href="{{ path('serie_showSeason', { 'name': serie.name,'seasonNumber': season.seasonNumber }) }}">
-		            RETOUR
-		        </a>
-    		</li>
-    <li>
-    {{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+    	<li>
+    	   <a href="{{ path('serie_showSeason', { 'name': serie.name,'seasonNumber': season.seasonNumber }) }}">
+    	       RETOUR
+    	   </a>
+    	</li>
+    </ul>
 {% endblock %}

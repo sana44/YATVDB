@@ -96,8 +96,7 @@ class SeasonController extends Controller
         $em = $this->getDoctrine()->getManager();
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$name]);
         $season = $em->getRepository('SerieBundle:Season')->findOneBy(['seasonNumber'=>$seasonNumber]);
-        //dump($season);
-        //die();
+        
         if (!$season) {
             throw $this->createNotFoundException('Unable to find Season entity.');
         }
