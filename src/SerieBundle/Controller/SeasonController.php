@@ -37,7 +37,7 @@ class SeasonController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$name]);
-        
+    
         $season = new Season();
         $season->setSerie($serie);
         $form=$this->createForm(new SeasonType(), $season);

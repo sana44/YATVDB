@@ -1,16 +1,21 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+Proposition de modification de l'épisode n°{episode.episodeNumber}
+{% endblock %}
+
 {% block body -%}
     <h1>Episode edit</h1>
 
     {{ form(edit_form) }}
 
         <ul class="record_actions">
+   			 <li>
+		        <a href="{{ path('serie_showSeason', { 'name': serie.name,'seasonNumber': season.seasonNumber }) }}">
+		            RETOUR
+		        </a>
+    		</li>
     <li>
-        <a href="{{ path('episode') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+    {{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
