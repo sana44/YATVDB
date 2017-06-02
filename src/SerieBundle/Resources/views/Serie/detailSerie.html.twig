@@ -24,21 +24,18 @@
             </div>
             <div class="col-lg-4">
                 <a class="btn-updateSerie btn pull-right" href="{{path('serie_edit', {'id': serie.id})}}">
-                    <i class="glyphicon glyphicon-scissors"></i> Je souhaite modifier cette série
+                    <i class="glyphicon glyphicon-scissors"></i> Modifier la série
                 </a> <br>
                 <a class="btn-deleteSerie btn pull-right" href="{{path('serie_delete', {'id':serie.id})}}">
-                    <i class="glyphicon glyphicon-trash"></i> Je souhaite supprimer cette série
+                    <i class="glyphicon glyphicon-trash"></i> Supprimer la série
                 </a> <br>
-                <a class="btn-addEpisode btn pull-right" href="{{path('episode_new')}}">
-                    <i class="glyphicon glyphicon-plus-sign"></i> Je souhaite ajouter un épisode à cette série
-                </a> <br>
-
-
+                
                 <a href="{{path('serie_addSeason', {'name': serie.name})}}" class="btn-addSeason btn pull-right">
                     <i class="glyphicon glyphicon-plus"> </i> Ajouter une saison
                 </a> 
             </div>
         </div>
+
         {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
             {{ form(serieCommentForm) }}
         {% endif %}
@@ -76,21 +73,12 @@
                 <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <span class="detail"> Plus de détails <i class="glyphicon glyphicon-menu-right"></i> </span></a>
             </div>
         </div>
- 
-         <div class="carousel slide row" id="episodesCarousel" data-ride="carousel" data-type="multi" data-interval="2000" id="episodesCarousel">
+        {%endfor%}
 
-
-         
-            <div class="carousel slide multi-item-carousel" >
-                   
-
-                <div class="carousel-inner">
-                    <div class="item active">
 
         {% for season in serie.seasons %}
             <div class="row">
                 <div class="col-lg-12">
-                    <h4> Saison n°{{season.seasonNumber}} </h4>
                     <span class="detailSaison"> Date de sortie: {{season.diffusionDate | date('d/m/Y')}} </span> <br>
                     <span class="detailSaison"> Nombres d'épisodes: {{season.episodes|length}} </span>
                     <p class="detailSaison"> Résumé: <br> {{season.resume}} </p>
@@ -107,7 +95,8 @@
 
                 {%endfor%}
             </div>
-    {%endfor%}
+        {%endfor%}
+
 
     <div class="row">
         <a class="btn retour" href="{{ path('serie_showCategories')}}">

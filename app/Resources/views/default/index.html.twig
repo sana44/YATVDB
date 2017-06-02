@@ -34,11 +34,11 @@
 	<h2> Les dernières séries ajoutées </h2>
 	<div class="row">
     {% for s in lastSeries %}
-    	<div class="col-lg-2 lastSerie">
-    		<a href="{{ path('serie_detail', {'name':s.name}) }}">
-	        <img src="{{asset(s.image.url|default(''))}}" alt="{{s.image.alt|default('')}}" > <br>
-	        <span class="lastSerieTitle"> {{ s.name }} </span>
-	        </a>
+      	<div class="col-lg-2 lastSerie">
+   		<a href="{{ path('serie_detail', {'name':s.name}) }}">
+  	        <img src="{{asset(s.image.url|default(''))}}" alt="{{s.image.alt|default('')}}" > <br>
+  	        <span class="lastSerieTitle"> {{ s.name }} </span>
+         </a>
          </div>
     {% endfor %}
     </div>
