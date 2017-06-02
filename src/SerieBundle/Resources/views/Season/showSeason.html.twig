@@ -15,11 +15,11 @@
 		</div>
 
 		<div class="col-lg-4">
-			<a class="btn-updateSeason btn pull-right" href="#"> 
+			<a class="btn-updateSeason btn pull-right" href="{{path('serie_editSeason', {'serieName' : serie.name, 'seasonNumber' : season.seasonNumber})}}">
 				<i class="glyphicon glyphicon-scissors"></i> Modifier la saison
 			</a>
 
-			<a class="btn-deleteSeason btn pull-right" href="#">
+			<a class="btn-deleteSeason btn pull-right" href="{{path('season_delete', {'seasonId' : season.id})}}">
 				<i class="glyphicon glyphicon-trash"> </i> Supprimer la saison
 			</a>
 
@@ -46,12 +46,12 @@
 		    </div>
 
 		    <div class="col-lg-3 text-right">
-		        <a class="btn-updateEpisode btn" href="#">
+		        <a class="btn-updateEpisode btn" href="{{path('serie_editEpisode', {'serieName' : episode.serie.name, 'seasonNumber' : episode.season.seasonNumber, 'episodeNumber' : episode.episodeNumber})}}">
                    	<i class="glyphicon glyphicon-scissors"></i> modifier
                	</a> 
-               	<form method="POST" action="#" >
-                    <a class="btn-deleteEpisode btn"> <i class="glyphicon glyphicon-trash"> </i> supprimer</a>
-                </form>
+               	<a class="btn-deleteEpisode btn pull-right" href="{{path('episode_delete', {'episodeId' : episode.id})}}">
+				<i class="glyphicon glyphicon-trash"> </i> Supprimer
+				</a>
             </div>
     	
         
