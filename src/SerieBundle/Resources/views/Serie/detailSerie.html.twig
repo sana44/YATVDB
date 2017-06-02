@@ -33,6 +33,10 @@
                     <i class="glyphicon glyphicon-plus-sign"></i> Je souhaite ajouter un épisode à cette série
                 </a> <br>
 
+
+                <a href="{{path('serie_addSeason', {'name': serie.name})}}" class="btn-addSeason btn pull-right">
+                    <i class="glyphicon glyphicon-plus"> </i> Ajouter une saison
+                </a> 
             </div>
         </div>
         {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
@@ -62,6 +66,26 @@
     </div>
 
     <div class="container serie">
+
+        {% for season in serie.seasons %}
+        <div class="row">
+            <div class="col-lg-10">
+                <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <h4> Saison n°{{season.seasonNumber}} - {{season.name}} </h4> </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <span class="detail"> Plus de détails <i class="glyphicon glyphicon-menu-right"></i> </span></a>
+            </div>
+        </div>
+ 
+         <div class="carousel slide row" id="episodesCarousel" data-ride="carousel" data-type="multi" data-interval="2000" id="episodesCarousel">
+
+
+         
+            <div class="carousel slide multi-item-carousel" >
+                   
+
+                <div class="carousel-inner">
+                    <div class="item active">
 
         {% for season in serie.seasons %}
             <div class="row">

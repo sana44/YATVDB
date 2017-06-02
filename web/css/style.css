@@ -5,9 +5,15 @@
 body { margin-top: 10px; background-image:linear-gradient(white,white, silver); background-repeat: no-repeat;}
 
 [class*="col"] { margin-bottom: 10px; }
+.container{
+	background-color: white;
+	width: 1138px;
+	overflow: hidden;
+	}
 
-
-
+.container.passwordForget, .container.checkEmail, .container.confirmedAction, .container.addSeason{
+	min-height: 52.4vh;
+}
 /* Mise en page du menu horizontal */
 #menu .accueil:hover{ background-color: #48b9c7;}
 #menu .series:hover{ background-color: #fdb515;}
@@ -109,13 +115,13 @@ button a{
 }
 
 .menuInfos{
-	background-image: url('../img/backgroundMenu.jpg');
+	background-color: #EBEAEA;
 	padding-top:40px;
 	padding-bottom:40px;
 }
 
 .menuInfos a{
-	color:white;
+	color:#48b9c7;
 	font-size: 17px
 }
 
@@ -320,7 +326,7 @@ span.lastSerieTitle {
 	font-family: 'Anton', sans-serif;
 	margin-bottom: 20px;
 }
- .accueil p{
+ .accueil p, .checkEmail p, .confirmedAction p{
  	font-family: 'Open Sans', sans-serif;
  	font-size: 15px;
  	text-align: justify;
@@ -355,12 +361,6 @@ span.lastSerieTitle {
  	font-size: 15px;
  	text-align: justify;
  	color: #686868;
-}
-
-.container.serieListe, .container.accueil, .container.serie, .container.addSerieForm, .container.genre, .container.showSeason{
-	width: 1138px;
-	background-color: white;
-	overflow: hidden;
 }
 
 .titrementionslegales{
@@ -399,10 +399,23 @@ span.lastSerieTitle {
 	font-size: 30px;
 
 }
-.profilContent span{
+.profilContent span.username{
 	font-family: 'Bad Script', cursive;
-	font-size: 30px;
+	font-size: 40px;
 	font-weight: bold;
+	color: #ee3124;
+}
+
+.profilContent span{
+	color: #686868;
+	line-height: 50px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	
+}
+
+span.profile{
+	line-height: 0px;
 }
 
 footer .container{
@@ -506,7 +519,7 @@ a.addSerie{
 	padding-top: 40px;
 }
 
-a.btn-updateSerie, a.btn-deleteSerie, a.btn-updateEpisode, a.btn-deleteEpisode, a.btn-addEpisode, a.btn-serieReturn, a.btn-addSeason, a.btn-updateSeason, a.btn-deleteSeason {
+a.btn-updateSerie, a.btn-deleteSerie, a.btn-updateEpisode, a.btn-deleteEpisode, a.btn-addEpisode, a.btn-serieReturn, a.btn-addSeason, a.btn-updateSeason, a.btn-deleteSeason, input.btn-passwordForget {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	font-size: 13px;
@@ -522,6 +535,7 @@ a.btn-updateSerie, a.btn-deleteSerie, a.btn-updateEpisode, a.btn-deleteEpisode, 
 a.btn-updateSerie, a.btn-updateSeason{background-color: #59bd73; margin-top: 0px;}
 a.btn-deleteSerie, a.btn-deleteSeason{background-color: #ee3124;}
 a.btn-addSeason {background-color: #fdb515;}
+input.btn-passwordForget{background-color: #48b9c7; border:none; width: 300px;}
 
 a.btn-addEpisode, a.btn-serieReturn{
 	background-color: #fdb515; 
@@ -541,6 +555,20 @@ a.btn-updateSerie i, a.btn-deleteSerie i, a.btn-addEpisode i, a.btn-updateSeason
 	text-transform: uppercase;
 	}
 
+.menuProfil{
+	background-color: #EBEAEA;
+	width: 255px;
+	padding-top: 55px;
+	padding-bottom: 55px;
+}
+
+.menuProfil a{
+	color: #48b9c7;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 13px;
+
+}
 
 /*
 serie_detail content highlight

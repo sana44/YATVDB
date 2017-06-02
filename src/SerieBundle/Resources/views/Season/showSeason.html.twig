@@ -9,6 +9,7 @@
 	<div class="row">
 
 		<div class="col-lg-8">
+			<span class="detailSaison libelle"> Nom:  </span> <span> {{season.name}} </span> <br> <br>
 			<span class="detailSaison libelle"> Date de sortie: </span> <span> {{season.diffusionDate | date('d/m/Y')}} </span> <br> <br>
 	        <span class="detailSaison libelle"> Nombres d'épisodes: </span> <span> {{season.episodes|length}} </span><br><br>
 	        <p class="detailSaison libelle"> Résumé: </p>  <p>{{season.resume}} </p>
@@ -46,7 +47,9 @@
 		    </div>
 
 		    <div class="col-lg-3 text-right">
+
 		        <a class="btn-updateEpisode btn" href="{{path('serie_editEpisode', {'serieName' : episode.serie.name, 'seasonNumber' : episode.season.seasonNumber, 'episodeNumber' : episode.episodeNumber})}}">
+
                    	<i class="glyphicon glyphicon-scissors"></i> modifier
                	</a> 
                	<a class="btn-deleteEpisode btn pull-right" href="{{path('episode_delete', {'episodeId' : episode.id})}}">
