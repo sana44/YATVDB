@@ -114,5 +114,6 @@ bazinga_faker:
         number: 200
         custom_formatters:
           name: { method:sentence, parameters:[6, true] }
+          episodeNumber: {method:numberBetween, parameters:[1,30]}
       SerieBundle\Entity\SerieComment:
         number: 200
