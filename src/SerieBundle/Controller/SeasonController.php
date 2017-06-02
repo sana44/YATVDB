@@ -3,6 +3,7 @@
 namespace SerieBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use SerieBundle\Entity\Season;
@@ -79,18 +80,26 @@ class SeasonController extends Controller
         return $form;
     }
 
-    /**
-     * Displays a form to create a new Season entity.
-     *
-     */
-    public function newAction()
+    public function editSeasonAction($serieName, $seasonNumber)
     {
-        $entity = new Season();
-        $form   = $this->createCreateForm($entity);
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->render('SerieBundle:Season:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(["name"=>$serieName]);
+        $season = $em->getRepository('SerieBundle:Season')->findOneBy(["seasonNumber"=>$seasonNumber]);
+
+
+        if (!$season) {
+            throw $this->createNotFoundException('La saison n\'existe pas');
+        }
+
+        $editForm = $this->createEditForm($season);
+        $deleteForm = $this->createDeleteForm($seasonNumber);
+
+        return $this->render('SerieBundle:Season:edit.html.twig', array(
+            'season'      => $season,
+            'serie'       => $serie,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -103,10 +112,8 @@ class SeasonController extends Controller
         $em = $this->getDoctrine()->getManager();
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(['name'=>$name]);
         $season = $em->getRepository('SerieBundle:Season')->findOneBy(['seasonNumber'=>$seasonNumber]);
-        //dump($season);
-        //die();
         if (!$season) {
-            throw $this->createNotFoundException('Unable to find Season entity.');
+            throw new NotFoundHttpException('La saison n\'existe pas');
         }
 
         $deleteForm = $this->createDeleteForm($season->getId());
@@ -114,30 +121,6 @@ class SeasonController extends Controller
         return $this->render('SerieBundle:Season:showSeason.html.twig', array(
             'serie'=>$serie,
             'season'      => $season,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Displays a form to edit an existing Season entity.
-     *
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SerieBundle:Season')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Season entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('SerieBundle:Season:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -160,6 +143,7 @@ class SeasonController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Season entity.
      *
@@ -168,24 +152,24 @@ class SeasonController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SerieBundle:Season')->find($id);
+        $season = $em->getRepository('SerieBundle:Season')->find($id);
 
-        if (!$entity) {
+        if (!$season) {
             throw $this->createNotFoundException('Unable to find Season entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($season);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('season_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('serie_detail', array('name' => $season->getSerie()->getName())));
         }
 
         return $this->render('SerieBundle:Season:edit.html.twig', array(
-            'entity'      => $entity,
+            'season'      => $season,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
