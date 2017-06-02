@@ -31,32 +31,10 @@ class SerieController extends Controller
             throw $this->createNotFoundException('Cette série n\'existe pas');
         }
         $serieCommentForm = $SerieCommentController->createCreateForm(new SerieComment, $serie->getId());
-        
+
         return $this->render('SerieBundle:Serie:detailSerie.html.twig', array(
             'serie' => $serie,
             'serieCommentForm' => $serieCommentForm->createView()
-        ));
-    }
-    /**
-     * Creates a new Serie entity.
-     * 
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Serie();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('serie_detail', array('name' => $entity->getName())));
-        }
-
-        return $this->render('SerieBundle:Serie:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
         ));
     }
 
@@ -83,7 +61,7 @@ class SerieController extends Controller
      * Displays a form to create a new Serie entity.
      *
      */
-    public function newSerieAction()
+    public function addSerieAction()
     {
         $em = $this->getDoctrine()->getManager();
         $serie = $em->getRepository('SerieBundle:Serie')->findAll();
@@ -189,7 +167,7 @@ class SerieController extends Controller
         $serie=$em->getRepository("SerieBundle:Serie")->find($id);
 
         if(!$serie){
-            throw new NotFoundHttpException("Aucune série trouvée pour l'id $id");
+            throw new NotFoundHttpException("Aucune série trouvée");
         }
 
         $em->remove($serie);
@@ -223,24 +201,24 @@ class SerieController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SerieBundle:Serie')->find($id);
+        $serie = $em->getRepository('SerieBundle:Serie')->find($id);
 
-        if (!$entity) {
+        if (!$serie) {
             throw $this->createNotFoundException('Unable to find Serie entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($serie);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('serie_detail', array('name' => $entity->getName())));
+            return $this->redirect($this->generateUrl('serie_detail', array('name' => $serie->getName())));
         }
 
         return $this->render('SerieBundle:Serie:edit.html.twig', array(
-            'entity'      => $entity,
+            'serie'      => $serie,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

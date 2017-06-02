@@ -17,20 +17,6 @@ class EpisodeController extends Controller
 {
 
     /**
-     * Lists all Episode entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('SerieBundle:Episode')->findAll();
-
-        return $this->render('SerieBundle:Episode:index.html.twig', array(
-            'entities' => $entities,
-        ));
-    }
-    /**
      * Creates a new Episode entity.
      *
      */
@@ -48,8 +34,6 @@ class EpisodeController extends Controller
         if(!$serie){
             throw new NotFoundHttpException("Serie not found");
         }
-
-
 
         $episode = new Episode();
         $episode->setSeason($season);
@@ -98,43 +82,6 @@ class EpisodeController extends Controller
     }
 
     /**
-     * Displays a form to create a new Episode entity.
-     *
-     */
-    public function newAction()
-    {
-        $entity = new Episode();
-        $form   = $this->createCreateForm($entity);
-
-        return $this->render('SerieBundle:Episode:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Episode entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SerieBundle:Episode')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Episode entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('SerieBundle:Episode:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing Episode entity.
      *
      */
@@ -146,17 +93,13 @@ class EpisodeController extends Controller
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(["name"=>$serieName]);
         $season = $em->getRepository('SerieBundle:Season')->findOneBy(["seasonNumber"=>$seasonNumber]);
         $episode = $em->getRepository('SerieBundle:Episode')->findOneBy(["episodeNumber"=>$episodeNumber]);
-       // $episode = $em -> getRepository('SerieBundle:Episode')->findOneBy(["image"=>$image]);
-        
-        dump($episode);
-        die;
 
         if (!$episode) {
             throw $this->createNotFoundException('L\'épisode n\'existe pas');
         }
 
         $editForm = $this->createEditForm($episode);
-        $deleteForm = $this->createDeleteForm($seasonNumber);
+        $deleteForm = $this->createDeleteForm($episodeNumber);
 
         return $this->render('SerieBundle:Episode:edit.html.twig', array(
             'episode'     => $episode,
@@ -214,28 +157,25 @@ class EpisodeController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Episode entity.
      *
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteEpisodeAction(Request $request, $episodeId)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        
+        $em=$this->getDoctrine()->getManager();
+        $episode=$em->getRepository("SerieBundle:Episode")->find($episodeId);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('SerieBundle:Episode')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Episode entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if(!$episode){
+            throw new NotFoundHttpException("Aucun épisode trouvé");
         }
 
-        return $this->redirect($this->generateUrl('episode'));
+        $em->remove($episode);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('serie_showSeason',['name' => $episode->getSerie()->getName(), 'seasonNumber' => $episode->getSeason()->getSeasonNumber()]));
     }
 
     /**
@@ -245,10 +185,10 @@ class EpisodeController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm($episodeId)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('episode_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('episode_delete', array('episodeId' => $episodeId)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

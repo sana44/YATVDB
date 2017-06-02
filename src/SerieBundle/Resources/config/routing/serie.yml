@@ -1,11 +1,6 @@
-serie_new:
-    path:     /newSerie
-    defaults: { _controller: "SerieBundle:Serie:newSerie" }
-
-serie_create:
-    path:     /create
-    defaults: { _controller: "SerieBundle:Serie:create" }
-    methods:  POST
+serie_addSerie:
+    path:     /addSerie
+    defaults: { _controller: "SerieBundle:Serie:addSerie" }
 
 serie_edit:
     path:     /edit/{id}
@@ -31,6 +26,10 @@ serie_showSeason:
 serie_addSeason:
     path:     /{name}/addSeason
     defaults: { _controller: "SerieBundle:Season:addSeason" }
+
+serie_editSeason:
+    path:     /{serieName}/season/{seasonNumber}/editSeason
+    defaults: { _controller: "SerieBundle:Season:editSeason"}
 
 serie_addEpisode:
     path:     /{serieName}/season/{seasonNumber}/addEpisode

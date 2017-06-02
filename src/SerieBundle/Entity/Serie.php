@@ -17,18 +17,19 @@ use Doctrine\ORM\Mapping as ORM;
 class Serie
 {
 
-  /**
-   * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie", cascade={"remove"})
-   */
-  private $comments;
+    /**
+     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="serie", cascade={"remove"})
+     * @ORM\OrderBy({"createdAt" = "DESC"})
+     */
+    private $comments;
 
     /**
      * @ORM\OneToOne(targetEntity="\SerieBundle\Entity\Image", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
-  private $image;
+    private $image;
 
-  /**
+    /**
      * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Episode", mappedBy="serie", cascade={"remove"})
      */
     private $episodes;
