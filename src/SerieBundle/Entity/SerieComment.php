@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="SerieBundle\Entity\SerieCommentRepository")
+ * @ORM\OrderBy({"createdAt" = "ASC"}) 
  */
 class SerieComment
 {

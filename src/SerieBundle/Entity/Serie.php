@@ -3,12 +3,15 @@
 namespace SerieBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Serie
  *
  * @ORM\Table()
+ * @UniqueEntity("name")
  * @ORM\Entity(repositoryClass="SerieBundle\Entity\SerieRepository")
  */
 class Serie
@@ -21,7 +24,7 @@ class Serie
 
     /**
      * @ORM\OneToOne(targetEntity="\SerieBundle\Entity\Image", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
   private $image;
 

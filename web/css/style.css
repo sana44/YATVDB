@@ -1,7 +1,9 @@
-body { 
-	margin-top: 10px; 
-	background-image:linear-gradient(white,white, silver); 
-	background-repeat: no-repeat;}
+
+.wrap{
+    min-height: 52.4vh;
+}
+body { margin-top: 10px; background-image:linear-gradient(white,white, silver); background-repeat: no-repeat;}
+
 [class*="col"] { margin-bottom: 10px; }
 
 

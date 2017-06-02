@@ -70,8 +70,6 @@ class SerieCommentController extends Controller
                                                                      'action' => $this->generateUrl('serie_addComment', ['serie_id' => $serie_id]),
                                                                      'method' => 'POST',
                                                                      ));
-    $form->add('submit', 'submit', array('label' => 'Create'));
-
     return $form;
   }
 

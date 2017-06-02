@@ -31,6 +31,7 @@ class SerieController extends Controller
             throw $this->createNotFoundException('Cette série n\'existe pas');
         }
         $serieCommentForm = $SerieCommentController->createCreateForm(new SerieComment, $serie->getId());
+        $serieComments = 
         return $this->render('SerieBundle:Serie:detailSerie.html.twig', array(
             'serie' => $serie,
             'serieCommentForm' => $serieCommentForm->createView()
@@ -158,7 +159,7 @@ class SerieController extends Controller
 
     /**
      * Deletes a Serie entity.
-     * 
+     *
      */
     public function deleteSerieAction(Request $request, $id)
     {
