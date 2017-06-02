@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
+{% block body %}
     <style>
      .serie .thumbnail{
          width:100%;
@@ -29,7 +29,7 @@
                 <a class="btn-deleteSerie btn pull-right" href="{{path('serie_delete', {'id':serie.id})}}">
                     <i class="glyphicon glyphicon-trash"></i> Supprimer la série
                 </a> <br>
-                
+
                 <a href="{{path('serie_addSeason', {'name': serie.name})}}" class="btn-addSeason btn pull-right">
                     <i class="glyphicon glyphicon-plus"> </i> Ajouter une saison
                 </a> 
@@ -64,6 +64,7 @@
 
     <div class="container serie">
 
+
         {% for season in serie.seasons %}
         <div class="row">
             <div class="col-lg-10">
@@ -76,25 +77,23 @@
         {%endfor%}
 
 
-        {% for season in serie.seasons %}
-            <div class="row">
-                <div class="col-lg-12">
-                    <span class="detailSaison"> Date de sortie: {{season.diffusionDate | date('d/m/Y')}} </span> <br>
-                    <span class="detailSaison"> Nombres d'épisodes: {{season.episodes|length}} </span>
-                    <p class="detailSaison"> Résumé: <br> {{season.resume}} </p>
-                </div>
-                {% for episode in season.episodes%}
-                    <div class="col-lg-2">
-                        <a href="#">
-                            <img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}"
-                                 alt="{{episode.image.alt|default('')}}"
-                                 class="img-responsive">
-                        </a>
-                        <span>épisode n°{{episode.episodeNumber}}</span>
-                    </div>
+   
+                {% for season in serie.seasons %}
+                    
+                    {% for episode in season.episodes%}
+                        <div class="col-lg-2">
+                            <a href="#">
+                                <img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}"
+                                     alt="{{episode.image.alt|default('')}}"
+                                     class="img-responsive">
+                            </a>
+                            <span>épisode n°{{episode.episodeNumber}}</span>
+                        </div>
 
+                    {%endfor%}
                 {%endfor%}
             </div>
+
         {%endfor%}
 
 
@@ -104,5 +103,6 @@
         </a>
     </div>
 
-   </div>
+
+
 {% endblock %}

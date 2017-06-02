@@ -36,6 +36,7 @@ class Serie
 
     /**
      * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\Season", mappedBy="serie", cascade={"remove"})
+     * @ORM\OrderBy({"seasonNumber" = "ASC"})
      */
     private $seasons;
 
