@@ -3,8 +3,32 @@
 {% block body %}
 
 <div class="container showSeason">
-	
-	<h2> {{serie.name}} - Saison n°{{ season.seasonNumber }} </h2>
+
+	<h1> {{serie.name}} - Saison n°{{ season.seasonNumber }} </h1>
+
+	<div class="row">
+
+		<div class="col-lg-8">
+			<span class="detailSaison libelle"> Date de sortie: </span> <span> {{season.diffusionDate | date('d/m/Y')}} </span> <br> <br>
+	        <span class="detailSaison libelle"> Nombres d'épisodes: </span> <span> {{season.episodes|length}} </span><br><br>
+	        <p class="detailSaison libelle"> Résumé: </p>  <p>{{season.resume}} </p>
+		</div>
+
+		<div class="col-lg-4">
+			<a class="btn-updateSeason btn pull-right" href="#"> 
+				<i class="glyphicon glyphicon-scissors"></i> Modifier la saison
+			</a>
+
+			<a class="btn-deleteSeason btn pull-right" href="#">
+				<i class="glyphicon glyphicon-trash"> </i> Supprimer la saison
+			</a>
+
+			<a class="btn-addEpisode btn pull-right" href="{{path('serie_addEpisode', {'serieName' : serie.name, 'seasonNumber' : season.seasonNumber})}}">
+		        <i class="glyphicon glyphicon-plus-sign"></i> Ajouter un épisode
+		    </a> <br>
+		</div>
+
+    </div>
 		
 {%for episode in season.episodes%}
     <div class="row">
@@ -16,15 +40,15 @@
 	        </div>
 
 	        <div class="col-lg-7">
-		        <span class="libelle">Nom de l'épisode : </span> <span> {{episode.name}} - Episode n°{{episode.episodeNumber}} </span> <br>
-		        <span class="libelle">Date de diffusion : </span> <span>{{ episode.diffusionDate | date('d/m/Y') }}</span> <br>
-		        <span class="libelle">Résumé : </span> <br> <span>{{episode.resume}}</span> 
+		        <span class="strong">Nom de l'épisode : </span> <span> {{episode.name}} - Episode n°{{episode.episodeNumber}} </span> <br>
+		        <span class="strong">Date de diffusion : </span> <span>{{ episode.diffusionDate | date('d/m/Y') }}</span> <br>
+		        <span class="strong">Résumé : </span> <br> <span>{{episode.resume}}</span> 
 		    </div>
 
 		    <div class="col-lg-3 text-right">
 		        <a class="btn-updateEpisode btn" href="#">
                    	<i class="glyphicon glyphicon-scissors"></i> modifier
-               	</a> <br>
+               	</a> 
                	<form method="POST" action="#" >
                     <a class="btn-deleteEpisode btn"> <i class="glyphicon glyphicon-trash"> </i> supprimer</a>
                 </form>
@@ -35,8 +59,13 @@
 	       
 {%endfor%}
 	       
+ <div class="row">
+        <a class="btn retour" href="{{ path('serie_showCategories')}}">
+            <i class="glyphicon glyphicon-chevron-left"></i> Retour
+        </a>
+    </div>
 
     </div>
 
-</div>
+
 {% endblock %}

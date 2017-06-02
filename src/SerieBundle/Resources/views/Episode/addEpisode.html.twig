@@ -19,7 +19,7 @@
         </div>
 
         <div class="form-group">
-            {{ form_label(form.episodeNumber, "Titre de la série: ") }}
+            {{ form_label(form.episodeNumber, "Episode n°: ") }}
             {{ form_errors(form.episodeNumber) }}
             {{ form_widget(form.episodeNumber, {'attr':{'class':'form-control'}}) }}
         </div>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            {{ form_label(form.diffusionDate, "Date de réalisation: ") }}
+            {{ form_label(form.diffusionDate, "Date de diffusion: ") }}
             {{ form_errors(form.diffusionDate) }}
             {{ form_widget(form.diffusionDate, {'attr':{'class':'form-control'}}) }}
         </div>
@@ -47,9 +47,11 @@
 	
 
 	
-	 <div>
-		 <div>
+	 <div class="row">
+		 <div class="col-lg-2 pull-right">
 		 <a href="{{ path('serie_showSeason', {'name':season.serie.name, 'seasonNumber': season.seasonNumber}) }}" class="btn btn-lg btn-danger pull-right">Annuler</a>
+         </div>
+         <div class="col-lg-1 pull-right">
 		 <input type="submit" value="Ajouter" class="btn btn-lg btn-primary"/>
 		 </div>
 	 </div>
