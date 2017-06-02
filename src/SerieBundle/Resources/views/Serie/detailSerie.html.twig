@@ -24,10 +24,10 @@
             </div>
             <div class="col-lg-4">
                 <a class="btn-updateSerie btn pull-right" href="{{path('serie_edit', {'id': serie.id})}}">
-                    <i class="glyphicon glyphicon-scissors"></i> Je souhaite modifier cette série
+                    <i class="glyphicon glyphicon-scissors"></i> Modifier la série
                 </a> <br>
                 <a class="btn-deleteSerie btn pull-right" href="{{path('serie_delete', {'id':serie.id})}}">
-                    <i class="glyphicon glyphicon-trash"></i> Je souhaite supprimer cette série
+                    <i class="glyphicon glyphicon-trash"></i> Supprimer la série
                 </a> <br>
 
                 <a href="{{path('serie_addSeason', {'name': serie.name})}}" class="btn-addSeason btn pull-right">
@@ -35,6 +35,7 @@
                 </a> 
             </div>
         </div>
+
         {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
             {{ form(serieCommentForm) }}
         {% endif %}
@@ -62,14 +63,23 @@
     </div>
 
     <div class="container serie">
-            <div class="row">
+
+
+        {% for season in serie.seasons %}
+        <div class="row">
+            <div class="col-lg-10">
+                <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <h4> Saison n°{{season.seasonNumber}} - {{season.name}} </h4> </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <span class="detail"> Plus de détails <i class="glyphicon glyphicon-menu-right"></i> </span></a>
+            </div>
+        </div>
+        {%endfor%}
+
+
+   
                 {% for season in serie.seasons %}
-                    <div class="col-lg-12">
-                        <h4> Saison n°{{season.seasonNumber}} </h4>
-                        <span class="detailSaison"> Date de sortie: {{season.diffusionDate | date('d/m/Y')}} </span> <br>
-                        <span class="detailSaison"> Nombres d'épisodes: {{season.episodes|length}} </span>
-                        <p class="detailSaison"> Résumé: <br> {{season.resume}} </p>
-                    </div>
+                    
                     {% for episode in season.episodes%}
                         <div class="col-lg-2">
                             <a href="#">
@@ -83,11 +93,14 @@
                     {%endfor%}
                 {%endfor%}
             </div>
-            <div class="row">
-                <a class="btn retour" href="{{ path('serie_showCategories')}}">
-                    <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des genres
-                </a>
-            </div>
+
+        {%endfor%}
+
+
+    <div class="row">
+        <a class="btn retour" href="{{ path('serie_showCategories')}}">
+            <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des genres
+        </a>
     </div>
 
 
