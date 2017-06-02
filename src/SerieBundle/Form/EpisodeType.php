@@ -27,13 +27,8 @@ class EpisodeType extends AbstractType
                 'attr' => ["class" => 'js-datepicker',
                            "placeholder" => 'Pick a date']
             ])
-            ->add('image', 'entity', array(
-                'class'=>"SerieBundle:Image",
-                'property'=>"Url",
-                'multiple'=>false,
-                'required'=>true,
-                'empty_value'=>"Choisir Url"
-                ))
+            ->add('image', new ImageType(), array(
+                'required' => false))
         ;
     }
     

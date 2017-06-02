@@ -1,8 +1,12 @@
+
 .wrap{
     min-height: 52.4vh;
 }
 body { margin-top: 10px; background-image:linear-gradient(white,white, silver); background-repeat: no-repeat;}
+
 [class*="col"] { margin-bottom: 10px; }
+
+
 
 /* Mise en page du menu horizontal */
 #menu .accueil:hover{ background-color: #48b9c7;}
@@ -185,7 +189,7 @@ button a{
 .invitSerie{
 	background-color: #fdb515;
 	text-align: center;
-	height: 610px;
+	height: 590px;
 	margin-left: 50px
 	width:340px;
 }
@@ -293,8 +297,8 @@ span.lastSerieTitle {
 	text-align: center;
 	background-color: white;
 	height: 670px;
-	margin-top:20px;
-	margin-bottom: 20px;
+	
+	
 	
 }
 
@@ -353,7 +357,7 @@ span.lastSerieTitle {
  	color: #686868;
 }
 
-.container.serieListe, .container.accueil, .container.serie, .container.addSerieForm, .container.genre{
+.container.serieListe, .container.accueil, .container.serie, .container.addSerieForm, .container.genre, .container.showSeason{
 	width: 1138px;
 	background-color: white;
 	overflow: hidden;
@@ -434,6 +438,14 @@ div.container.serie{
 	text-transform: uppercase;
 }
 
+.serie span.detail{
+	line-height: 65px;
+	color: #fdb515;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+}
+
 .serie h4{
 	color:#fdb515;
 	font-family: 'Anton', sans-serif;
@@ -441,25 +453,38 @@ div.container.serie{
 	border-bottom: 1px solid #fdb515;
 }
 
+.serie a:hover{text-decoration: none;}
+
+.serie h4:hover{color: #48b9c7;}
+
 .serie h1{ font-size: 50px; }
 .serie h3{ font-size: 30px; }
 
-.serie span, .serie p {
+.serie span, .serie p, .showSeason span {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
 	color: #686868;
 }
 
-.serie .libelle{
+.serie .libelle, .showSeason .libelle{
 	color: #fdb515;
 	font-size: 16px;
 	font-weight: bold;
-	text-decoration: underline;
 }
 
-span.detailSaison, p.detailSaison{
+.detailSaison span, .detailSaison p{
 	color: #686868;
-	font-size: 14px;
+	font-size: 15px;
+}
+
+
+.showSeason span, .showSeason p{
+	color: #686868;
+	font-size: 15px;
+}
+
+span.strong{
+	font-weight: bold;
 }
 
 .serie label{
@@ -471,8 +496,8 @@ span.detailSaison, p.detailSaison{
 a.addSerie{
 	width:150px;
     height:150px;
-  	background-color: white ;
-  	color: #686868;
+  	background-color: #ee3124 ;
+  	color: white;
   	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	font-size: 15px;
@@ -481,7 +506,7 @@ a.addSerie{
 	padding-top: 40px;
 }
 
-a.btn-updateSerie, a.btn-deleteSerie, a.btn-addEpisode{
+a.btn-updateSerie, a.btn-deleteSerie, a.btn-updateEpisode, a.btn-deleteEpisode, a.btn-addEpisode, a.btn-serieReturn, a.btn-addSeason, a.btn-updateSeason, a.btn-deleteSeason {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	font-size: 13px;
@@ -489,17 +514,32 @@ a.btn-updateSerie, a.btn-deleteSerie, a.btn-addEpisode{
 	border: none;
 	color: white;
 	margin-bottom: 20px;
+	width: 200px;
 
 
 }
 
-a.btn-updateSerie{background-color: #59bd73; margin-top: 170px;}
-a.btn-deleteSerie{background-color: #ee3124;}
-a.btn-addEpisode{background-color: #fdb515;}
+a.btn-updateSerie, a.btn-updateSeason{background-color: #59bd73; margin-top: 0px;}
+a.btn-deleteSerie, a.btn-deleteSeason{background-color: #ee3124;}
+a.btn-addSeason {background-color: #fdb515;}
 
-a.btn-updateSerie i, a.btn-deleteSerie i, a.btn-addEpisode i{ margin-right: 10px; }
+a.btn-addEpisode, a.btn-serieReturn{
+	background-color: #fdb515; 
+	color: white;
+}
 
+a.btn-updateEpisode{background-color: #59bd73; margin-bottom: 15px;}
+a.btn-deleteEpisode{background-color: #ee3124; }
 
+a.btn-updateSerie i, a.btn-deleteSerie i, a.btn-addEpisode i, a.btn-updateSeason i, a.btn-deleteSeason i{ margin-right: 10px; }
+
+/* Template showSeason */
+.showSeason h1 {
+	color:#48b9c7;
+	font-family: 'Anton', sans-serif;
+	border-bottom: 1px solid #48b9c7;
+	text-transform: uppercase;
+	}
 
 
 /*
