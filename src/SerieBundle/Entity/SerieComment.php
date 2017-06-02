@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="SerieBundle\Entity\SerieCommentRepository")
- * @ORM\OrderBy({"createdAt" = "ASC"}) 
  */
 class SerieComment
 {
@@ -65,7 +64,7 @@ class SerieComment
     private $score;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\UserBundle\Entity\User", inversedBy="commentaires")
+     * @ORM\ManyToOne(targetEntity="\UserBundle\Entity\User", inversedBy="serieComments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

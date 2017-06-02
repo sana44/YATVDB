@@ -41,20 +41,20 @@ class User extends BaseUser
     private $profilePicture;
 
     /**
-     * @ORM\OneToMany(targetEntity="\SerieBundle\Entity\SerieComment", mappedBy="user")
+     * @ORM\OneToMany(targetEntity = "\SerieBundle\Entity\SerieComment", mappedBy="user")
      */
-    private $commentaires;
+    protected $comments;
 
     /**
      * @ORM\ManyToMany(targetEntity="\SerieBundle\Entity\Episode", cascade={"persist"})
      */
     private $episodes;
 
-    
 
     public function __construct(){
         parent::__construct();
         $this -> episodes = new ArrayCollection;
+        $this -> comments = new ArrayCollection;
     }
 
     /**
@@ -73,7 +73,7 @@ class User extends BaseUser
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -155,9 +155,9 @@ class User extends BaseUser
      * @param \SerieBundle\Entity\SerieComment $commentaires
      * @return User
      */
-    public function addCommentaire(\SerieBundle\Entity\SerieComment $commentaires)
+    public function addComment(\SerieBundle\Entity\SerieComment $comment)
     {
-        $this->commentaires[] = $commentaires;
+        $this->comments[] = $comment;
 
         return $this;
     }
@@ -167,9 +167,9 @@ class User extends BaseUser
      *
      * @param \SerieBundle\Entity\SerieComment $commentaires
      */
-    public function removeCommentaire(\SerieBundle\Entity\SerieComment $commentaires)
+    public function removeComment(\SerieBundle\Entity\SerieComment $comment)
     {
-        $this->commentaires->removeElement($commentaires);
+        $this->comments->removeElement($comment);
     }
 
     /**
@@ -177,9 +177,9 @@ class User extends BaseUser
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCommentaires()
+    public function getComments()
     {
-        return $this->commentaires;
+        return $this->comments;
     }
 
     /**
