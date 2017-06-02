@@ -31,7 +31,7 @@ class SerieController extends Controller
             throw $this->createNotFoundException('Cette série n\'existe pas');
         }
         $serieCommentForm = $SerieCommentController->createCreateForm(new SerieComment, $serie->getId());
-        $serieComments = 
+        
         return $this->render('SerieBundle:Serie:detailSerie.html.twig', array(
             'serie' => $serie,
             'serieCommentForm' => $serieCommentForm->createView()
@@ -115,11 +115,13 @@ class SerieController extends Controller
      */
     public function editSerieAction($id)
     {
-        
+       
+
         $em = $this->getDoctrine()->getManager();
 
         $serie = $em->getRepository('SerieBundle:Serie')->find($id);
-
+        
+        /*$serie -> getImage() -> newDateTime();*/
         
         if (!$serie) {
             throw $this->createNotFoundException('La série n\'existe pas');
@@ -128,8 +130,8 @@ class SerieController extends Controller
         $editForm = $this->createEditForm($serie);
         $deleteForm = $this->createDeleteForm($id);
 
-        $serie -> getImage() -> setUrl('test.png');
-        $serie -> getImage() -> newDateTime();
+        /*$serie -> getImage() -> setUrl('test.png');
+        $serie -> getImage() -> newDateTime();*/
 
         return $this->render('SerieBundle:Serie:edit.html.twig', array(
             'serie'      => $serie,
@@ -137,6 +139,26 @@ class SerieController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
+    /*public function modifierImageAction($id_article)
+    {
+    $em = $this->getDoctrine()->getManager();
+
+    // On récupère l'article
+    $serie = $em->getRepository('SerieBundle:Serie')->find($id_article);
+
+    // On modifie l'URL de l'image par exemple
+    $serie->getImage()->setUrl('test.png');
+
+
+    // On déclenche la modification
+    $em->flush();
+
+    return new Response('OK');
+    }*/
+
+
 
     /**
     * Creates a form to edit a Serie entity.

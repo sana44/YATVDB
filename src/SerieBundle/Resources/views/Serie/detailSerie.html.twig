@@ -30,7 +30,7 @@
                     <i class="glyphicon glyphicon-trash"> </i> Supprimer la série
                 </a> <br>
 
-                <a href="#" class="btn-addSeason btn pull-right">
+                <a href="{{path('serie_addSeason', {'name': serie.name})}}" class="btn-addSeason btn pull-right">
                     <i class="glyphicon glyphicon-plus"> </i> Ajouter une saison
                 </a> 
             </div>
@@ -59,7 +59,7 @@
         {% for season in serie.seasons %}
         <div class="row">
             <div class="col-lg-10">
-                <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <h4> Saison n°{{season.seasonNumber}}</h4> </a>
+                <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <h4> Saison n°{{season.seasonNumber}} - {{season.name}} </h4> </a>
             </div>
             <div class="col-lg-2">
                 <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <span class="detail"> Plus de détails <i class="glyphicon glyphicon-menu-right"></i> </span></a>

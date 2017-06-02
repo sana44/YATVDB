@@ -48,7 +48,7 @@
 
 
                 <div class="col-lg-2">
-                    <a href="{{ path ('fos_user_profile_show') }}"><img class="thumbnail pull-right" src="{{asset(app.user.profilePicture.url|default('img/avatar.jpg'))}}" style="width:70%"></a>
+                    <a href="{{ path ('fos_user_profile_show', {'username' : app.user.username}) }}"><img class="thumbnail pull-right" src="{{asset(app.user.profilePicture.url|default('img/avatar.jpg'))}}" style="width:70%"></a>
                 </div>
 
                
@@ -71,7 +71,7 @@
                       <li> <a href="{{path('homepage')}}" class="accueil">Accueil</a> </li>
                       <li><a href="{{ path ('serie_showCategories')}}" class="series">Séries par genres </a></li>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li><a href="{{ path ('fos_user_profile_show') }}" class="profil"> Mon activité </a></li>
+                        <li><a href="{{ path ('fos_user_profile_show', {'username' : app.user.username}) }}" class="profil"> Mon activité </a></li>
                     {%endif%}
                   </ul>
                 </div><!-- /.navbar-collapse -->

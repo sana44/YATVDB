@@ -146,7 +146,10 @@ class EpisodeController extends Controller
         $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(["name"=>$serieName]);
         $season = $em->getRepository('SerieBundle:Season')->findOneBy(["seasonNumber"=>$seasonNumber]);
         $episode = $em->getRepository('SerieBundle:Episode')->findOneBy(["episodeNumber"=>$episodeNumber]);
-        //$episode = $em->getRepository('SerieBundle:Episode')->find($idEpisode);
+       // $episode = $em -> getRepository('SerieBundle:Episode')->findOneBy(["image"=>$image]);
+        
+        dump($episode);
+        die;
 
         if (!$episode) {
             throw $this->createNotFoundException('L\'épisode n\'existe pas');
