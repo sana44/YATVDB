@@ -23,7 +23,7 @@ class SeasonType extends AbstractType
                 'widget' => 'single_text',
                 'html5' => false,
                 'format' => 'dd-MM-yyyy',
-                'attr' => ["class" => 'js-datepicker',
+                'attr' => ["class" => 'js-datepicker form-control',
                            "placeholder" => 'Pick a date']
             ])
 

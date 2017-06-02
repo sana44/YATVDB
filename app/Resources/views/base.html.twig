@@ -36,33 +36,26 @@
                         </div>
                     </form>
                 </div>
-           
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
                 <div class="col-lg-3">
-                    <p class="text-right username">{{app.user.firstname}} {{ app.user.lastname }}</p>
-                     
+                    <p class="text-right username">{{ app.user.firstname }} {{ app.user.lastname }}</p>
+
                     <a class="logout-btn pull-right" href="{{ path('fos_user_security_logout') }}"> <span class="glyphicon glyphicon-user"> </span> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}  </a>
                 </div>
 
-
                 <div class="col-lg-2">
-                    <a href="{{ path ('fos_user_profile_show') }}"><img class="thumbnail pull-right" src="{{asset(app.user.profilePicture.url|default('img/avatar.jpg'))}}" style="width:70%"></a>
+                    <a href="{{ path ('fos_user_profile_show', {'username': app.user.username} ) }}"><img class="thumbnail pull-right" src="{{asset(app.user.profilePicture.url|default('img/avatar.jpg'))}}" style="width:70%"></a>
                 </div>
-
-               
 
                 {% else %}
                     <div class="col-lg-offset-3 col-lg-2">
                         <a class="login-btn pull-right" href="{{ path('fos_user_security_login') }}"> <span class="glyphicon glyphicon-user"> </span> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                     </div>
                 {% endif %}
-
             </div>
 
-
-            
 
             <nav class="navbar navbar-default" id="menu">
               <div class="container-fluid">
@@ -71,7 +64,7 @@
                       <li> <a href="{{path('homepage')}}" class="accueil">Accueil</a> </li>
                       <li><a href="{{ path ('serie_showCategories')}}" class="series">Séries par genres </a></li>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li><a href="{{ path ('fos_user_profile_show') }}" class="profil"> Mon activité </a></li>
+                        <li><a href="{{ path ('fos_user_profile_show', {'username':app.user.username}) }}" class="profil"> Mon activité </a></li>
                     {%endif%}
                   </ul>
                 </div><!-- /.navbar-collapse -->
