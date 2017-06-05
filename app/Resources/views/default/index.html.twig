@@ -9,8 +9,10 @@
 		<div class="row">
 	    {% for s in lastSeries %}
 	    	<div class="col-lg-2 lastSerie">
+	    		<a href="{{ path('serie_detail', {'name':s.name}) }}">
 		        <img src="/YATVDB/web/{{(s.image.url|default(''))}}" alt="{{s.image.alt|default('')}}" > <br>
 		        <span class="lastSerieTitle"> {{ s.name }} </span>
+		        </a>
 	         </div>
 	    {% endfor %}
 	    </div>

@@ -5,7 +5,10 @@ Proposition de modification de l'épisode n°{episode.episodeNumber}
 {% endblock %}
 
 {% block body -%}
-    <h1>Episode edit</h1>
+
+<div class="container addSerieForm">
+     <h2>Formulaire de modification d'un épisode</h2>
+        <p> Complète ce formulaire et vos modifications seront prises en compte et mises en ligne très prochainement par notre équipe! </p>
 
     {{ form(edit_form) }}
 
@@ -16,4 +19,5 @@ Proposition de modification de l'épisode n°{episode.episodeNumber}
     	   </a>
     	</li>
     </ul>
+ </div>
 {% endblock %}
