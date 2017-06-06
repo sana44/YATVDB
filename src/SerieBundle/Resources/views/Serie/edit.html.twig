@@ -4,8 +4,31 @@
 
 
 <div class="container addSerieForm">
+   <h2>Formulaire de modification de série</h2>
+        <p> Complète ce formulaire et vos modifications seront prises en compte et mises en ligne très prochainement par notre équipe! </p>
 
-	<form method="post" {{ form_enctype (edit_form) }} >
+
+    {{ form(edit_form) }}
+   
+
+
+
+    <div class="row">
+        <div class="col-lg-offset-9 col-lg-1">
+            <a href="{{ path('serie_showCategories') }}" class="btn btn-lg btn-danger pull-right">Annuler</a>
+        </div>
+        <div class="col-lg-2 text-left">
+            <input type="submit" value="Ajouter" class="btn btn-lg btn-primary"/>
+        </div>
+    </div>
+ </div>
+
+<!--
+<div class="container addSerieForm">
+
+	<form method="post" action="{{path('serie_edit', {'id' : serie.id})}}"   {{ form_enctype (edit_form) }} >
+
+        <input type="hidden" name="_method" 
 
 		{{ form_errors(edit_form) }}
    		<h2>Formulaire de modification de série</h2>
@@ -51,15 +74,10 @@
 	{{form_rest(edit_form)}}
 	
 	
-	 <div class="row">
-	    <div class="col-lg-offset-9 col-lg-1">
-		 	<a href="{{ path('serie_showCategories') }}" class="btn btn-lg btn-danger pull-right">Annuler</a>
-		</div>
-		<div class="col-lg-2 text-left">
-		 	<input type="submit" value="Ajouter" class="btn btn-lg btn-primary"/>
-		</div>
-	</div>
+	 
  </form>
-</div>
+</div> -->
+
+
    
 {% endblock %}

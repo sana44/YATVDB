@@ -1,5 +1,5 @@
 season_update:
-    path:     /{id}/update
+    path:     /{serie_id}/{season_number}/update
     defaults: { _controller: "SerieBundle:Season:update" }
     methods:  [POST, PUT]
 

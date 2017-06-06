@@ -183,6 +183,10 @@ class Image
 
     public function getWebPath()
     {
+        if($this -> date == null){
+            $this -> newDateTime();
+        }
+
         return $this->getUploadDir().'/'. $this -> date -> getTimestamp(). $this -> getFile() -> getClientOriginalName();
     }
 }

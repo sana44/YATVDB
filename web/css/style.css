@@ -141,6 +141,11 @@ button a{
 	background-color: white;
 }
 
+.resultSearch{
+	color: #333;
+	font-weight: bold;
+}
+
 /* Blocs genres visibles dans la page d'accueil des séries */
 .Comédie, .Dramatique, .Action, .Aventure, .Science-fiction, .Historique, .Famille, .Thriller
 {

@@ -64,44 +64,32 @@
 
     <div class="container serie">
 
-
-        {% for season in serie.seasons %}
         <div class="row">
-            <div class="col-lg-10">
-                <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <h4> {{'Saison'|trans}} n°{{season.seasonNumber}} - {{season.name}} </h4> </a>
+        {% for season in serie.seasons %}  
+            <div class="row">
+                <div class="col-lg-10">
+                    <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <h4> Saison n°{{season.seasonNumber}} - {{season.name}} </h4> </a>
+                </div>
+                <div class="col-lg-2">
+                    <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <span class="detail"> Plus de détails <i class="glyphicon glyphicon-menu-right"></i> </span></a>
+                </div>
             </div>
-            <div class="col-lg-2">
-                <a href="{{path('serie_showSeason', {'name' : serie.name, 'seasonNumber': season.seasonNumber})}} "> <span class="detail"> {{'Plus de détails'|trans}} <i class="glyphicon glyphicon-menu-right"></i> </span></a>
-            </div>
-        </div>
+            {% for episode in season.episodes%}
+                <div class="col-lg-2">
+                    <a href="#">
+                        <img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}" alt="{{episode.image.alt|default('')}}" class="img-responsive">
+                    </a>
+                    <span>épisode n°{{episode.episodeNumber}}</span>
+                </div>
+            {%endfor%}
         {%endfor%}
-
-
-   
-                {% for season in serie.seasons %}
-                    
-                    {% for episode in season.episodes%}
-                        <div class="col-lg-2">
-                            <a href="#">
-                                <img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}"
-                                     alt="{{episode.image.alt|default('')}}"
-                                     class="img-responsive">
-                            </a>
-                            <span>épisode n°{{episode.episodeNumber}}</span>
-                        </div>
-
-                    {%endfor%}
-                {%endfor%}
-            </div>
-
-
-
+        </div>
     <div class="row">
         <a class="btn retour" href="{{ path('serie_showCategories')}}">
             <i class="glyphicon glyphicon-chevron-left"></i> {{'Retour à la liste des genres'|trans}}
         </a>
     </div>
 
-
+</div>
 
 {% endblock %}

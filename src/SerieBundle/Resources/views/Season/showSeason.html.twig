@@ -30,11 +30,11 @@
 		</div>
 
     </div>
-		
+
 {%for episode in season.episodes%}
     <div class="row">
 
-        
+
 
 	        <div class="col-lg-2">
 	        	<img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}" alt="{{episode.image.alt|default('')}}" class="thumbnail" style="width:100%""></a>
@@ -48,7 +48,7 @@
 
 		    <div class="col-lg-3 text-right">
 
-		        <a class="btn-updateEpisode btn" href="{{path('serie_editEpisode', {'serieName' : episode.serie.name, 'seasonNumber' : episode.season.seasonNumber, 'episodeNumber' : episode.episodeNumber})}}">
+		        <a class="btn-updateEpisode btn" href="{{path('serie_editEpisode', {'serieName' : episode.season.serie.name, 'seasonNumber' : episode.season.seasonNumber, 'episodeNumber' : episode.episodeNumber})}}">
 
                    	<i class="glyphicon glyphicon-scissors"></i> modifier
                	</a> 
@@ -56,15 +56,15 @@
 				<i class="glyphicon glyphicon-trash"> </i> Supprimer
 				</a>
             </div>
-    	
-        
     </div>
-	       
+
 {%endfor%}
-	       
+
  <div class="row">
-        <a class="btn retour" href="{{ path('serie_showCategories')}}">
+
+        <a class="btn retour" href="{{ path('serie_detail', {'name': season.serie.name } )}}">
             <i class="glyphicon glyphicon-chevron-left"></i> {{'Retour'|trans}}
+
         </a>
     </div>
 
