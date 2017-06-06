@@ -11,7 +11,7 @@
 		<div class="col-lg-8">
 			<span class="detailSaison libelle"> {{'Nom'|trans}}:  </span> <span> {{season.name}} </span> <br> <br>
 			<span class="detailSaison libelle"> {{'Date de sortie'|trans}}: </span> <span> {{season.diffusionDate | date('d/m/Y')}} </span> <br> <br>
-	        <span class="detailSaison libelle"> {{'Nombres d'épisodes'|trans}}: </span> <span> {{season.episodes|length}} </span><br><br>
+	        <span class="detailSaison libelle"> {{'Nombres d\'épisodes'|trans}}: </span> <span> {{season.episodes|length}} </span><br><br>
 	        <p class="detailSaison libelle"> {{'Résumé'|trans}}: </p>  <p>{{season.resume}} </p>
 		</div>
 
@@ -41,7 +41,7 @@
 	        </div>
 
 	        <div class="col-lg-7">
-		        <span class="strong">{{'Nom de l'épisode'|trans}} : </span> <span> {{episode.name}} - Episode n°{{episode.episodeNumber}} </span> <br>
+		        <span class="strong">{{'Nom de l\'épisode'|trans}} : </span> <span> {{episode.name}} - Episode n°{{episode.episodeNumber}} </span> <br>
 		        <span class="strong">{{'Date de diffusion'|trans}} : </span> <span>{{ episode.diffusionDate | date('d/m/Y') }}</span> <br>
 		        <span class="strong">{{'Résumé'|trans}} : </span> <br> <span>{{episode.resume}}</span> 
 		    </div>
