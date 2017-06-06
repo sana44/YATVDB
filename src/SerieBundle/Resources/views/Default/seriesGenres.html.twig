@@ -4,11 +4,11 @@
     <div class="container genre">
             <div class="row">
                 <div class="col-lg-4 category">
-                    <h1>LES GENRES</h1>
-                    <span> Vous êtes </span> <span class="keyWord"> fan </span>
-                    <span> de Séries? Vous vous intéressez à un genre en particulier? </span>
-                    <span class="keyWord"> Cliquez </span>
-                    <span> dessus pour découvir toutes les séries liées à ce genre! </span>
+                    <h1>{{'LES GENRES'|trans}}</h1>
+                    <span> {{'Vous êtes'|trans}} </span> <span class="keyWord"> fan </span>
+                    <span> {{'de Séries? Vous vous intéressez à un genre en particulier?'|trans}} </span>
+                    <span class="keyWord"> {{'Cliquez'|trans}} </span>
+                    <span> {{'dessus pour découvir toutes les séries liées à ce genre!'|trans}} </span>
                 </div>
 
                 {% for category in categories %}
@@ -22,6 +22,6 @@
                 {% endfor %}
                 
             </div> 
-        <p> Vous adorez une série, mais vous ne la trouvez pas sur FishBlock ? Vous pouvez dès maintenant l'ajouter à notre sélection ! </p>
+        <p> {{'Vous adorez une série, mais vous ne la trouvez pas sur FishBlock ? Vous pouvez dès maintenant l’ajouter à notre sélection !'|trans}} </p>
     </div>
         {% endblock %}

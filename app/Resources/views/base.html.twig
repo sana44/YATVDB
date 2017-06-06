@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %} Fishblock, le réseau social incontournable qui parle de nos Séries TV préférées!! {%endblock%} </title>
+        <title>{% block title %} {{'contenu.baliseTitle' | trans}} {%endblock%} </title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}"/>
             <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css"/>
@@ -32,7 +32,7 @@
                    <form class="navbar-form navbar-right inline-form" role="search" action="{{ path('series_search') }}">
                         <div class="form-group">
                             <span class="glyphicon glyphicon-search"></span>
-                            <input type="text" class="form-control " name="q" placeholder="Recherche" value="{{ app.request.get('q') }}">
+                            <input type="text" class="form-control " name="q" placeholder="{{'Recherche' | trans}}" value="{{ app.request.get('q') }}">
                         </div>
                     </form>
                 </div>
@@ -63,11 +63,11 @@
               <div class="container-fluid">
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                      <li> <a href="{{path('homepage')}}" class="accueil">Accueil</a> </li>
-                      <li><a href="{{ path ('serie_showCategories')}}" class="series">Séries par genres </a></li>
+                      <li> <a href="{{path('homepage')}}" class="accueil">{{'Accueil'|trans}}</a> </li>
+                      <li><a href="{{ path ('serie_showCategories')}}" class="series">{{'Séries par genres'|trans}} </a></li>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                        <li><a href="{{ path ('fos_user_profile_show', {'username':app.user.username}) }}" class="profil"> Mon activité </a></li>
+                        <li><a href="{{ path ('fos_user_profile_show', {'username':app.user.username}) }}" class="profil"> {{'Mon activité'|trans}} </a></li>
 
                     {%endif%}
                   </ul>
@@ -93,8 +93,10 @@
                 <div class="col-lg-12">
 
 
-                    <a href="{{path('serie_legalNotice')}}">Mentions légales - </a>
+                    <a href="{{path('serie_legalNotice')}}">{{'Mentions légales'|trans}} - </a>
                     <a href="mailto:contact-nantes@imie.fr" target="_blank">Contact</a>
+                    <a href="{{path('setLanguage', {'language' : 'fr'})}}">FR</a>
+                    <a href="{{path('setLanguage', {'language' : 'en'})}}">EN</a>
 
                 </div>
             </div>

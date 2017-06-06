@@ -43,7 +43,7 @@
                             </span>
                             &nbsp;
                             <span class="badge pull-right">
-                                {{ s.seasons|length }} Saisons
+                                {{ s.seasons|length }} {{'Saisons'|trans}}
                             </span>
                         </div>
                     </div>
@@ -52,7 +52,9 @@
         </div>
 
         <div class="row">
-            <h2 class="resultSearch">Saisons <span class="badge">{{ seasons|length }}</span></h2>
+
+            <h2 class="resultSearch">{{'Saisons'|trans}} <span class="badge">{{ seasons|length }}</span></h2>
+
             {%for se in seasons %}
                 <div class="col-md-4">
                     <div class="media">
@@ -61,7 +63,7 @@
                                 <a href="{{ path('serie_detail', {'name':se.serie.name}) }}
                                          #season-{{ se.id }} ">
                                     "{{ se.name }}"
-                                    trouvé dans la série
+                                    {{'trouvé dans la série'|trans}}
                                     "{{ se.serie.name }}"
                                 </a>
                             </h4>

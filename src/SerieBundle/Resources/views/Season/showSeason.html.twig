@@ -4,15 +4,15 @@
 
 <div class="container showSeason">
 
-	<h1> {{serie.name}} - Saison n°{{ season.seasonNumber }} </h1>
+	<h1> {{serie.name}} - {{'Saison'|trans}} n°{{ season.seasonNumber }} </h1>
 
 	<div class="row">
 
 		<div class="col-lg-8">
-			<span class="detailSaison libelle"> Nom:  </span> <span> {{season.name}} </span> <br> <br>
-			<span class="detailSaison libelle"> Date de sortie: </span> <span> {{season.diffusionDate | date('d/m/Y')}} </span> <br> <br>
-	        <span class="detailSaison libelle"> Nombres d'épisodes: </span> <span> {{season.episodes|length}} </span><br><br>
-	        <p class="detailSaison libelle"> Résumé: </p>  <p>{{season.resume}} </p>
+			<span class="detailSaison libelle"> {{'Nom'|trans}}:  </span> <span> {{season.name}} </span> <br> <br>
+			<span class="detailSaison libelle"> {{'Date de sortie'|trans}}: </span> <span> {{season.diffusionDate | date('d/m/Y')}} </span> <br> <br>
+	        <span class="detailSaison libelle"> {{'Nombres d'épisodes'|trans}}: </span> <span> {{season.episodes|length}} </span><br><br>
+	        <p class="detailSaison libelle"> {{'Résumé'|trans}}: </p>  <p>{{season.resume}} </p>
 		</div>
 
 		<div class="col-lg-4">
@@ -41,9 +41,9 @@
 	        </div>
 
 	        <div class="col-lg-7">
-		        <span class="strong">Nom de l'épisode : </span> <span> {{episode.name}} - Episode n°{{episode.episodeNumber}} </span> <br>
-		        <span class="strong">Date de diffusion : </span> <span>{{ episode.diffusionDate | date('d/m/Y') }}</span> <br>
-		        <span class="strong">Résumé : </span> <br> <span>{{episode.resume}}</span> 
+		        <span class="strong">{{'Nom de l'épisode'|trans}} : </span> <span> {{episode.name}} - Episode n°{{episode.episodeNumber}} </span> <br>
+		        <span class="strong">{{'Date de diffusion'|trans}} : </span> <span>{{ episode.diffusionDate | date('d/m/Y') }}</span> <br>
+		        <span class="strong">{{'Résumé'|trans}} : </span> <br> <span>{{episode.resume}}</span> 
 		    </div>
 
 		    <div class="col-lg-3 text-right">
@@ -61,8 +61,10 @@
 {%endfor%}
 
  <div class="row">
+
         <a class="btn retour" href="{{ path('serie_detail', {'name': season.serie.name } )}}">
-            <i class="glyphicon glyphicon-chevron-left"></i> Retour à la série
+            <i class="glyphicon glyphicon-chevron-left"></i> {{'Retour'|trans}}
+
         </a>
     </div>
 
