@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row">
-            <h2>Genres <span class="badge">{{ seriesCategories|length }} </span></h2>
+            <h2 class="resultSearch">Genres <span class="badge">{{ seriesCategories|length }} </span></h2>
             {%for sc in seriesCategories %}
                 <a href="{{ path('serie_showCategory', {'name':sc.name}) }}">
                     <div class="col-md-4">
@@ -20,7 +20,7 @@
         </div>
 
         <div class="row">
-            <h2>Series <span class="badge">{{ series|length }}</span></h2>
+            <h2 class="resultSearch">Series <span class="badge">{{ series|length }}</span></h2>
             {%for s in series %}
                 <div class="col-md-6">
                     <div class="media">
@@ -52,7 +52,7 @@
         </div>
 
         <div class="row">
-            <h2>Saisons <span class="badge">{{ seasons|length }}</span></h2>
+            <h2 class="resultSearch">Saisons <span class="badge">{{ seasons|length }}</span></h2>
             {%for se in seasons %}
                 <div class="col-md-4">
                     <div class="media">
@@ -78,7 +78,7 @@
         </div>
 
         <div class="row">
-            <h2>Episodes <span class="badge">{{ episodes|length }}</span></h2>
+            <h2 class="resultSearch">Episodes <span class="badge">{{ episodes|length }}</span></h2>
             {%for e in episodes %}
                 <div class="col-md-3">
                     <div class="media">
