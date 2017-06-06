@@ -16,22 +16,22 @@
                 <img class="thumbnail" alt="{{ serie.image.alt }}" src="/YATVDB/web/{{ serie.image.url }}" style="height:300px"/>
             </div>
             <div class="col-lg-5">
-                <span class="libelle"> Titre: </span> <span> {{serie.name}} </span> <br> <br>
-                <span class="libelle"> Date de sortie: </span> <span> {{ serie.releaseDate | date('d/m/Y') }} </span> <br> <br>
-                <span class="libelle"> Nombre de saisons: </span> <span> {{ serie.seasons|length }} </span> <br> <br>
+                <span class="libelle"> {{'Titre'|trans}}: </span> <span> {{serie.name}} </span> <br> <br>
+                <span class="libelle"> {{'Date de sortie'|trans}}: </span> <span> {{ serie.releaseDate | date('d/m/Y') }} </span> <br> <br>
+                <span class="libelle"> {{'Nombre de saisons'|trans}}: </span> <span> {{ serie.seasons|length }} </span> <br> <br>
                 <span class="libelle"> Genre: </span><span> {{serie.category.name}} </span> <br> <br>
-                <p class="libelle"> Résumé: </p> <p>  {{serie.resume}} </p>
+                <p class="libelle"> {{'Résumé'|trans}}: </p> <p>  {{serie.resume}} </p>
             </div>
             <div class="col-lg-4">
                 <a class="btn-updateSerie btn pull-right" href="{{path('serie_edit', {'id': serie.id})}}">
-                    <i class="glyphicon glyphicon-scissors"></i> Modifier la série
+                    <i class="glyphicon glyphicon-scissors"></i> {{'Modifier la série'|trans}}
                 </a> <br>
                 <a class="btn-deleteSerie btn pull-right" href="{{path('serie_delete', {'id':serie.id})}}">
-                    <i class="glyphicon glyphicon-trash"></i> Supprimer la série
+                    <i class="glyphicon glyphicon-trash"></i> {{'Supprimer la série'|trans}}
                 </a> <br>
 
                 <a href="{{path('serie_addSeason', {'name': serie.name})}}" class="btn-addSeason btn pull-right">
-                    <i class="glyphicon glyphicon-plus"> </i> Ajouter une saison
+                    <i class="glyphicon glyphicon-plus"> </i> {{'Ajouter une saison'|trans}}
                 </a> 
             </div>
         </div>
@@ -40,7 +40,7 @@
             {{ form(serieCommentForm) }}
         {% endif %}
 
-        <h3> Derniers commentaires </h3>
+        <h3> {{'Derniers commentaires'|trans}} </h3>
 
         {%for comment in serie.comments|slice(0,3) %}
             <div class="row">
@@ -57,7 +57,7 @@
                 </div>
             </div>
         {% else%}
-            <p> Soyez le premier à commenter cette série! </p>
+            <p> {{'Soyez le premier à commenter cette série'|trans}}! </p>
         {%endfor%}
 
     </div>
@@ -84,10 +84,9 @@
             {%endfor%}
         {%endfor%}
         </div>
-
     <div class="row">
         <a class="btn retour" href="{{ path('serie_showCategories')}}">
-            <i class="glyphicon glyphicon-chevron-left"></i> Retour à la liste des genres
+            <i class="glyphicon glyphicon-chevron-left"></i> {{'Retour à la liste des genres'|trans}}
         </a>
     </div>
 

@@ -8,7 +8,7 @@
 
         <div class="col-lg-4 invitSerie thumbnail">
             <h1> {{ category.name }} </h1>
-            <a class="btn addSerie" href="{{path('serie_addSerie')}}"> <span class="glyphicon glyphicon-plus-sign"> </span> <br> Ajouter <br> une série  </a>
+            <a class="btn addSerie" href="{{path('serie_addSerie')}}"> <span class="glyphicon glyphicon-plus-sign"> </span> <br> {{'Ajouter'|trans}} <br> {{'une série'|trans}}  </a>
         </div>
 
 
@@ -30,7 +30,7 @@
     </div>
    
         <a class="btn retour" href="{{ path('serie_showCategories')}}">
-            <span class="glyphicon glyphicon-chevron-left"></span> Retour
+            <span class="glyphicon glyphicon-chevron-left"></span> {{'Retour'|trans}}
         </a> 
 
 </div>

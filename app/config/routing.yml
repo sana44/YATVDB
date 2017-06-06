@@ -4,8 +4,12 @@ user:
 
 serie:
     resource: "@SerieBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
 
 app:
     resource: '@AppBundle/Controller/'
     type:     annotation
+
+setLanguage:
+    path:     /{language}
+    defaults: { _controller: "SerieBundle:Default:language" }
