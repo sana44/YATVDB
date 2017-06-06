@@ -5,7 +5,7 @@
     <div class="container accueil">
 
 	      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-	          <h2> Les dernières séries ajoutées </h2>
+	          <h2> {{'Les dernières séries ajoutées'|trans}} </h2>
 		        <div class="row">
 	              {% for s in lastSeries %}
 	    	            <div class="col-lg-2 lastSerie">
@@ -19,20 +19,20 @@
 
 	      {% else %}
 
-	          <h2> Fishblock, le Réseau Social n°1 autour des Séries TVs! </h2>
+	          <h2> Fishblock, {{'le Réseau Social n°1 autour des Séries TVs!'|trans}} </h2>
 
 	          <div class="row">
 		            <div class="col-lg-6">
-		                <p>  Vous êtes <span class="keyWord">fan de séries </span> ? Vous souhaitez <span class="keyWord"> partager </span> vos séries préférées et <span class="keyWord"> échanger </span> avec d'autres fans ? <span class="keyWord"> Inscrivez vous </span> vite afin de partager vos dernières découvertes et <span class="keyWord"> discuter </span> en live avec d'autres utilisateurs par le biais de notre chat !</p>
+		                <p>  {{'Vous êtes'|trans}} <span class="keyWord">{{'fan de séries'|trans}} </span> ? {{'Vous souhaitez'|trans}} <span class="keyWord"> {{'partager'|trans}} </span> {{'vos séries préférées et'|trans}} <span class="keyWord"> {{'échanger'|trans}} </span> {{'avec d’autres fans'|trans}} ? <span class="keyWord"> {{'Inscrivez vous'|trans}} </span> {{'vite afin de partager vos dernières découvertes et'|trans}} <span class="keyWord"> {{'discuter'|trans}} </span> {{'en live avec d’autres utilisateurs par le biais de notre chat'|trans}} !</p>
 		            </div>
 
 		            <div class="col-lg-6 invitInscription">
-		                <a href={{path('fos_user_registration_register')}}> <button> JE M'INSCRIS  <span class="glyphicon glyphicon-chevron-right"> </span> </button> </a>
+		                <a href={{path('fos_user_registration_register')}}> <button> {{'JE M’INSCRIS'|trans}}  <span class="glyphicon glyphicon-chevron-right"> </span> </button> </a>
 		            </div>
 
 	          </div>
 
-	          <h2> Les dernières séries ajoutées </h2>
+	          <h2> {{'Les dernières séries ajoutées'|trans}} </h2>
 	          <div class="row">
                 {% for s in lastSeries %}
       	            <div class="col-lg-2 lastSerie">
