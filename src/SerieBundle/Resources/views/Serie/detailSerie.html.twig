@@ -11,9 +11,11 @@
     <div class="container serie">
         <h1>{{ serie.name }}</h1>
 
-          <div class="row">
+        <div class="row">
             <div class="col-lg-3">
-                <img class="thumbnail" alt="{{ serie.image.alt }}" src="/YATVDB/web/{{ serie.image.url }}" style="height:300px"/>
+                {% if serie.image is not null %}}
+                    <img class="thumbnail" alt="{{ serie.image.alt }}" src="/YATVDB/web/{{ serie.image.url }}" style="height:300px"/>
+                {% endif %}
             </div>
             <div class="col-lg-5">
                 <span class="libelle"> Titre: </span> <span> {{serie.name}} </span> <br> <br>
@@ -25,14 +27,14 @@
             <div class="col-lg-4">
                 <a class="btn-updateSerie btn pull-right" href="{{path('serie_edit', {'id': serie.id})}}">
                     <i class="glyphicon glyphicon-scissors"></i> Modifier la série
-                </a> <br>
+                </a><br>
                 <a class="btn-deleteSerie btn pull-right" href="{{path('serie_delete', {'id':serie.id})}}">
                     <i class="glyphicon glyphicon-trash"></i> Supprimer la série
                 </a> <br>
 
                 <a href="{{path('serie_addSeason', {'name': serie.name})}}" class="btn-addSeason btn pull-right">
                     <i class="glyphicon glyphicon-plus"> </i> Ajouter une saison
-                </a> 
+                </a>
             </div>
         </div>
 

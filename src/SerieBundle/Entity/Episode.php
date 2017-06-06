@@ -17,12 +17,6 @@ class Episode
    */
   private $image;
 
-/**
-   * @ORM\ManyToOne(targetEntity = "\SerieBundle\Entity\Serie", inversedBy="episodes")
-   * @ORM\JoinColumn(nullable = false)
-   */
-  private $serie;
-
   /**
    * @ORM\ManyToOne(targetEntity = "\SerieBundle\Entity\Season", inversedBy="episodes")
    * @ORM\JoinColumn(nullable = false)
