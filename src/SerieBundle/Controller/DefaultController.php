@@ -5,6 +5,7 @@ namespace SerieBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SerieBundle\Repository\SerieRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultController extends Controller
 {
@@ -78,5 +79,35 @@ class DefaultController extends Controller
     public function legalNoticeAction()
     {
     	return $this->render('SerieBundle:Default:LegalNotice.html.twig');
+    }
+
+
+    public function languageAction($language)
+    {
+
+        // enregistre la langue en session
+        //$this->container->get('session')->set('_locale',$language);
+        //$request = $this->getRequest();
+        //$request->setLocale($language);    
+
+        // redirige vers la page courante
+        $url = $this->container->get('request')->headers->get('referer');
+        
+        if ($language == 'fr') {
+            $url2 = explode('/', $url);
+            $regex = '#^en#';
+            $url3 = preg_replace($regex, 'fr', $url2);
+            $url4 = implode('/', $url3);
+
+        }elseif ($language == 'en'){
+            $url2 = explode('/', $url);
+            $regex = '#^fr#';
+            $url3 = preg_replace($regex, 'en', $url2);
+            $url4 = implode('/', $url3);
+        }
+
+
+
+        return new RedirectResponse($url4);
     }
 }
