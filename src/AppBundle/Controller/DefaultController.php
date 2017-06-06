@@ -9,10 +9,18 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="root")
      */
-    public function indexAction(Request $request)
+    public function redirectAction(Request $request)
     {
+        return $this->redirect($this->generateUrl('homepage',['_locale' => 'fr']));
+    }
+    /**
+     * @Route("/{_locale}", name="homepage")
+     */
+    public function indexAction(Request $request, $_locale)
+    {
+
       $em = $this->getDoctrine()->getManager();
       $lastSeries = $em->getRepository('SerieBundle:Serie')->findBy([], ['releaseDate'=>'DESC'], $limit = 6);
 
