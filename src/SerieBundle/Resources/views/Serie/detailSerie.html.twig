@@ -77,25 +77,21 @@
         {%endfor%}
 
 
-   
-                {% for season in serie.seasons %}
-                    
-                    {% for episode in season.episodes%}
-                        <div class="col-lg-2">
-                            <a href="#">
-                                <img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}"
-                                     alt="{{episode.image.alt|default('')}}"
-                                     class="img-responsive">
-                            </a>
-                            <span>épisode n°{{episode.episodeNumber}}</span>
-                        </div>
-
-                    {%endfor%}
-                {%endfor%}
+        <div class="row">
+        {% for season in serie.seasons %}  
+            {% for episode in season.episodes%}
+            <div class="col-lg-2">
+                <a href="#">
+                <img src="{{asset(episode.image.url|default('img/iconPaysage.png'))}}" alt="{{episode.image.alt|default('')}}" class="img-responsive">
+                </a>
+                <span>épisode n°{{episode.episodeNumber}}</span>
             </div>
-
+            {%endfor%}
         {%endfor%}
+        </div>
+    
 
+      
 
     <div class="row">
         <a class="btn retour" href="{{ path('serie_showCategories')}}">
@@ -103,6 +99,6 @@
         </a>
     </div>
 
-
+</div>
 
 {% endblock %}
